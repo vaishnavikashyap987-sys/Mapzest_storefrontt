@@ -1,0 +1,166 @@
+import React, { useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { ArrowLeft, ExternalLink, CheckCircle } from 'lucide-react';
+import { platformsData } from '../data/platforms.jsx';
+
+const PlatformDetail = () => {
+    const { id } = useParams();
+    const navigate = useNavigate();
+    const platform = platformsData[id];
+
+    // Redirect if platform not found
+    useEffect(() => {
+        if (!platform) {
+            navigate('/platforms');
+        }
+    }, [id, platform, navigate]);
+
+    if (!platform) return null;
+
+    return (
+        <div className="min-h-screen relative overflow-hidden">
+            {/* Background elements managed globally, but we can add specific tints */}
+
+            {/* Broad Header */}
+            <div className="relative h-[60vh] w-full overflow-hidden">
+                <div className="absolute inset-0 bg-space-900/50 z-10 transition-colors duration-500"></div>
+                {/* Gradient Overlay for Text Readability */}
+                <div className="absolute inset-0 bg-gradient-to-t from-space-900 via-transparent to-transparent z-20"></div>
+
+                <motion.img
+                    initial={{ scale: 1.1 }}
+                    animate={{ scale: 1 }}
+                    transition={{ duration: 10, ease: "easeOut" }}
+                    src={platform.headerImage}
+                    alt={platform.title}
+                    className="w-full h-full object-cover"
+                />
+
+                <div className="absolute bottom-0 left-0 w-full z-30 p-8 md:p-16">
+                    <div className="max-w-7xl mx-auto">
+                        <motion.button
+                            onClick={() => navigate('/platforms')}
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: 0.2 }}
+                            className="flex items-center gap-2 text-gray-300 hover:text-white mb-6 transition-colors"
+                        >
+                            <ArrowLeft size={20} />
+                            Back to Platforms
+                        </motion.button>
+
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.4 }}
+                            className="flex items-center gap-4 mb-4"
+                        >
+                            <div className={`p-3 rounded-xl bg-white/10 backdrop-blur-md border border-white/20`}>
+                                {platform.icon}
+                            </div>
+                            <span className={`text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r ${platform.accent} uppercase tracking-wider`}>
+                                {platform.subtitle}
+                            </span>
+                        </motion.div>
+
+                        <motion.h1
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.6 }}
+                            className="text-5xl md:text-7xl font-bold text-white mb-6"
+                        >
+                            {platform.title}
+                        </motion.h1>
+                    </div>
+                </div>
+            </div>
+
+            {/* Content Section */}
+            <div className="max-w-7xl mx-auto px-4 py-20 relative z-10">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
+                    {/* Main Content */}
+                    <div className="lg:col-span-2 space-y-16">
+                        {/* Introduction */}
+                        <motion.section
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="prose prose-invert max-w-none"
+                        >
+                            <h2 className="text-3xl font-bold text-white mb-6">Introduction</h2>
+                            <p className="text-xl text-gray-300 leading-relaxed border-l-4 border-white/20 pl-6">
+                                {platform.description}
+                            </p>
+                        </motion.section>
+
+                        {/* Use Cases */}
+                        <section>
+                            <h2 className="text-3xl font-bold text-white mb-8">Use Cases & Case Studies</h2>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                {platform.useCases.map((useCase, index) => (
+                                    <motion.div
+                                        key={index}
+                                        initial={{ opacity: 0, y: 20 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true }}
+                                        transition={{ delay: index * 0.1 }}
+                                        className="glass-panel p-6 rounded-xl hover:bg-white/5 transition-colors"
+                                    >
+                                        <h3 className="text-xl font-bold text-white mb-3">{useCase.title}</h3>
+                                        <p className="text-gray-400">{useCase.description}</p>
+                                    </motion.div>
+                                ))}
+                            </div>
+                        </section>
+                    </div>
+
+                    {/* Sidebar */}
+                    <div className="relative">
+                        <div className="sticky top-32 space-y-8">
+                            {/* Actions Card */}
+                            <motion.div
+                                initial={{ opacity: 0, x: 20 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ delay: 0.8 }}
+                                className="glass-panel p-8 rounded-2xl border border-white/10"
+                            >
+                                <h3 className="text-2xl font-bold text-white mb-6">Get Started</h3>
+                                <p className="text-gray-400 mb-8">
+                                    Ready to deploy {platform.title} for your organization? Launch the platform now or contact sales.
+                                </p>
+                                <button
+                                    onClick={() => platform.url ? window.open(platform.url, '_blank') : null}
+                                    className={`w-full py-4 rounded-lg font-bold text-white bg-gradient-to-r ${platform.accent} hover:opacity-90 transition-opacity flex items-center justify-center gap-2 mb-4 group`}
+                                >
+                                    Launch Platform
+                                    <ExternalLink size={18} className="group-hover:translate-x-1 transition-transform" />
+                                </button>
+                                {platform.id !== 'utm' && (
+                                    <button className="w-full py-4 rounded-lg font-bold text-white border border-white/20 hover:bg-white/10 transition-colors">
+                                        Request Demo
+                                    </button>
+                                )}
+                            </motion.div>
+
+                            {/* Features List */}
+                            <div className="glass-panel p-8 rounded-2xl">
+                                <h3 className="text-xl font-bold text-white mb-6">Key Features</h3>
+                                <ul className="space-y-4">
+                                    {platform.features.map((feature, index) => (
+                                        <li key={index} className="flex items-start gap-3">
+                                            <CheckCircle className={`w-5 h-5 flex-shrink-0 mt-0.5 text-${platform.color}-500`} />
+                                            <span className="text-gray-300">{feature}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default PlatformDetail;
