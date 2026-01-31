@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { AnimatePresence } from 'framer-motion';
 import { useAuth } from '../context/AuthContext';
-import { LayoutDashboard, Database, HardDrive, Download, ChevronRight, Activity, Clock, ExternalLink, CreditCard, X, Layers, CheckCircle, Crown, Trash2 } from 'lucide-react';
+import { LayoutDashboard, Database, HardDrive, Download, ChevronRight, Activity, Clock, ExternalLink, CreditCard, X, Layers, CheckCircle, Crown, Trash2, Lock } from 'lucide-react';
 import { platforms, APPLICATIONS, STORAGE_TIERS, checkOwnership } from '../data/platforms';
 import { getUserProfile, addSubscription } from '../lib/firebase';
 import { api } from '../lib/api';
@@ -730,7 +730,7 @@ const PlanConfigModal = ({ app, onClose, onSelectPlan, userSubscriptions }) => {
     );
 };
 
-const PurchaseModal = ({ platform, onClose, onConfirm, isProcessing }) => {
+const PurchaseModal = ({ platform, onClose }) => {
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
             <motion.div
@@ -755,38 +755,27 @@ const PurchaseModal = ({ platform, onClose, onConfirm, isProcessing }) => {
                 </button>
 
                 <div className="flex flex-col items-center text-center">
-                    <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-accent-cyan to-accent-purple p-[1px] mb-6">
+                    <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-gray-700 to-gray-900 p-[1px] mb-6">
                         <div className="w-full h-full bg-[#0B0B15] rounded-2xl flex items-center justify-center">
-                            <CreditCard className="w-8 h-8 text-white" />
+                            <Lock className="w-8 h-8 text-gray-400" />
                         </div>
                     </div>
 
-                    <h3 className="text-2xl font-bold text-white mb-2">Unlock {platform.name}</h3>
+                    <h3 className="text-2xl font-bold text-white mb-2">Access Restricted</h3>
                     <p className="text-gray-400 mb-6">
-                        Get full access to {platform.description} for <span className="text-white font-bold">${platform.price}</span>/{platform.renewal.toLowerCase()}.
+                        Self-service payments for <span className="text-white font-bold">{platform.name}</span> are currently paused as we upgrade our billing system.
                     </p>
 
-                    {/* Mock Payment Form */}
-                    <div className="w-full bg-white/5 rounded-xl p-4 mb-6 border border-white/10 text-left space-y-3">
-                        <div className="h-4 bg-white/10 rounded-md w-3/4 animate-pulse" />
-                        <div className="h-4 bg-white/10 rounded-md w-1/2 animate-pulse" />
-                        <p className="text-xs text-gray-500 mt-2 text-center">🔒 Mock Payment Gateway (Test Mode)</p>
+                    <div className="w-full bg-yellow-500/10 border border-yellow-500/20 rounded-xl p-4 mb-6 text-sm text-yellow-200">
+                        Please contact our sales team to manually activate this plan for your account.
                     </div>
 
-                    <button
-                        onClick={onConfirm}
-                        disabled={isProcessing}
-                        className="w-full py-4 rounded-xl font-bold text-lg bg-gradient-to-r from-accent-cyan to-accent-purple text-white shadow-lg shadow-cyan-500/20 hover:scale-[1.02] transition-transform disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                    <a
+                        href="mailto:sales@mapzest.com?subject=Upgrade Request: ${platform.name}"
+                        className="w-full py-4 rounded-xl font-bold text-lg bg-white text-black hover:bg-gray-200 transition-colors flex items-center justify-center gap-2"
                     >
-                        {isProcessing ? (
-                            <>
-                                <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
-                                Processing...
-                            </>
-                        ) : (
-                            'Confirm Purchase'
-                        )}
-                    </button>
+                        Contact Sales
+                    </a>
                 </div>
             </motion.div>
         </div>

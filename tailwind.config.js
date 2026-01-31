@@ -11,6 +11,7 @@ export default {
           900: '#0B0B15', // Deep space black
           800: '#151525', // Dark blue-black
           700: '#1E1E30', // Lighter space
+          600: '#2B2B40', // Even lighter space for cards
         },
         accent: {
           cyan: '#00F0FF', // Neon cyan

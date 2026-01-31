@@ -7,12 +7,12 @@ export const STORAGE_TIERS = [
 
 // 1. Generic Platforms (Auto-generate tiers)
 const GENERIC_APPS = [
-    { id: 'fram', name: 'FRAM', desc: 'Flood Risk Assessment & Management platform.', url: '#' },
-    { id: 'nrmm', name: 'NRMM', desc: 'Natural Resource Management & Monitoring ecosystem.', url: '#' },
-    { id: 'adss', name: 'ADSS', desc: 'Agriculture Decision Support System for precision farming.', url: import.meta.env.VITE_ADSS_URL || 'http://localhost:3005/sso-callback' },
-    { id: 'catalog', name: 'Geo Catalog', desc: 'Enterprise Data Hosting & Discovery repository.', url: '#' },
-    { id: 'survey', name: 'Survey App', desc: 'Mobile Field Data Collection & Validation.', url: '#' },
-    { id: 'p_disaster_mgmt', name: 'Disaster Management', desc: 'Real-time crisis mapping and resource allocation.', url: 'https://example-disaster-platform.cloudfront.net' }
+    { id: 'fram', name: 'FRAM', desc: 'Flood Risk Assessment & Management platform.', url: '#', image: "https://d32bq2tih41htm.cloudfront.net/media/FRAMbg.png" },
+    { id: 'nrmm', name: 'NRMM', desc: 'Natural Resource Management & Monitoring ecosystem.', url: '#', image: "https://d32bq2tih41htm.cloudfront.net/media/Mapzestbg.png" },
+    { id: 'adss', name: 'ADSS', desc: 'Agriculture Decision Support System for precision farming.', url: import.meta.env.VITE_ADSS_URL || 'http://localhost:3005/sso-callback', image: "https://d32bq2tih41htm.cloudfront.net/media/Agribg.jpeg" },
+    { id: 'catalog', name: 'Geo Catalog', desc: 'Enterprise Data Hosting & Discovery repository.', url: '#', image: "https://d32bq2tih41htm.cloudfront.net/media/Mapzeststicker.png" },
+    { id: 'survey', name: 'Survey App', desc: 'Mobile Field Data Collection & Validation.', url: '#', image: "https://d32bq2tih41htm.cloudfront.net/media/drone_service.png" },
+    { id: 'p_disaster_mgmt', name: 'Disaster Management', desc: 'Real-time crisis mapping and resource allocation.', url: 'https://example-disaster-platform.cloudfront.net', image: "https://d32bq2tih41htm.cloudfront.net/media/FRAMbg.png" }
 ].map(app => ({
     ...app,
     plans: STORAGE_TIERS.map(tier => ({
@@ -25,7 +25,8 @@ const GENERIC_APPS = [
         price: tier.price,
         type: tier.type,
         renewal: tier.price === 0 ? 'Forever' : 'Monthly',
-        url: app.url
+        url: app.url,
+        image: app.image
     }))
 }));
 
@@ -35,6 +36,7 @@ const MAPZEST_GO = {
     name: 'Mapzest Go',
     desc: 'Advanced zoning and city planning tools.',
     url: import.meta.env.VITE_MAPZEST_GO_URL || 'http://localhost:5174/',
+    image: "https://d32bq2tih41htm.cloudfront.net/media/UBPbg.png",
     plans: [
         {
             id: 'p_urban_analytics', // Using parent ID as the base subscription ID
@@ -69,6 +71,7 @@ const GEOTOOLS = {
     name: 'Mapzest GeoTools',
     desc: 'Essential geospatial utilities.',
     url: 'https://d1alo182wsgudi.cloudfront.net/',
+    image: "https://d32bq2tih41htm.cloudfront.net/media/Mapzeststicker.png",
     plans: [
         {
             id: 'p_geo_tools',
@@ -98,11 +101,9 @@ export const platforms = APPLICATIONS.flatMap(app => app.plans).map(p => ({
 export const checkOwnership = (userSubscriptions, platformId) => {
     const platform = platforms.find(p => p.id === platformId);
 
-    // Auto-own logic for Free tiers if desired, OR strict check
-    // Logic: If price is 0, user 'owns' it by default? 
-    // User requested explicit config, so let's require subscription even for free 
-    // UNLESS it's GeoTools which is traditionally free-default.
-    if (platform?.id === 'p_geo_tools') return true;
+    // Auto-own logic for Free tiers
+    // Unlock GeoTools AND Mapzest Go (Standard) by default
+    if (platform?.id === 'p_geo_tools' || platform?.id === 'p_urban_analytics') return true;
 
     return userSubscriptions?.includes(platformId);
 };

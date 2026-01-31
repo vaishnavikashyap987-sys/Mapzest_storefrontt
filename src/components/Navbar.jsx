@@ -3,12 +3,18 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, User, Settings, LogOut, LayoutDashboard, ChevronDown, AlertCircle } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
+import LoginModal from './LoginModal';
+import RegisterModal from './RegisterModal';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
     const [profileOpen, setProfileOpen] = useState(false);
     const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
+
+    // Modal states
+    const [isLoginOpen, setIsLoginOpen] = useState(false);
+    const [isRegisterOpen, setIsRegisterOpen] = useState(false);
 
     const location = useLocation();
     const { user, logout } = useAuth();
@@ -47,6 +53,7 @@ const Navbar = () => {
         ...(user ? [{ name: 'My Console', path: '/console' }] : []),
         { name: 'About', path: '/about' },
         { name: 'Services', path: '/services' },
+        { name: 'Blogs', path: '/blogs' },
         { name: 'Contact', path: '/contact' },
     ];
 
@@ -205,15 +212,15 @@ const Navbar = () => {
                                 </AnimatePresence>
                             </div>
                         ) : (
-                            <Link
-                                to="/login"
+                            <button
+                                onClick={() => setIsLoginOpen(true)}
                                 className={`px-6 py-2 rounded-full transition-all duration-300 backdrop-blur-sm text-sm font-medium border ${scrolled
                                     ? 'bg-cyan-600 text-white border-cyan-600 hover:bg-cyan-700 shadow-md'
                                     : 'bg-white/10 hover:bg-white/20 border-white/20 hover:border-white text-white'
                                     }`}
                             >
                                 Sign In
-                            </Link>
+                            </button>
                         )}
                     </div>
 
@@ -249,11 +256,8 @@ const Navbar = () => {
                                     <Link
                                         key={link.name}
                                         to={link.path}
-                                        className={`text-2xl font-bold transition-colors duration-300 ${location.pathname === link.path
-                                            ? 'text-accent-cyan'
-                                            : 'text-white hover:text-accent-cyan'
-                                            }`}
                                         onClick={() => setIsOpen(false)}
+                                        className="text-2xl font-bold text-gray-300 hover:text-white transition-colors"
                                     >
                                         {link.name}
                                     </Link>
@@ -288,13 +292,15 @@ const Navbar = () => {
                                         </button>
                                     </div>
                                 ) : (
-                                    <Link
-                                        to="/login"
-                                        onClick={() => setIsOpen(false)}
-                                        className="w-full max-w-xs mx-auto px-8 py-3 rounded-full text-xl font-bold transition-all shadow-[0_0_20px_rgba(0,240,255,0.3)] hover:shadow-[0_0_30px_rgba(0,240,255,0.5)] hover:bg-opacity-90 bg-accent-cyan text-space-900 mt-4"
+                                    <button
+                                        onClick={() => {
+                                            setIsOpen(false);
+                                            setIsLoginOpen(true);
+                                        }}
+                                        className="text-2xl font-bold text-accent-cyan hover:text-white transition-colors mt-4"
                                     >
                                         Sign In
-                                    </Link>
+                                    </button>
                                 )}
                             </div>
                         </motion.div>
@@ -345,6 +351,23 @@ const Navbar = () => {
                     </div>
                 )}
             </AnimatePresence>
+
+            <LoginModal
+                isOpen={isLoginOpen}
+                onClose={() => setIsLoginOpen(false)}
+                onSwitchToRegister={() => {
+                    setIsLoginOpen(false);
+                    setIsRegisterOpen(true);
+                }}
+            />
+            <RegisterModal
+                isOpen={isRegisterOpen}
+                onClose={() => setIsRegisterOpen(false)}
+                onSwitchToLogin={() => {
+                    setIsRegisterOpen(false);
+                    setIsLoginOpen(true);
+                }}
+            />
         </>
     );
 };

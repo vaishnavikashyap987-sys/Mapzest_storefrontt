@@ -33,7 +33,7 @@ const Register = () => {
     };
 
     return (
-        <div className="relative min-h-[calc(100vh-80px)] flex items-center justify-center pt-20 pb-12 px-4">
+        <div className="relative min-h-[calc(100vh-80px)] flex items-center justify-center pt-40 pb-12 px-4">
             <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}

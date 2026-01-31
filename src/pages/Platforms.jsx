@@ -33,27 +33,43 @@ const Platforms = () => {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                                className={`glass-panel p-8 rounded-2xl border border-white/5 transition-all duration-300 group hover:-translate-y-2 hover:border-${platform.color}-500/50 h-full flex flex-col`}
+                                className={`glass-panel rounded-2xl border border-white/5 transition-all duration-300 group hover:-translate-y-2 hover:border-${platform.color}-500/50 h-full flex flex-col overflow-hidden`}
                             >
-                                <div className="flex items-center justify-between mb-6">
-                                    <div className="relative w-16 h-16 rounded-xl overflow-hidden group-hover:scale-110 transition-transform duration-300 border border-white/10 shadow-lg">
-                                        <img
-                                            src={platform.cardImage}
-                                            alt={platform.title}
-                                            className="w-full h-full object-cover"
-                                        />
-                                        {/* Overlay for tint matching platform color */}
-                                        <div className={`absolute inset-0 bg-${platform.color}-500/20 mixed-blend-overlay`}></div>
+                                {/* Banner Image */}
+                                <div className="h-48 w-full relative overflow-hidden group-hover:h-52 transition-all duration-500">
+                                    <div className={`absolute inset-0 bg-${platform.color}-500/20 mixed-blend-overlay z-10 group-hover:bg-transparent transition-colors`}></div>
+                                    <img
+                                        src={platform.cardImage}
+                                        alt={platform.title}
+                                        className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                                    />
+                                    {/* Icon Badge */}
+                                    <div className="absolute bottom-4 left-4 bg-black/60 backdrop-blur-md p-2 rounded-lg border border-white/10 z-20">
+                                        {/* We don't have the icon component here directly unless we map it, 
+                                             but platformsData has the 'icon' JSX element. 
+                                             Normally passing JSX in data is tricky if not handled well, 
+                                             but here we are mapping Object.values(platformsData).
+                                             Wait, platform.icon IS a valid React element in platformsData.
+                                         */}
+                                        {/* Actually, let's just use the title or keep it clean. 
+                                             The user liked the "dashboard" look. 
+                                             Let's keep the content simple. 
+                                          */}
                                     </div>
-                                    <ArrowRight className="w-5 h-5 text-gray-500 group-hover:text-white transition-colors" />
                                 </div>
 
-                                <h3 className="text-2xl font-bold mb-1 text-white">{platform.title}</h3>
-                                <p className="text-sm text-accent-cyan font-medium mb-4">{platform.subtitle}</p>
+                                <div className="p-8 flex flex-col flex-grow">
+                                    <div className="flex items-center justify-between mb-4">
+                                        <h3 className="text-2xl font-bold text-white group-hover:text-accent-cyan transition-colors">{platform.title}</h3>
+                                        <ArrowRight className="w-5 h-5 text-gray-500 group-hover:text-white transition-colors" />
+                                    </div>
 
-                                <p className="text-gray-400 text-sm leading-relaxed flex-grow">
-                                    {platform.description}
-                                </p>
+                                    <p className="text-sm text-accent-cyan font-medium mb-4">{platform.subtitle}</p>
+
+                                    <p className="text-gray-400 text-sm leading-relaxed flex-grow">
+                                        {platform.description}
+                                    </p>
+                                </div>
                             </motion.div>
                         </Link>
                     ))}

@@ -1,31 +1,31 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
 export const services = [
     {
         title: "Web GIS Platforms",
         description: "Enabling businesses with bespoke GIS platforms tailored to specific workflows.",
-        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop"
+        image: "https://d32bq2tih41htm.cloudfront.net/media/Webgisdevelop-ment.png"
     },
     {
         title: "Remote Sensing",
         description: "Utilizing cutting-edge satellite and aerial imagery to monitor environmental changes.",
-        image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2072&auto=format&fit=crop"
+        image: "https://d32bq2tih41htm.cloudfront.net/media/GISsolutions.jpg"
     },
     {
         title: "GIS Solutions",
         description: "Comprehensive Geographic Information System services including data management.",
-        image: "https://images.unsplash.com/photo-1569336415962-a4bd9f69cd83?q=80&w=2062&auto=format&fit=crop"
+        image: "https://d32bq2tih41htm.cloudfront.net/media/remotesensing.png"
     },
     {
-        title: "UAV Mapping",
+        title: "UAV Data Acquisition",
         description: "High-precision drone mapping and surveying for construction and mining.",
-        image: "https://images.unsplash.com/photo-1473968512647-3e447244af8f?q=80&w=2070&auto=format&fit=crop"
+        image: "https://d32bq2tih41htm.cloudfront.net/media/drone_service.png"
     },
     {
         title: "3D Modeling",
         description: "Creating digital twins and 3D city models for urban planning.",
-        image: "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?q=80&w=2070&auto=format&fit=crop"
+        image: "https://d32bq2tih41htm.cloudfront.net/media/3Dmodeling.jpeg"
     },
     {
         title: "Data Analytics",
@@ -36,25 +36,53 @@ export const services = [
 
 const Services = () => {
     const targetRef = useRef(null);
+    const contentRef = useRef(null);
+    const [xRange, setXRange] = useState(0);
+
+    useEffect(() => {
+        const updateScrollRange = () => {
+            if (contentRef.current) {
+                const scrollWidth = contentRef.current.scrollWidth;
+                const clientWidth = contentRef.current.clientWidth;
+                // Calculate how much we need to translate to see the end
+                // Multiply by a factor or add padding if needed, but exact difference should work
+                const range = scrollWidth - clientWidth + 50; // +50px buffer
+                setXRange(range > 0 ? range : 0);
+            }
+        };
+
+        // Initial calculation
+        updateScrollRange();
+
+        // Recalculate on resize
+        window.addEventListener('resize', updateScrollRange);
+        return () => window.removeEventListener('resize', updateScrollRange);
+    }, []);
+
     const { scrollYProgress } = useScroll({
         target: targetRef,
     });
 
-    const x = useTransform(scrollYProgress, [0, 1], ["1%", "-85%"]);
+    // Map vertical scroll to horizontal translation in pixels
+    const x = useTransform(scrollYProgress, [0, 1], ["0px", `-${xRange}px`]);
 
     return (
         <section ref={targetRef} className="relative h-[300vh]">
-            <div className="sticky top-0 flex h-screen items-center overflow-hidden z-10">
-                <div className="absolute top-10 left-10 z-10">
+            <div className="sticky top-0 flex flex-col h-screen justify-center overflow-hidden z-10">
+                <div className="px-10 pt-20 pb-10 z-10">
                     <h2 className="text-4xl md:text-6xl font-bold text-white mb-2">Our Capabilities</h2>
                     <div className="w-20 h-1 bg-accent-cyan rounded-full"></div>
                 </div>
 
-                <motion.div style={{ x }} className="flex gap-8 px-10">
+                <motion.div
+                    ref={contentRef}
+                    style={{ x }}
+                    className="flex gap-8 px-10 items-center h-[60vh]"
+                >
                     {services.map((service, index) => (
                         <div
                             key={index}
-                            className="relative h-[60vh] w-[400px] md:w-[600px] shrink-0 rounded-3xl overflow-hidden group border border-white/10"
+                            className="relative h-full w-[400px] md:w-[600px] shrink-0 rounded-3xl overflow-hidden group border border-white/10"
                         >
                             <img
                                 src={service.image}

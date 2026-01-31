@@ -5,13 +5,13 @@ export const platformsData = {
     fram: {
         id: 'fram',
         title: "FRAM",
-        subtitle: "Flood Risk Assessment & Management",
+        subtitle: "Flood Risk Assessment Module",
         icon: <ShieldAlert className="w-12 h-12 text-red-500" />,
         color: "red",
         accent: "from-red-500 to-orange-500",
-        description: "An advanced disaster management platform designed for real-time flood risk assessment, emergency response coordination, and post-disaster analysis.",
-        headerImage: "https://images.unsplash.com/photo-1454789476662-53eb23ba5907?auto=format&fit=crop&q=80&w=1952",
-        cardImage: "https://images.unsplash.com/photo-1485617359743-4dc5d2e53c89?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", // Simulation/Red Map
+        description: "FRAM uses high-resolution drone imagery and elevation data to identify flood-prone areas. It generates flood risk zones along with detailed statistics to support planning, mitigation, and disaster preparedness.",
+        headerImage: "https://d32bq2tih41htm.cloudfront.net/media/FRAMbg.png",
+        cardImage: "https://d32bq2tih41htm.cloudfront.net/media/FRAMbg.png", // Simulation/Red Map
         features: [
             "Real-time flood inundation mapping",
             "Population at risk calculation",
@@ -20,25 +20,29 @@ export const platformsData = {
         ],
         useCases: [
             {
-                title: "Monsoon 2024 Response",
-                description: "Deployed during the 2024 monsoon season to coordinate rescue operations across 3 districts, reducing response time by 40%."
+                title: "Urban Flood Planning",
+                description: "City planners use FRAM to identify low-lying and flood-prone zones before approving new residential or infrastructure projects."
             },
             {
-                title: "Urban Drainage Planning",
-                description: "Used by municipal corporations to identify waterlogging hotspots and plan drainage infrastructure upgrades."
+                title: "Disaster Preparedness & Response",
+                description: "Disaster management authorities generate flood risk maps and statistics to plan evacuation routes, relief centers, and emergency resource allocation."
+            },
+            {
+                title: "Infrastructure Risk Analysis",
+                description: "Engineers assess flood exposure for roads, bridges, and public utilities to design better mitigation measures and drainage systems."
             }
         ]
     },
     nrmm: {
         id: 'nrmm',
         title: "NRMM",
-        subtitle: "Natural Resource Management & Monitoring",
+        subtitle: "Natural Resource Monitoring Module",
         icon: <Leaf className="w-12 h-12 text-green-500" />,
         color: "green",
         accent: "from-green-500 to-emerald-500",
-        description: "A comprehensive ecosystem for monitoring environmental health, tracking deforestation, and managing water resources sustainably.",
-        headerImage: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=2664",
-        cardImage: "https://plus.unsplash.com/premium_photo-1661868856803-7cd1bdbbbb88?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", // Green Forest/Map
+        description: "NRMM integrates satellite imagery with ground-based IoT sensors to monitor and conserve natural resources such as water bodies, forests, and wetlands. It enables continuous tracking and informed decision-making for sustainable resource management.",
+        headerImage: "https://d32bq2tih41htm.cloudfront.net/media/Mapzestbg.png",
+        cardImage: "https://d32bq2tih41htm.cloudfront.net/media/Mapzestbg.png", // Green Forest/Map
         features: [
             "Deforestation alerts",
             "Water body detection and monitoring",
@@ -47,25 +51,29 @@ export const platformsData = {
         ],
         useCases: [
             {
-                title: "Forest Conservation",
-                description: "Enabled forest departments to track illegal logging activities in real-time using satellite imagery."
+                title: "Water Body Monitoring",
+                description: "Environmental agencies track seasonal changes in lakes, rivers, and reservoirs using satellite imagery and IoT water level sensors."
             },
             {
-                title: "Wetland Restoration",
-                description: "Monitored the recovery of 500+ hectares of wetland ecosystems over a 5-year period."
+                title: "Forest Conservation",
+                description: "Forestry departments monitor deforestation, forest degradation, and vegetation health over time."
+            },
+            {
+                title: "Wetland Protection",
+                description: "Conservation organizations observe wetland shrinkage, encroachment, and ecosystem changes for policy and restoration planning."
             }
         ]
     },
     adss: {
         id: 'adss',
         title: "ADSS",
-        subtitle: "Agriculture Decision Support System",
+        subtitle: "Agricultural Decision Support System",
         icon: <Sprout className="w-12 h-12 text-yellow-500" />,
         color: "yellow",
         accent: "from-yellow-400 to-orange-500",
-        description: "Precision agriculture solutions empowering farmers and agribusinesses with actionable insights for crop health and yield optimization.",
-        headerImage: "https://images.unsplash.com/photo-1625246333195-098e475c5393?auto=format&fit=crop&q=80&w=2574",
-        cardImage: "https://images.unsplash.com/photo-1499529112087-3cb3b73cec95?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", // Wheat/Field analysis
+        description: "ADSS combines satellite and drone data to monitor crop health and field conditions. It helps farmers and stakeholders improve irrigation efficiency, detect crop stress early, and make better data-driven farming decisions.",
+        headerImage: "https://d32bq2tih41htm.cloudfront.net/media/Agribg.jpeg",
+        cardImage: "https://d32bq2tih41htm.cloudfront.net/media/Agribg.jpeg", // Wheat/Field analysis
         features: [
             "Crop health monitoring (NDVI)",
             "Soil moisture estimation",
@@ -74,52 +82,61 @@ export const platformsData = {
         ],
         useCases: [
             {
-                title: "Yield Optimization",
-                description: "Helped a cooperative of 2000 farmers increase wheat yield by 15% through precision irrigation scheduling."
+                title: "Crop Health Monitoring",
+                description: "Farmers analyze vegetation indices to detect crop stress, pest impact, or nutrient deficiency at an early stage."
             },
             {
-                title: "Crop Insurance",
-                description: "Provided accurate crop loss data to insurance companies for faster and fairer claims processing."
+                title: "Irrigation Management",
+                description: "Agricultural officers optimize irrigation schedules by monitoring soil moisture and crop water demand."
+            },
+            {
+                title: "Yield Estimation",
+                description: "Agribusiness companies use historical satellite data to estimate crop yield and plan supply chains."
             }
         ]
     },
     basic: {
         id: 'basic',
         title: "Mapzest GO",
-        subtitle: "Geospatial Data Visualization & Analytics",
+        subtitle: "Core Web GIS Platform",
         icon: <Layers className="w-12 h-12 text-blue-500" />,
         color: "blue",
         accent: "from-blue-500 to-cyan-500",
-        description: "The core platform for hosting, visualizing, and performing basic analytics on high-resolution UAV and satellite data.",
-        headerImage: "https://images.unsplash.com/photo-1581093450021-4a7360e9a6b5?auto=format&fit=crop&q=80&w=2670",
-        cardImage: "https://geospatialmedia.s3.amazonaws.com/wp-content/uploads/2020/08/GIS-Story-1-1024x576-864x486-1.jpg", // Data/Satellite view
+        description: "Mapzest Basic is the foundational Web GIS platform for hosting and visualizing spatial data. Users can perform basic satellite analysis, run spatial queries, print maps, and manage everyday geospatial workflows with ease.",
+        headerImage: "https://d32bq2tih41htm.cloudfront.net/media/UBPbg.png",
+        cardImage: "https://d32bq2tih41htm.cloudfront.net/media/UBPbg.png", // Data/Satellite view
         features: [
             "DEM & DSM generation",
             "Green Index calculation",
             "Automated tree counting",
             "Volumetric analysis"
         ],
+        url: import.meta.env.VITE_MAPZEST_GO_URL || 'http://localhost:5174/',
         useCases: [
             {
-                title: "Urban Auditing",
-                description: "Mapped 50 sq km of urban area to create a digital twin for smart city planning."
+                title: "Spatial Data Hosting",
+                description: "Organizations upload and manage their vector and raster datasets in a centralized web-based GIS system."
             },
             {
-                title: "Construction Monitoring",
-                description: "Tracked progress of highway construction with monthly drone surveys and volumetric calculations."
+                title: "Basic Spatial Analysis",
+                description: "Users perform buffer, overlay, and spatial queries for day-to-day GIS tasks without desktop software."
+            },
+            {
+                title: "Thematic Mapping & Reporting",
+                description: "Analysts create thematic maps and printable layouts for reports and presentations."
             }
         ]
     },
     catalog: {
         id: 'catalog',
         title: "Geo Catalog",
-        subtitle: "Enterprise Data Hosting & Discovery",
+        subtitle: "Spatial Data Discovery Platform",
         icon: <Database className="w-12 h-12 text-purple-500" />,
         color: "purple",
         accent: "from-purple-500 to-pink-500",
-        description: "A scalable repository for organizations to host, manage, and share massive geospatial datasets securely.",
-        headerImage: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=2672",
-        cardImage: "https://images.unsplash.com/photo-1460186136353-977e9d6085a1?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", // Server/Network
+        description: "Geo Catalog is a centralized platform to explore and visualize spatial datasets. It presents geospatial data in a clean and interactive way, making discovery, preview, and understanding of spatial information effortless.",
+        headerImage: "https://d32bq2tih41htm.cloudfront.net/media/Mapzeststicker.png",
+        cardImage: "https://d32bq2tih41htm.cloudfront.net/media/Mapzeststicker.png", // Server/Network
         features: [
             "Petabyte-scale data storage",
             "OGC compliant web services (WMS/WFS)",
@@ -128,25 +145,29 @@ export const platformsData = {
         ],
         useCases: [
             {
-                title: "National Data Repository",
-                description: "Hosting the national spatial data infrastructure for a government agency."
+                title: "Data Exploration",
+                description: "Researchers browse available geospatial datasets before downloading or integrating them into projects."
             },
             {
-                title: "Research Collaboration",
-                description: "Enabling cross-border sharing of climate data between university research groups."
+                title: "Inter-Department Data Sharing",
+                description: "Government departments publish and share spatial datasets internally through a single catalog."
+            },
+            {
+                title: "Project Planning",
+                description: "GIS teams preview spatial coverage and metadata to select suitable datasets for new studies."
             }
         ]
     },
     survey: {
         id: 'survey',
-        title: "Survey App",
-        subtitle: "Mobile Field Data Collection",
+        title: "TerraPoint",
+        subtitle: "Field Survey Application",
         icon: <ClipboardList className="w-12 h-12 text-orange-500" />,
         color: "orange",
         accent: "from-orange-500 to-red-500",
-        description: "A robust mobile application for ground truthing, asset mapping, and field data validation, fully integrated with Mapzest platforms.",
-        headerImage: "https://images.unsplash.com/photo-1581092921461-eab6245b0a62?auto=format&fit=crop&q=80&w=2670",
-        cardImage: "https://images.unsplash.com/photo-1604357209793-fca5dca89f97?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", // Tablet/Survey
+        description: "High-precision field utility. Geotagged evidence capture, offline synchronization, and instant cloud-based verification for synchronized team workflows.",
+        headerImage: "https://d32bq2tih41htm.cloudfront.net/media/drone_service.png",
+        cardImage: "https://d32bq2tih41htm.cloudfront.net/media/drone_service.png", // Tablet/Survey
         features: [
             "Offline data collection",
             "GPS track recording",
@@ -155,25 +176,29 @@ export const platformsData = {
         ],
         useCases: [
             {
-                title: "Utility Mapping",
-                description: "Used by field crews to map over 10,000 electric poles and assets in a rural electrification project."
+                title: "Field Asset Mapping",
+                description: "Survey teams collect geotagged photos and attributes for assets like poles, pipelines, buildings, and roads."
             },
             {
-                title: "Census Survey",
-                description: "Digitized the household survey process for a municipal demographic study."
+                title: "Environmental Field Surveys",
+                description: "Researchers capture location-based observations of vegetation, water quality, or wildlife."
+            },
+            {
+                title: "Damage Assessment Surveys",
+                description: "Teams document post-disaster damage with geotagged evidence and synchronize data to the cloud."
             }
         ]
     },
     utm: {
         id: 'utm',
-        title: "UTM Zone Finder",
-        subtitle: "Universal Transverse Mercator Utilities",
+        title: "Mapzest Geo Tools",
+        subtitle: "Geodetic Utilities",
         icon: <Compass className="w-12 h-12 text-cyan-500" />,
         color: "cyan",
         accent: "from-cyan-500 to-blue-500",
-        description: "A simplified tool for quick and accurate identification of UTM zones and coordinate conversions globally.",
-        headerImage: "https://images.unsplash.com/photo-1524661135-423995f22d0b?auto=format&fit=crop&q=80&w=2674",
-        cardImage: "https://images.unsplash.com/photo-1519709042477-8de6eaf1fdc5?q=80&w=627&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", // Compass/Map
+        description: "Advanced geodetic utility. Instantly determine precise Universal Transverse Mercator zones with global coverage and sub-meter coordinate engineering.",
+        headerImage: "https://d32bq2tih41htm.cloudfront.net/media/Mapzeststicker.png",
+        cardImage: "https://d32bq2tih41htm.cloudfront.net/media/Mapzeststicker.png", // Compass/Map
         features: [
             "Interactive global zone map",
             "Coordinate conversion (Lat/Long to UTM)",
@@ -183,12 +208,16 @@ export const platformsData = {
         url: 'https://d1alo182wsgudi.cloudfront.net/',
         useCases: [
             {
-                title: "Survey Preparation",
-                description: "Used daily by surveyors to verify projection parameters before commencing field operations."
+                title: "Survey Planning",
+                description: "Surveyors determine correct UTM zones before conducting field measurements."
             },
             {
-                title: "Educational Tool",
-                description: "Adopted by universities for teaching geomatics and map projections."
+                title: "Coordinate System Validation",
+                description: "GIS professionals verify coordinate systems while integrating multi-source spatial data."
+            },
+            {
+                title: "Engineering Projects",
+                description: "Civil engineers use precise coordinate references for infrastructure design and mapping."
             }
         ]
     }

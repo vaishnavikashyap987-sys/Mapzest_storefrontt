@@ -1,13 +1,15 @@
 import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, ExternalLink, CheckCircle } from 'lucide-react';
+import { ArrowLeft, ExternalLink, CheckCircle, Lock } from 'lucide-react';
 import { platformsData } from '../data/platforms.jsx';
+import DemoRequestModal from '../components/DemoRequestModal';
 
 const PlatformDetail = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const platform = platformsData[id];
+    const [showDemoModal, setShowDemoModal] = React.useState(false);
 
     // Redirect if platform not found
     useEffect(() => {
@@ -18,13 +20,16 @@ const PlatformDetail = () => {
 
     if (!platform) return null;
 
+    // Logic to lock the launch button for platforms other than Mapzest GO (basic) and Geo Tools (utm)
+    const isLaunchUnlocked = platform.id === 'basic' || platform.id === 'utm';
+
     return (
         <div className="min-h-screen relative overflow-hidden">
             {/* Background elements managed globally, but we can add specific tints */}
 
             {/* Broad Header */}
             <div className="relative h-[60vh] w-full overflow-hidden">
-                <div className="absolute inset-0 bg-space-900/50 z-10 transition-colors duration-500"></div>
+                <div className="absolute inset-0 bg-black/80 z-10 transition-colors duration-500"></div>
                 {/* Gradient Overlay for Text Readability */}
                 <div className="absolute inset-0 bg-gradient-to-t from-space-900 via-transparent to-transparent z-20"></div>
 
@@ -127,17 +132,36 @@ const PlatformDetail = () => {
                             >
                                 <h3 className="text-2xl font-bold text-white mb-6">Get Started</h3>
                                 <p className="text-gray-400 mb-8">
-                                    Ready to deploy {platform.title} for your organization? Launch the platform now or contact sales.
+                                    {isLaunchUnlocked
+                                        ? `Ready to deploy ${platform.title} for your organization? Launch the platform now or contact sales.`
+                                        : `The ${platform.title} platform is currently available for enterprise partners. Request a demo to get started.`
+                                    }
                                 </p>
+
+                                {/* Launch Button - Locked/Unlocked */}
                                 <button
-                                    onClick={() => platform.url ? window.open(platform.url, '_blank') : null}
-                                    className={`w-full py-4 rounded-lg font-bold text-white bg-gradient-to-r ${platform.accent} hover:opacity-90 transition-opacity flex items-center justify-center gap-2 mb-4 group`}
+                                    onClick={() => isLaunchUnlocked && platform.url ? window.open(platform.url, '_blank') : null}
+                                    disabled={!isLaunchUnlocked}
+                                    className={`w-full py-4 rounded-lg font-bold text-white transition-all flex items-center justify-center gap-2 mb-4 group
+                                        ${isLaunchUnlocked
+                                            ? `bg-gradient-to-r ${platform.accent} hover:opacity-90 cursor-pointer`
+                                            : 'bg-white/5 text-gray-500 cursor-not-allowed border border-white/10'
+                                        }`}
                                 >
-                                    Launch Platform
-                                    <ExternalLink size={18} className="group-hover:translate-x-1 transition-transform" />
+                                    {isLaunchUnlocked ? 'Launch Platform' : 'Launch Platform'}
+                                    {isLaunchUnlocked ? (
+                                        <ExternalLink size={18} className="group-hover:translate-x-1 transition-transform" />
+                                    ) : (
+                                        <Lock size={18} className="text-gray-500" />
+                                    )}
                                 </button>
-                                {platform.id !== 'utm' && (
-                                    <button className="w-full py-4 rounded-lg font-bold text-white border border-white/20 hover:bg-white/10 transition-colors">
+
+                                {/* Request Demo Button */}
+                                {platform.id !== 'utm' && ( // Keep existing exclusion if intentional, but user requested functionality
+                                    <button
+                                        onClick={() => setShowDemoModal(true)}
+                                        className="w-full py-4 rounded-lg font-bold text-white border border-white/20 hover:bg-white/10 transition-colors"
+                                    >
                                         Request Demo
                                     </button>
                                 )}
@@ -159,6 +183,13 @@ const PlatformDetail = () => {
                     </div>
                 </div>
             </div>
+
+            {/* Demo Request Modal */}
+            <DemoRequestModal
+                isOpen={showDemoModal}
+                onClose={() => setShowDemoModal(false)}
+                platformName={platform.title}
+            />
         </div>
     );
 };

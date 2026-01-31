@@ -8,28 +8,28 @@ const features = [
         title: "Precision Agriculture",
         description: "Optimize crop yields with multispectral imagery and AI-driven insights. Detect stress early and manage resources efficiently.",
         color: "from-green-400 to-emerald-600",
-        image: "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?q=80&w=2070&auto=format&fit=crop"
+        image: "https://d32bq2tih41htm.cloudfront.net/media/Agribg.jpeg"
     },
     {
         id: "basic",
         title: "Urban Planning",
         description: "Visualize city growth and infrastructure with high-resolution 3D models. Plan smarter cities for a sustainable future.",
         color: "from-blue-400 to-indigo-600",
-        image: "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?q=80&w=2070&auto=format&fit=crop"
+        image: "https://d32bq2tih41htm.cloudfront.net/media/UBPbg.png"
     },
     {
         id: "fram",
         title: "Disaster Management",
         description: "Rapid response mapping for floods, fires, and natural disasters. Real-time data when it matters most.",
         color: "from-orange-400 to-red-600",
-        image: "https://images.unsplash.com/photo-1485617359743-4dc5d2e53c89?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        image: "https://d32bq2tih41htm.cloudfront.net/media/FRAMbg.png"
     },
     {
         id: "nrmm",
         title: "Environmental Monitoring",
         description: "Track deforestation, water quality, and climate change indicators with global satellite coverage.",
         color: "from-teal-400 to-cyan-600",
-        image: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=2232&auto=format&fit=crop"
+        image: "https://d32bq2tih41htm.cloudfront.net/media/Mapzestbg.png"
     }
 ];
 
@@ -48,21 +48,21 @@ const Card = ({ title, description, color, image, i, progress, range, targetScal
         <div ref={container} className="h-screen flex items-center justify-center sticky top-0">
             <motion.div
                 style={{ scale, top: `calc(-5vh + ${i * 25}px)` }}
-                className="flex flex-col relative -top-[25%] h-[500px] w-[1000px] rounded-[25px] p-12 origin-top bg-space-800 border border-white/10 overflow-hidden"
+                className="flex flex-col relative -top-[25%] h-[400px] w-[800px] rounded-[25px] p-8 origin-top bg-white/90 backdrop-blur-xl border border-white/20 shadow-xl overflow-hidden"
             >
-                <div className="flex h-full gap-12">
+                <div className="flex h-full gap-8">
                     <div className="w-[40%] flex flex-col justify-center gap-6 relative z-10">
-                        <h2 className={`text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r ${color}`}>{title}</h2>
-                        <p className="text-lg text-gray-300 leading-relaxed">{description}</p>
+                        <h2 className={`text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r ${color}`}>{title}</h2>
+                        <p className="text-base text-gray-600 leading-relaxed">{description}</p>
                         <button
                             onClick={() => navigate(`/platforms/${id}`)}
-                            className="w-fit px-6 py-3 rounded-full border border-white/20 hover:bg-white/10 transition-colors text-sm font-medium cursor-pointer"
+                            className="w-fit px-6 py-3 rounded-full bg-cyan-600 hover:bg-cyan-700 text-white transition-all shadow-md text-sm font-medium cursor-pointer"
                         >
                             Learn More
                         </button>
                     </div>
 
-                    <div className="relative w-[60%] h-full rounded-[25px] overflow-hidden">
+                    <div className="relative w-[60%] h-full rounded-[25px] overflow-hidden border border-gray-900/10">
                         <motion.div className="w-full h-full" style={{ scale: imageScale }}>
                             <img
                                 src={image}
@@ -86,7 +86,7 @@ const FeaturesSticky = () => {
 
     return (
         <section ref={container} className="relative mt-[10vh] mb-[10vh]">
-            <div className="sticky top-0 h-[20vh] flex items-center justify-center mb-20 relative z-10">
+            <div className="h-[20vh] flex items-center justify-center mb-20 relative z-10">
                 <h2 className="text-5xl font-bold text-center">
                     Impact Across <span className="text-accent-cyan">Industries</span>
                 </h2>

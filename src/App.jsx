@@ -23,6 +23,9 @@ import ProtectedRoute from './components/ProtectedRoute';
 
 // ... other imports ...
 
+import Blogs from './pages/Blogs';
+import BlogDetail from './pages/BlogDetail';
+
 function App() {
   return (
     <Router>
@@ -35,6 +38,8 @@ function App() {
               <Route path="/" element={<Home />} />
               <Route path="/platforms" element={<Platforms />} />
               <Route path="/platforms/:id" element={<PlatformDetail />} />
+              <Route path="/blogs" element={<Blogs />} />
+              <Route path="/blogs/:id" element={<BlogDetail />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/services" element={<ServicesPage />} />
               <Route path="/contact" element={<Contact />} />

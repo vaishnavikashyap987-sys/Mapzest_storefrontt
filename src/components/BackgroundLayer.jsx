@@ -13,9 +13,9 @@ const BackgroundLayer = () => {
         <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
             <motion.img
                 style={{ y, scale }}
-                src="https://images.unsplash.com/photo-1579159278991-f698b0667a16?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                src="https://d32bq2tih41htm.cloudfront.net/media/mpzbg.jpeg"
                 alt=""
-                className="w-full h-full object-cover opacity-30 brightness-10"
+                className="w-full h-full object-cover opacity-10 brightness-10"
             />
         </div>
     );
