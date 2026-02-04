@@ -10,8 +10,8 @@ export const platformsData = {
         color: "red",
         accent: "from-red-500 to-orange-500",
         description: "FRAM uses high-resolution drone imagery and elevation data to identify flood-prone areas. It generates flood risk zones along with detailed statistics to support planning, mitigation, and disaster preparedness.",
-        headerImage: "https://d32bq2tih41htm.cloudfront.net/media/FRAMbg.png",
-        cardImage: "https://d32bq2tih41htm.cloudfront.net/media/FRAMbg.png", // Simulation/Red Map
+        headerImage: "https://mapzest.com/media/FRAMbg.png",
+        cardImage: "https://mapzest.com/media/FRAMbg.png", // Simulation/Red Map
         features: [
             "Real-time flood inundation mapping",
             "Population at risk calculation",
@@ -41,8 +41,8 @@ export const platformsData = {
         color: "green",
         accent: "from-green-500 to-emerald-500",
         description: "NRMM integrates satellite imagery with ground-based IoT sensors to monitor and conserve natural resources such as water bodies, forests, and wetlands. It enables continuous tracking and informed decision-making for sustainable resource management.",
-        headerImage: "https://d32bq2tih41htm.cloudfront.net/media/Mapzestbg.png",
-        cardImage: "https://d32bq2tih41htm.cloudfront.net/media/Mapzestbg.png", // Green Forest/Map
+        headerImage: "https://mapzest.com/media/Mapzestbg.png",
+        cardImage: "https://mapzest.com/media/Mapzestbg.png", // Green Forest/Map
         features: [
             "Deforestation alerts",
             "Water body detection and monitoring",
@@ -72,8 +72,8 @@ export const platformsData = {
         color: "yellow",
         accent: "from-yellow-400 to-orange-500",
         description: "ADSS combines satellite and drone data to monitor crop health and field conditions. It helps farmers and stakeholders improve irrigation efficiency, detect crop stress early, and make better data-driven farming decisions.",
-        headerImage: "https://d32bq2tih41htm.cloudfront.net/media/Agribg.jpeg",
-        cardImage: "https://d32bq2tih41htm.cloudfront.net/media/Agribg.jpeg", // Wheat/Field analysis
+        headerImage: "https://mapzest.com/media/Agribg.jpeg",
+        cardImage: "https://mapzest.com/media/Agribg.jpeg", // Wheat/Field analysis
         features: [
             "Crop health monitoring (NDVI)",
             "Soil moisture estimation",
@@ -103,14 +103,15 @@ export const platformsData = {
         color: "blue",
         accent: "from-blue-500 to-cyan-500",
         description: "Mapzest Basic is the foundational Web GIS platform for hosting and visualizing spatial data. Users can perform basic satellite analysis, run spatial queries, print maps, and manage everyday geospatial workflows with ease.",
-        headerImage: "https://d32bq2tih41htm.cloudfront.net/media/UBPbg.png",
-        cardImage: "https://d32bq2tih41htm.cloudfront.net/media/UBPbg.png", // Data/Satellite view
+        headerImage: "https://mapzest.com/media/UBPbg.png",
+        cardImage: "https://mapzest.com/media/UBPbg.png", // Data/Satellite view
         features: [
             "DEM & DSM generation",
             "Green Index calculation",
             "Automated tree counting",
             "Volumetric analysis"
         ],
+        pricing: "Open Access",
         url: import.meta.env.VITE_MAPZEST_GO_URL || 'http://localhost:5174/',
         useCases: [
             {
@@ -135,8 +136,8 @@ export const platformsData = {
         color: "purple",
         accent: "from-purple-500 to-pink-500",
         description: "Geo Catalog is a centralized platform to explore and visualize spatial datasets. It presents geospatial data in a clean and interactive way, making discovery, preview, and understanding of spatial information effortless.",
-        headerImage: "https://d32bq2tih41htm.cloudfront.net/media/Mapzeststicker.png",
-        cardImage: "https://d32bq2tih41htm.cloudfront.net/media/Mapzeststicker.png", // Server/Network
+        headerImage: "https://mapzest.com/media/Mapzeststicker.png",
+        cardImage: "https://mapzest.com/media/Mapzeststicker.png", // Server/Network
         features: [
             "Petabyte-scale data storage",
             "OGC compliant web services (WMS/WFS)",
@@ -166,8 +167,8 @@ export const platformsData = {
         color: "orange",
         accent: "from-orange-500 to-red-500",
         description: "High-precision field utility. Geotagged evidence capture, offline synchronization, and instant cloud-based verification for synchronized team workflows.",
-        headerImage: "https://d32bq2tih41htm.cloudfront.net/media/drone_service.png",
-        cardImage: "https://d32bq2tih41htm.cloudfront.net/media/drone_service.png", // Tablet/Survey
+        headerImage: "https://mapzest.com/media/drone_service.png",
+        cardImage: "https://mapzest.com/media/drone_service.png", // Tablet/Survey
         features: [
             "Offline data collection",
             "GPS track recording",
@@ -197,15 +198,16 @@ export const platformsData = {
         color: "cyan",
         accent: "from-cyan-500 to-blue-500",
         description: "Advanced geodetic utility. Instantly determine precise Universal Transverse Mercator zones with global coverage and sub-meter coordinate engineering.",
-        headerImage: "https://d32bq2tih41htm.cloudfront.net/media/Mapzeststicker.png",
-        cardImage: "https://d32bq2tih41htm.cloudfront.net/media/Mapzeststicker.png", // Compass/Map
+        headerImage: "https://mapzest.com/media/Mapzeststicker.png",
+        cardImage: "https://mapzest.com/media/Mapzeststicker.png", // Compass/Map
         features: [
             "Interactive global zone map",
             "Coordinate conversion (Lat/Long to UTM)",
             "Batch processing",
             "Export to KML/Shapefile"
         ],
-        url: 'https://d1alo182wsgudi.cloudfront.net/',
+        pricing: "Open Access",
+        url: import.meta.env.VITE_MAPZEST_GeoTools_URL || 'http://localhost:5174/',
         useCases: [
             {
                 title: "Survey Planning",

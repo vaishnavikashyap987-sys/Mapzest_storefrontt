@@ -10,7 +10,7 @@ const Footer = () => {
                     <div className="col-span-1 md:col-span-2">
                         <div className="flex items-center gap-2 mb-4">
                             <img
-                                src="https://mapzest.com/MapzestBasic/assets/Powered%20by%20TerrAqua%20UAV%20(3).png"
+                                src="https://mapzest.com/media/Powered+by+TerrAqua+UAV+(3).png"
                                 alt="Mapzest Logo"
                                 className="h-10"
                             />

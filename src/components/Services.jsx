@@ -5,27 +5,27 @@ export const services = [
     {
         title: "Web GIS Platforms",
         description: "Enabling businesses with bespoke GIS platforms tailored to specific workflows.",
-        image: "https://d32bq2tih41htm.cloudfront.net/media/Webgisdevelop-ment.png"
+        image: "https://mapzest.com/media/Webgisdevelop-ment.png"
     },
     {
         title: "Remote Sensing",
         description: "Utilizing cutting-edge satellite and aerial imagery to monitor environmental changes.",
-        image: "https://d32bq2tih41htm.cloudfront.net/media/GISsolutions.jpg"
+        image: "https://mapzest.com/media/GISsolutions.jpg"
     },
     {
         title: "GIS Solutions",
         description: "Comprehensive Geographic Information System services including data management.",
-        image: "https://d32bq2tih41htm.cloudfront.net/media/remotesensing.png"
+        image: "https://mapzest.com/media/remotesensing.png"
     },
     {
         title: "UAV Data Acquisition",
         description: "High-precision drone mapping and surveying for construction and mining.",
-        image: "https://d32bq2tih41htm.cloudfront.net/media/drone_service.png"
+        image: "https://mapzest.com/media/drone_service.png"
     },
     {
         title: "3D Modeling",
         description: "Creating digital twins and 3D city models for urban planning.",
-        image: "https://d32bq2tih41htm.cloudfront.net/media/3Dmodeling.jpeg"
+        image: "https://mapzest.com/media/3Dmodeling.jpeg"
     },
     {
         title: "Data Analytics",
@@ -69,7 +69,7 @@ const Services = () => {
     return (
         <section ref={targetRef} className="relative h-[300vh]">
             <div className="sticky top-0 flex flex-col h-screen justify-center overflow-hidden z-10">
-                <div className="px-10 pt-20 pb-10 z-10">
+                <div className="px-4 md:px-10 pt-20 pb-10 z-10">
                     <h2 className="text-4xl md:text-6xl font-bold text-white mb-2">Our Capabilities</h2>
                     <div className="w-20 h-1 bg-accent-cyan rounded-full"></div>
                 </div>
@@ -77,12 +77,12 @@ const Services = () => {
                 <motion.div
                     ref={contentRef}
                     style={{ x }}
-                    className="flex gap-8 px-10 items-center h-[60vh]"
+                    className="flex gap-4 md:gap-8 px-4 md:px-10 items-center h-[50vh] md:h-[60vh]"
                 >
                     {services.map((service, index) => (
                         <div
                             key={index}
-                            className="relative h-full w-[400px] md:w-[600px] shrink-0 rounded-3xl overflow-hidden group border border-white/10"
+                            className="relative h-full w-[280px] md:w-[600px] shrink-0 rounded-3xl overflow-hidden group border border-white/10"
                         >
                             <img
                                 src={service.image}
@@ -91,11 +91,11 @@ const Services = () => {
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-80"></div>
 
-                            <div className="absolute bottom-0 left-0 p-8 w-full">
-                                <h3 className="text-3xl font-bold text-white mb-4 group-hover:text-accent-cyan transition-colors">
+                            <div className="absolute bottom-0 left-0 p-6 md:p-8 w-full">
+                                <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 group-hover:text-accent-cyan transition-colors">
                                     {service.title}
                                 </h3>
-                                <p className="text-gray-300 text-lg leading-relaxed">
+                                <p className="text-gray-300 text-sm md:text-lg leading-relaxed">
                                     {service.description}
                                 </p>
                             </div>

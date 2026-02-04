@@ -43,6 +43,14 @@ const Platforms = () => {
                                         alt={platform.title}
                                         className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
                                     />
+
+                                    {/* Pricing Badge */}
+                                    {platform.pricing && (
+                                        <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-md border border-accent-cyan/30 text-accent-cyan text-[10px] font-bold px-3 py-1 rounded-full z-20 uppercase tracking-widest shadow-xl">
+                                            {platform.pricing}
+                                        </div>
+                                    )}
+
                                     {/* Icon Badge */}
                                     <div className="absolute bottom-4 left-4 bg-black/60 backdrop-blur-md p-2 rounded-lg border border-white/10 z-20">
                                         {/* We don't have the icon component here directly unless we map it, 

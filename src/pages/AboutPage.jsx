@@ -48,7 +48,7 @@ const AboutPage = () => {
                         className="relative rounded-3xl overflow-hidden order-last lg:order-first flex justify-center items-center"
                     >
                         <img
-                            src="https://d32bq2tih41htm.cloudfront.net/media/desktop.png"
+                            src="https://mapzest.com/media/desktop.png"
                             alt="Mapzest Desktop View"
                             className="w-full h-auto object-contain max-h-[500px]"
                         />

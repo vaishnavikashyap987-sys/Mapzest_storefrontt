@@ -8,20 +8,20 @@ const features = [
         title: "High Resolution Data Acquisition",
         description: "Capturing precise optical, radar, and drone data from leading constellations and sensors.",
         provider: "Terraqua UAV",
-        image: "https://d32bq2tih41htm.cloudfront.net/media/drone_service.png"
+        image: "https://mapzest.com/media/drone_service.png"
     },
     {
         icon: <Cpu className="w-8 h-8 text-accent-cyan" />,
         title: "Data Processing",
         description: "Processing raw inputs into clean, analysis-ready formats using automated pipelines.",
         provider: "Terraqua UAV",
-        image: "https://d32bq2tih41htm.cloudfront.net/media/GISsolutions.jpg"
+        image: "https://mapzest.com/media/GISsolutions.jpg"
     },
     {
         icon: <Globe className="w-8 h-8 text-accent-cyan" />,
         title: "WebGIS",
         description: "A centralized, interactive platform for seamless spatial data management and exploration.",
-        image: "https://d32bq2tih41htm.cloudfront.net/media/Webgisdevelop-ment.png"
+        image: "https://mapzest.com/media/Webgisdevelop-ment.png"
     },
     {
         icon: <BarChart3 className="w-8 h-8 text-accent-cyan" />,
@@ -70,7 +70,7 @@ const About = () => {
                         className="relative perspective-1000 w-full max-w-5xl flex justify-center mb-16"
                     >
                         <img
-                            src="https://d32bq2tih41htm.cloudfront.net/media/desktop.png"
+                            src="https://mapzest.com/media/desktop.png"
                             alt="Geospatial Graphic"
                             className="w-full object-contain mix-blend-screen opacity-90 drop-shadow-2xl"
                         />

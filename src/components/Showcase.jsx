@@ -42,7 +42,7 @@ const Showcase = () => {
                         className="w-full h-full z-10"
                     >
                         <img
-                            src="https://d32bq2tih41htm.cloudfront.net/media/Mapzeststicker.png"
+                            src="https://mapzest.com/media/Mapzeststicker.png"
                             alt="Data Analysis"
                             className="w-full h-full object-contain scale-125 drop-shadow-2xl"
                         />

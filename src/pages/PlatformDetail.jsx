@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, ExternalLink, CheckCircle, Lock } from 'lucide-react';
+import { ArrowLeft, ExternalLink, CheckCircle, Lock, MonitorSmartphone } from 'lucide-react';
 import { platformsData } from '../data/platforms.jsx';
 import DemoRequestModal from '../components/DemoRequestModal';
 
@@ -10,6 +10,13 @@ const PlatformDetail = () => {
     const navigate = useNavigate();
     const platform = platformsData[id];
     const [showDemoModal, setShowDemoModal] = React.useState(false);
+    const [isMobile, setIsMobile] = React.useState(window.innerWidth < 768);
+
+    useEffect(() => {
+        const handleResize = () => setIsMobile(window.innerWidth < 768);
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
     // Redirect if platform not found
     useEffect(() => {
@@ -19,6 +26,39 @@ const PlatformDetail = () => {
     }, [id, platform, navigate]);
 
     if (!platform) return null;
+
+    // Mobile Restriction for non-UTM platforms
+    if (isMobile && platform.id !== 'utm') {
+        return (
+            <div className="min-h-screen flex flex-col items-center justify-center bg-space-950 px-6 text-center">
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className="bg-white/5 border border-white/10 p-8 rounded-2xl backdrop-blur-xl max-w-sm"
+                >
+                    <div className="w-16 h-16 bg-gradient-to-tr from-accent-cyan to-accent-purple rounded-full flex items-center justify-center mx-auto mb-6">
+                        <MonitorSmartphone className="w-8 h-8 text-white" />
+                    </div>
+                    <h2 className="text-2xl font-bold text-white mb-4">Desktop View Required</h2>
+                    <p className="text-gray-400 mb-8 leading-relaxed">
+                        Oops! To get the best experience with <span className="text-accent-cyan font-semibold">{platform.title}</span>, please switch to a larger display or desktop device.
+                    </p>
+                    <button
+                        onClick={() => navigate('/')}
+                        className="w-full py-3 bg-white text-black font-bold rounded-xl hover:bg-gray-200 transition-colors"
+                    >
+                        Back to Home
+                    </button>
+                    <button
+                        onClick={() => navigate('/platforms')}
+                        className="w-full py-3 mt-3 text-gray-400 font-medium hover:text-white transition-colors"
+                    >
+                        Browse Other Platforms
+                    </button>
+                </motion.div>
+            </div>
+        );
+    }
 
     // Logic to lock the launch button for platforms other than Mapzest GO (basic) and Geo Tools (utm)
     const isLaunchUnlocked = platform.id === 'basic' || platform.id === 'utm';

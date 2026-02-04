@@ -7,12 +7,12 @@ export const STORAGE_TIERS = [
 
 // 1. Generic Platforms (Auto-generate tiers)
 const GENERIC_APPS = [
-    { id: 'fram', name: 'FRAM', desc: 'Flood Risk Assessment & Management platform.', url: '#', image: "https://d32bq2tih41htm.cloudfront.net/media/FRAMbg.png" },
-    { id: 'nrmm', name: 'NRMM', desc: 'Natural Resource Management & Monitoring ecosystem.', url: '#', image: "https://d32bq2tih41htm.cloudfront.net/media/Mapzestbg.png" },
-    { id: 'adss', name: 'ADSS', desc: 'Agriculture Decision Support System for precision farming.', url: import.meta.env.VITE_ADSS_URL || 'http://localhost:3005/sso-callback', image: "https://d32bq2tih41htm.cloudfront.net/media/Agribg.jpeg" },
-    { id: 'catalog', name: 'Geo Catalog', desc: 'Enterprise Data Hosting & Discovery repository.', url: '#', image: "https://d32bq2tih41htm.cloudfront.net/media/Mapzeststicker.png" },
-    { id: 'survey', name: 'Survey App', desc: 'Mobile Field Data Collection & Validation.', url: '#', image: "https://d32bq2tih41htm.cloudfront.net/media/drone_service.png" },
-    { id: 'p_disaster_mgmt', name: 'Disaster Management', desc: 'Real-time crisis mapping and resource allocation.', url: 'https://example-disaster-platform.cloudfront.net', image: "https://d32bq2tih41htm.cloudfront.net/media/FRAMbg.png" }
+    { id: 'fram', name: 'FRAM', desc: 'Flood Risk Assessment & Management platform.', url: '#', image: "https://mapzest.com/media/FRAMbg.png" },
+    { id: 'nrmm', name: 'NRMM', desc: 'Natural Resource Management & Monitoring ecosystem.', url: '#', image: "https://mapzest.com/media/Mapzestbg.png" },
+    { id: 'adss', name: 'ADSS', desc: 'Agriculture Decision Support System for precision farming.', url: import.meta.env.VITE_ADSS_URL || 'http://localhost:3005/sso-callback', image: "https://mapzest.com/media/Agribg.jpeg" },
+    { id: 'catalog', name: 'Geo Catalog', desc: 'Enterprise Data Hosting & Discovery repository.', url: '#', image: "https://mapzest.com/media/Mapzeststicker.png" },
+    { id: 'survey', name: 'Survey App', desc: 'Mobile Field Data Collection & Validation.', url: '#', image: "https://mapzest.com/media/drone_service.png" },
+    { id: 'p_disaster_mgmt', name: 'Disaster Management', desc: 'Real-time crisis mapping and resource allocation.', url: 'https://example-disaster-platform.cloudfront.net', image: "https://mapzest.com/media/FRAMbg.png" }
 ].map(app => ({
     ...app,
     plans: STORAGE_TIERS.map(tier => ({
@@ -36,7 +36,7 @@ const MAPZEST_GO = {
     name: 'Mapzest Go',
     desc: 'Advanced zoning and city planning tools.',
     url: import.meta.env.VITE_MAPZEST_GO_URL || 'http://localhost:5174/',
-    image: "https://d32bq2tih41htm.cloudfront.net/media/UBPbg.png",
+    image: "https://mapzest.com/media/UBPbg.png",
     plans: [
         {
             id: 'p_urban_analytics', // Using parent ID as the base subscription ID
@@ -71,7 +71,7 @@ const GEOTOOLS = {
     name: 'Mapzest GeoTools',
     desc: 'Essential geospatial utilities.',
     url: 'https://d1alo182wsgudi.cloudfront.net/',
-    image: "https://d32bq2tih41htm.cloudfront.net/media/Mapzeststicker.png",
+    image: "https://mapzest.com/media/Mapzeststicker.png",
     plans: [
         {
             id: 'p_geo_tools',

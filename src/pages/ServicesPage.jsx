@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { services } from '../components/Services';
 import { ArrowRight } from 'lucide-react';
+import ContactSalesModal from '../components/ContactSalesModal';
 
 const ServicesPage = () => {
+    const [isContactOpen, setIsContactOpen] = useState(false);
+
     return (
         <div className="min-h-screen pt-24 pb-20 px-4">
             {/* Header */}
@@ -70,10 +73,15 @@ const ServicesPage = () => {
                 <p className="text-gray-400 mb-8 max-w-2xl mx-auto">
                     Our team of GIS experts and developers can build tailored applications to solve your specific challenges.
                 </p>
-                <button className="px-8 py-4 bg-accent-cyan text-space-900 font-bold rounded-full hover:bg-white transition-colors">
+                <button
+                    onClick={() => setIsContactOpen(true)}
+                    className="px-8 py-4 bg-accent-cyan text-space-900 font-bold rounded-full hover:bg-white transition-colors"
+                >
                     Contact Sales
                 </button>
             </div>
+
+            <ContactSalesModal isOpen={isContactOpen} onClose={() => setIsContactOpen(false)} />
         </div>
     );
 };

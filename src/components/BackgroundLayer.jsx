@@ -13,7 +13,7 @@ const BackgroundLayer = () => {
         <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
             <motion.img
                 style={{ y, scale }}
-                src="https://d32bq2tih41htm.cloudfront.net/media/mpzbg.jpeg"
+                src="https://mapzest.com/media/mpzbg.jpeg"
                 alt=""
                 className="w-full h-full object-cover opacity-10 brightness-10"
             />

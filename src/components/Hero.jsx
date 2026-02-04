@@ -29,7 +29,7 @@ const Hero = () => {
                     playsInline
                     className="w-full h-full object-cover opacity-60"
                 >
-                    <source src="https://d32bq2tih41htm.cloudfront.net/herobg.mp4" type="video/mp4" />
+                    <source src="https://mapzest.com/media/herobg.mp4" type="video/mp4" />
                     Your browser does not support the video tag.
                 </video>
             </div>

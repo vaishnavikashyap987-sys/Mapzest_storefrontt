@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { motion } from 'framer-motion';
 import { AnimatePresence } from 'framer-motion';
 import { useAuth } from '../context/AuthContext';
@@ -6,12 +7,14 @@ import { LayoutDashboard, Database, HardDrive, Download, ChevronRight, Activity,
 import { platforms, APPLICATIONS, STORAGE_TIERS, checkOwnership } from '../data/platforms';
 import { getUserProfile, addSubscription } from '../lib/firebase';
 import { api } from '../lib/api';
+import ContactSalesModal from '../components/ContactSalesModal';
 
 const MyConsole = () => {
     const { user } = useAuth();
     const [activeTab, setActiveTab] = useState('overview');
     const [selectedPlatform, setSelectedPlatform] = useState(null); // For buying
     const [configApp, setConfigApp] = useState(null); // New State for Config Modal
+    const [showContactModal, setShowContactModal] = useState(false); // Contact Sales Modal
     const [isProcessing, setIsProcessing] = useState(false);
     const [isUploading, setIsUploading] = useState(false); // Upload State
     const [userSubscriptions, setUserSubscriptions] = useState([]); // Real State from DB
@@ -638,9 +641,15 @@ const MyConsole = () => {
                                 onClose={() => setSelectedPlatform(null)}
                                 onConfirm={handleConfirmPurchase}
                                 isProcessing={isProcessing}
+                                onContact={() => {
+                                    setSelectedPlatform(null);
+                                    setShowContactModal(true);
+                                }}
                             />
                         )}
                     </AnimatePresence>
+
+                    <ContactSalesModal isOpen={showContactModal} onClose={() => setShowContactModal(false)} />
 
                 </div>
             </div>
@@ -654,8 +663,8 @@ export default MyConsole;
 
 // New Plan Configuration Modal Component
 const PlanConfigModal = ({ app, onClose, onSelectPlan, userSubscriptions }) => {
-    return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+    return createPortal(
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -726,13 +735,14 @@ const PlanConfigModal = ({ app, onClose, onSelectPlan, userSubscriptions }) => {
                     })}
                 </div>
             </motion.div>
-        </div>
+        </div>,
+        document.body
     );
 };
 
-const PurchaseModal = ({ platform, onClose }) => {
-    return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+const PurchaseModal = ({ platform, onClose, onContact }) => {
+    return createPortal(
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -770,14 +780,15 @@ const PurchaseModal = ({ platform, onClose }) => {
                         Please contact our sales team to manually activate this plan for your account.
                     </div>
 
-                    <a
-                        href="mailto:sales@mapzest.com?subject=Upgrade Request: ${platform.name}"
+                    <button
+                        onClick={onContact}
                         className="w-full py-4 rounded-xl font-bold text-lg bg-white text-black hover:bg-gray-200 transition-colors flex items-center justify-center gap-2"
                     >
                         Contact Sales
-                    </a>
+                    </button>
                 </div>
             </motion.div>
-        </div>
+        </div>,
+        document.body
     );
 };

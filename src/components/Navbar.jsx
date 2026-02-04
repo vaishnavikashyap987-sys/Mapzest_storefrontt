@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { createPortal } from 'react-dom';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, User, Settings, LogOut, LayoutDashboard, ChevronDown, AlertCircle } from 'lucide-react';
@@ -85,14 +86,14 @@ const Navbar = () => {
     return (
         <>
             <nav
-                className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/80 backdrop-blur-md py-4 shadow-lg' : 'bg-transparent py-6'
+                className={`fixed top-0 left-0 w-full z-[999] transition-all duration-300 ${scrolled ? 'bg-white/80 backdrop-blur-md py-4 shadow-lg' : 'bg-transparent py-6'
                     }`}
             >
                 <div className="max-w-7xl mx-auto px-4 flex justify-between items-center relative">
                     {/* Left: Logo */}
                     <Link to="/" className="flex items-center gap-2 group flex-shrink-0 z-20">
                         <img
-                            src="https://mapzest.com/MapzestBasic/assets/Powered%20by%20TerrAqua%20UAV%20(3).png"
+                            src="https://mapzest.com/media/Powered+by+TerrAqua+UAV+(3).png"
                             alt="Mapzest Logo"
                             className="h-12 transition-transform duration-300 group-hover:scale-110"
                         />
@@ -234,78 +235,109 @@ const Navbar = () => {
                     </button>
                 </div>
 
-                {/* Mobile Menu Overlay */}
-                <AnimatePresence>
-                    {isOpen && (
-                        <motion.div
-                            initial={{ opacity: 0, x: '100%' }}
-                            animate={{ opacity: 1, x: 0 }}
-                            exit={{ opacity: 0, x: '100%' }}
-                            transition={{ type: 'tween', duration: 0.3 }}
-                            className="fixed inset-0 z-40 bg-space-900/95 backdrop-blur-xl flex flex-col items-center justify-center"
-                        >
-                            <button
-                                className="absolute top-6 right-6 text-white hover:text-accent-cyan transition-colors"
-                                onClick={() => setIsOpen(false)}
-                            >
-                                <X className="w-10 h-10" />
-                            </button>
+                {/* Mobile Menu Portal */}
+                {createPortal(
+                    <AnimatePresence>
+                        {isOpen && (
+                            <>
+                                {/* Backdrop */}
+                                <motion.div
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    exit={{ opacity: 0 }}
+                                    className="fixed inset-0 z-[9999] bg-black/60 backdrop-blur-sm"
+                                    onClick={() => setIsOpen(false)}
+                                />
 
-                            <div className="flex flex-col gap-8 text-center w-full px-8">
-                                {navLinks.map((link) => (
-                                    <Link
-                                        key={link.name}
-                                        to={link.path}
-                                        onClick={() => setIsOpen(false)}
-                                        className="text-2xl font-bold text-gray-300 hover:text-white transition-colors"
-                                    >
-                                        {link.name}
-                                    </Link>
-                                ))}
-                                {user ? (
-                                    <div className="flex flex-col items-center gap-4 mt-8 w-full max-w-xs mx-auto">
-                                        <div className="w-full h-[1px] bg-white/10 mb-4"></div>
-                                        <div className="flex items-center gap-3">
-                                            {/* Mobile Avatar */}
-                                            <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-accent-cyan to-accent-purple flex items-center justify-center text-white font-bold ring-2 ring-white/10">
-                                                {user.photoURL ? (
-                                                    <img src={user.photoURL} className="w-full h-full rounded-full object-cover" />
-                                                ) : getInitials(user.displayName)}
-                                            </div>
-                                            <div className="text-left">
-                                                <p className="text-white font-medium">{user.displayName}</p>
-                                                <p className="text-xs text-gray-400">Logged In</p>
-                                            </div>
-                                        </div>
-                                        <div className="grid grid-cols-2 gap-3 w-full mt-4">
-
-                                            <button className="flex flex-col items-center gap-2 p-3 rounded-xl bg-white/5 hover:bg-white/10">
-                                                <Settings className="w-5 h-5 text-white" />
-                                                <span className="text-xs text-gray-300">Settings</span>
-                                            </button>
-                                        </div>
+                                {/* Drawer */}
+                                <motion.div
+                                    initial={{ x: '100%' }}
+                                    animate={{ x: 0 }}
+                                    exit={{ x: '100%' }}
+                                    transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+                                    className="fixed top-0 right-0 h-full w-[300px] z-[10000] bg-[#0B0B15] border-l border-white/10 shadow-2xl flex flex-col"
+                                >
+                                    <div className="p-6 flex justify-between items-center border-b border-white/5">
+                                        <span className="text-xl font-bold text-white tracking-wide">Menu</span>
                                         <button
-                                            onClick={() => { setIsOpen(false); initiateLogout(); }}
-                                            className="w-full mt-4 px-6 py-3 rounded-xl text-lg font-bold transition-all border border-red-500/50 text-red-500 hover:bg-red-500/10"
+                                            className="text-gray-400 hover:text-white transition-colors p-2 hover:bg-white/5 rounded-full"
+                                            onClick={() => setIsOpen(false)}
                                         >
-                                            Sign Out
+                                            <X className="w-6 h-6" />
                                         </button>
                                     </div>
-                                ) : (
-                                    <button
-                                        onClick={() => {
-                                            setIsOpen(false);
-                                            setIsLoginOpen(true);
-                                        }}
-                                        className="text-2xl font-bold text-accent-cyan hover:text-white transition-colors mt-4"
-                                    >
-                                        Sign In
-                                    </button>
-                                )}
-                            </div>
-                        </motion.div>
-                    )}
-                </AnimatePresence>
+
+                                    <div className="flex-1 overflow-y-auto px-6 py-8 flex flex-col gap-6">
+                                        {navLinks.map((link) => (
+                                            <Link
+                                                key={link.name}
+                                                to={link.path}
+                                                onClick={() => setIsOpen(false)}
+                                                className={`text-lg font-medium transition-colors ${location.pathname === link.path
+                                                    ? 'text-accent-cyan'
+                                                    : 'text-gray-300 hover:text-white'
+                                                    }`}
+                                            >
+                                                {link.name}
+                                            </Link>
+                                        ))}
+
+                                        <div className="w-full h-[1px] bg-white/10 my-2"></div>
+
+                                        {user ? (
+                                            <div className="flex flex-col gap-4">
+                                                <div className="flex items-center gap-3 bg-white/5 p-3 rounded-xl">
+                                                    <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-accent-cyan to-accent-purple flex items-center justify-center text-white font-bold ring-1 ring-white/10 shrink-0">
+                                                        {user.photoURL ? (
+                                                            <img src={user.photoURL} alt="Profile" className="w-full h-full rounded-full object-cover" referrerPolicy="no-referrer" />
+                                                        ) : getInitials(user.displayName)}
+                                                    </div>
+                                                    <div className="overflow-hidden">
+                                                        <p className="text-white font-medium truncate">{user.displayName}</p>
+                                                        <p className="text-xs text-gray-400 truncate">{user.email}</p>
+                                                    </div>
+                                                </div>
+
+                                                <Link
+                                                    to="/console"
+                                                    onClick={() => setIsOpen(false)}
+                                                    className="flex items-center gap-3 px-3 py-2 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors"
+                                                >
+                                                    <LayoutDashboard className="w-5 h-5" />
+                                                    My Console
+                                                </Link>
+
+                                                <button className="flex items-center gap-3 px-3 py-2 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors">
+                                                    <Settings className="w-5 h-5" />
+                                                    Settings
+                                                </button>
+
+                                                <button
+                                                    onClick={() => { setIsOpen(false); initiateLogout(); }}
+                                                    className="flex items-center gap-3 px-3 py-2 text-red-400 hover:text-red-300 hover:bg-red-500/10 rounded-lg transition-colors mt-2"
+                                                >
+                                                    <LogOut className="w-5 h-5" />
+                                                    Sign Out
+                                                </button>
+                                            </div>
+                                        ) : (
+                                            <button
+                                                onClick={() => {
+                                                    setIsOpen(false);
+                                                    setIsLoginOpen(true);
+                                                }}
+                                                className="w-full py-3 bg-accent-cyan hover:bg-cyan-400 text-black font-bold rounded-xl transition-colors mt-auto"
+                                            >
+                                                Sign In
+                                            </button>
+                                        )}
+                                    </div>
+                                </motion.div>
+                            </>
+                        )}
+                    </AnimatePresence>,
+                    document.body
+                )}
             </nav>
 
             {/* Logout Confirmation Modal */}
