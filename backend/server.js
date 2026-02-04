@@ -20,7 +20,8 @@ const allowedOrigins = process.env.ALLOWED_ORIGINS ? process.env.ALLOWED_ORIGINS
     'http://localhost:3005',
     'https://www.mapzest.com',
     'https://go.mapzest.com',
-    'https://tools.mapzest.com'
+    'https://tools.mapzest.com',
+    'https://mapzest.com'
 ];
 app.use(cors({
     origin: function (origin, callback) {
