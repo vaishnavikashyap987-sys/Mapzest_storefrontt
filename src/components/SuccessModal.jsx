@@ -28,11 +28,11 @@ const SuccessModal = ({ isOpen, onClose, title, message }) => {
                         initial={{ opacity: 0, scale: 0.9, y: 20 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                        className="relative w-full max-w-md bg-[#0a0a0a] border border-white/10 rounded-2xl shadow-2xl overflow-hidden p-8 text-center"
+                        className="relative w-full max-w-md bg-white border border-slate-200 rounded-3xl shadow-2xl overflow-hidden p-8 text-center"
                     >
                         <button
                             onClick={onClose}
-                            className="absolute top-4 right-4 p-2 text-gray-500 hover:text-white transition-colors hover:bg-white/10 rounded-lg"
+                            className="absolute top-4 right-4 p-2 text-slate-400 hover:text-slate-700 transition-colors hover:bg-slate-100 rounded-lg"
                         >
                             <X size={20} />
                         </button>
@@ -47,19 +47,19 @@ const SuccessModal = ({ isOpen, onClose, title, message }) => {
                                     damping: 20,
                                     delay: 0.1
                                 }}
-                                className="w-20 h-20 rounded-full bg-green-500/20 flex items-center justify-center mb-2"
+                                className="w-20 h-20 rounded-full bg-green-500/10 flex items-center justify-center mb-2"
                             >
                                 <CheckCircle className="w-10 h-10 text-green-500" />
                             </motion.div>
 
-                            <h3 className="text-2xl font-bold text-white">{title || 'Success!'}</h3>
-                            <p className="text-gray-400 leading-relaxed">
+                            <h3 className="text-2xl font-bold text-slate-900">{title || 'Success!'}</h3>
+                            <p className="text-slate-500 leading-relaxed">
                                 {message || 'Your message has been sent successfully.'}
                             </p>
 
                             <button
                                 onClick={onClose}
-                                className="mt-4 px-8 py-3 bg-white text-black font-bold rounded-lg hover:bg-gray-200 transition-colors w-full"
+                                className="mt-4 px-8 py-3.5 bg-slate-100 border border-slate-200 text-slate-800 font-bold rounded-xl hover:bg-slate-200 transition-colors w-full"
                             >
                                 Close
                             </button>

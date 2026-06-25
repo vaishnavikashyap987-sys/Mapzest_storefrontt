@@ -30,7 +30,7 @@ function App() {
   return (
     <Router>
       <AuthProvider>
-        <div className="min-h-screen text-white selection:bg-accent-cyan selection:text-space-900 flex flex-col relative">
+        <div className="min-h-screen text-slate-900 selection:bg-accent-cyan/30 selection:text-slate-900 flex flex-col relative">
           <BackgroundLayer />
           <Navbar />
           <main className="flex-grow relative z-10">

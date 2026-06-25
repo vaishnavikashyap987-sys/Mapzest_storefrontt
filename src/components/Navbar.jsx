@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, User, Settings, LogOut, LayoutDashboard, ChevronDown, AlertCircle } from 'lucide-react';
+import { Menu, X, User, Settings, LogOut, LayoutDashboard, ChevronDown, AlertCircle, Map } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import LoginModal from './LoginModal';
 import RegisterModal from './RegisterModal';
@@ -59,8 +59,8 @@ const Navbar = () => {
     ];
 
     // Active link color logic
-    const activeColorClass = scrolled ? 'text-cyan-600 font-bold' : 'text-accent-cyan font-bold';
-    const inactiveColorClass = scrolled ? 'text-gray-700 hover:text-black' : 'text-gray-300 hover:text-white';
+    const activeColorClass = 'text-accent-cyan font-bold';
+    const inactiveColorClass = 'text-slate-600 hover:text-slate-900';
 
     const initiateLogout = () => {
         setProfileOpen(false);
@@ -89,14 +89,9 @@ const Navbar = () => {
                 className={`fixed top-0 left-0 w-full z-[999] transition-all duration-300 ${scrolled ? 'bg-white/80 backdrop-blur-md py-4 shadow-lg' : 'bg-transparent py-6'
                     }`}
             >
-                <div className="max-w-7xl mx-auto px-4 flex justify-between items-center relative">
-                    {/* Left: Logo */}
+                <div className="max-w-7xl mx-auto px-6 md:px-8 flex justify-between items-center relative">
                     <Link to="/" className="flex items-center gap-2 group flex-shrink-0 z-20">
-                        <img
-                            src="https://mapzest.com/media/Powered+by+TerrAqua+UAV+(3).png"
-                            alt="Mapzest Logo"
-                            className="h-12 transition-transform duration-300 group-hover:scale-110"
-                        />
+                        <img src="/MAPZEST.png" alt="Mapzest" className="h-10 w-auto object-contain transition-transform group-hover:scale-105 duration-300" />
                     </Link>
 
                     {/* Center: Nav Links - Absolute Centered */}
@@ -115,7 +110,7 @@ const Navbar = () => {
                                 {(location.pathname === link.path || (link.path !== '/' && location.pathname.startsWith(link.path))) && (
                                     <motion.div
                                         layoutId="underline"
-                                        className={`absolute -bottom-1 left-0 w-full h-[2px] ${scrolled ? 'bg-cyan-600' : 'bg-accent-cyan'}`}
+                                        className="absolute -bottom-1 left-0 w-full h-[2px] bg-accent-cyan"
                                     />
                                 )}
                             </Link>
@@ -128,14 +123,10 @@ const Navbar = () => {
                             <div className="relative" ref={profileRef}>
                                 <button
                                     onClick={() => setProfileOpen(!profileOpen)}
-                                    className={`group flex items-center gap-2 rounded-full p-1 pr-3 transition-all border ${scrolled
-                                        ? 'border-gray-200 hover:bg-gray-100 hover:shadow-md'
-                                        : 'border-white/10 hover:bg-white/10 hover:border-white/20'
-                                        } ${profileOpen ? 'ring-2 ring-accent-cyan/50 bg-white/5' : ''}`}
+                                    className={`group flex items-center gap-2 rounded-full p-1 pr-3 transition-all border border-slate-200 hover:bg-slate-50 hover:shadow-sm ${profileOpen ? 'ring-2 ring-accent-cyan/50 bg-slate-100' : ''}`}
                                 >
                                     {/* Enhanced Avatar Container */}
-                                    <div className={`relative w-9 h-9 rounded-full flex items-center justify-center overflow-hidden border-2 ${scrolled ? 'border-white shadow-sm' : 'border-black/20'
-                                        }`}>
+                                    <div className="relative w-9 h-9 rounded-full flex items-center justify-center overflow-hidden border-2 border-white shadow-sm">
                                         {/* Gradient Background for User (cool effect) */}
                                         <div className="absolute inset-0 bg-gradient-to-tr from-accent-cyan to-accent-purple" />
 
@@ -153,10 +144,10 @@ const Navbar = () => {
                                         )}
                                     </div>
 
-                                    <span className={`text-sm font-medium transition-colors ${scrolled ? 'text-gray-700 group-hover:text-black' : 'text-gray-200 group-hover:text-white'}`}>
+                                    <span className="text-sm font-medium transition-colors text-slate-700 group-hover:text-slate-900">
                                         {user.displayName?.split(' ')[0]}
                                     </span>
-                                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${profileOpen ? 'rotate-180' : ''} ${scrolled ? 'text-gray-500' : 'text-gray-400'}`} />
+                                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${profileOpen ? 'rotate-180' : ''} text-slate-500`} />
                                 </button>
 
                                 <AnimatePresence>
@@ -166,10 +157,10 @@ const Navbar = () => {
                                             animate={{ opacity: 1, y: 0, scale: 1 }}
                                             exit={{ opacity: 0, y: 10, scale: 0.95 }}
                                             transition={{ duration: 0.2 }}
-                                            className="absolute right-0 mt-3 w-72 bg-[#0B0B15]/95 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl overflow-hidden z-50 ring-1 ring-white/10"
+                                            className="absolute right-0 mt-3 w-72 bg-white/95 backdrop-blur-xl border border-slate-200 rounded-2xl shadow-2xl overflow-hidden z-50 ring-1 ring-black/5"
                                         >
                                             {/* Header */}
-                                            <div className="p-5 border-b border-white/10 bg-gradient-to-r from-white/5 to-transparent">
+                                            <div className="p-5 border-b border-slate-100 bg-gradient-to-r from-slate-50 to-transparent">
                                                 <div className="flex items-center gap-3 mb-2">
                                                     <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-accent-cyan to-accent-purple flex items-center justify-center text-white font-bold shadow-lg ring-2 ring-white/10">
                                                         {user.photoURL ? (
@@ -177,8 +168,8 @@ const Navbar = () => {
                                                         ) : getInitials(user.displayName)}
                                                     </div>
                                                     <div className="overflow-hidden">
-                                                        <p className="text-white font-bold truncate">{user.displayName}</p>
-                                                        <p className="text-xs text-gray-400 truncate">{user.email}</p>
+                                                        <p className="text-slate-900 font-bold truncate">{user.displayName}</p>
+                                                        <p className="text-xs text-slate-500 truncate">{user.email}</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -187,22 +178,22 @@ const Navbar = () => {
                                                 <Link
                                                     to="/console"
                                                     onClick={() => setIsOpen(false)}
-                                                    className="w-full flex items-center gap-3 px-3 py-2.5 text-sm text-gray-300 hover:text-white hover:bg-white/10 rounded-xl transition-all group"
+                                                    className="w-full flex items-center gap-3 px-3 py-2.5 text-sm text-slate-700 hover:text-slate-900 hover:bg-slate-100 rounded-xl transition-all group"
                                                 >
                                                     <LayoutDashboard className="w-4 h-4 text-accent-cyan group-hover:scale-110 transition-transform" />
                                                     My Console
                                                 </Link>
 
-                                                <button className="w-full flex items-center gap-3 px-3 py-2.5 text-sm text-gray-300 hover:text-white hover:bg-white/10 rounded-xl transition-all group">
-                                                    <Settings className="w-4 h-4 text-white group-hover:scale-110 transition-transform" />
+                                                <button className="w-full flex items-center gap-3 px-3 py-2.5 text-sm text-slate-700 hover:text-slate-900 hover:bg-slate-100 rounded-xl transition-all group">
+                                                    <Settings className="w-4 h-4 text-slate-500 group-hover:scale-110 transition-transform" />
                                                     Settings
                                                 </button>
                                             </div>
 
-                                            <div className="p-2 border-t border-white/10 bg-black/20">
+                                            <div className="p-2 border-t border-slate-100 bg-slate-50/50">
                                                 <button
                                                     onClick={initiateLogout}
-                                                    className="w-full flex items-center gap-3 px-3 py-2.5 text-sm text-red-400 hover:text-red-300 hover:bg-red-500/10 rounded-xl transition-colors"
+                                                    className="w-full flex items-center gap-3 px-3 py-2.5 text-sm text-red-600 hover:text-red-500 hover:bg-red-50 rounded-xl transition-colors"
                                                 >
                                                     <LogOut className="w-4 h-4" />
                                                     Sign Out
@@ -215,10 +206,7 @@ const Navbar = () => {
                         ) : (
                             <button
                                 onClick={() => setIsLoginOpen(true)}
-                                className={`px-6 py-2 rounded-full transition-all duration-300 backdrop-blur-sm text-sm font-medium border ${scrolled
-                                    ? 'bg-cyan-600 text-white border-cyan-600 hover:bg-cyan-700 shadow-md'
-                                    : 'bg-white/10 hover:bg-white/20 border-white/20 hover:border-white text-white'
-                                    }`}
+                                className="px-6 py-2 rounded-full transition-all duration-300 text-sm font-medium border bg-orange-600 text-white border-orange-600 hover:bg-orange-700 hover:border-orange-700 shadow-md hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
                             >
                                 Sign In
                             </button>
@@ -227,8 +215,7 @@ const Navbar = () => {
 
                     {/* Mobile Menu Button */}
                     <button
-                        className={`md:hidden focus:outline-none transition-colors duration-300 z-20 ${scrolled ? 'text-gray-900' : 'text-white'
-                            }`}
+                        className="md:hidden focus:outline-none transition-colors duration-300 z-20 text-slate-800"
                         onClick={() => setIsOpen(true)}
                     >
                         <Menu className="w-8 h-8" />
@@ -255,12 +242,12 @@ const Navbar = () => {
                                     animate={{ x: 0 }}
                                     exit={{ x: '100%' }}
                                     transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-                                    className="fixed top-0 right-0 h-full w-[300px] z-[10000] bg-[#0B0B15] border-l border-white/10 shadow-2xl flex flex-col"
+                                    className="fixed top-0 right-0 h-full w-[300px] z-[10000] bg-white border-l border-slate-200 shadow-2xl flex flex-col"
                                 >
-                                    <div className="p-6 flex justify-between items-center border-b border-white/5">
-                                        <span className="text-xl font-bold text-white tracking-wide">Menu</span>
+                                    <div className="p-6 flex justify-between items-center border-b border-slate-100">
+                                        <span className="text-xl font-bold text-slate-900 tracking-wide">Menu</span>
                                         <button
-                                            className="text-gray-400 hover:text-white transition-colors p-2 hover:bg-white/5 rounded-full"
+                                            className="text-slate-500 hover:text-slate-800 transition-colors p-2 hover:bg-slate-100 rounded-full"
                                             onClick={() => setIsOpen(false)}
                                         >
                                             <X className="w-6 h-6" />
@@ -275,46 +262,46 @@ const Navbar = () => {
                                                 onClick={() => setIsOpen(false)}
                                                 className={`text-lg font-medium transition-colors ${location.pathname === link.path
                                                     ? 'text-accent-cyan'
-                                                    : 'text-gray-300 hover:text-white'
+                                                    : 'text-slate-600 hover:text-slate-900'
                                                     }`}
                                             >
                                                 {link.name}
                                             </Link>
                                         ))}
 
-                                        <div className="w-full h-[1px] bg-white/10 my-2"></div>
+                                        <div className="w-full h-[1px] bg-slate-200 my-2"></div>
 
                                         {user ? (
                                             <div className="flex flex-col gap-4">
-                                                <div className="flex items-center gap-3 bg-white/5 p-3 rounded-xl">
+                                                <div className="flex items-center gap-3 bg-slate-50 p-3 rounded-xl border border-slate-100">
                                                     <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-accent-cyan to-accent-purple flex items-center justify-center text-white font-bold ring-1 ring-white/10 shrink-0">
                                                         {user.photoURL ? (
                                                             <img src={user.photoURL} alt="Profile" className="w-full h-full rounded-full object-cover" referrerPolicy="no-referrer" />
                                                         ) : getInitials(user.displayName)}
                                                     </div>
                                                     <div className="overflow-hidden">
-                                                        <p className="text-white font-medium truncate">{user.displayName}</p>
-                                                        <p className="text-xs text-gray-400 truncate">{user.email}</p>
+                                                        <p className="text-slate-800 font-medium truncate">{user.displayName}</p>
+                                                        <p className="text-xs text-slate-500 truncate">{user.email}</p>
                                                     </div>
                                                 </div>
 
                                                 <Link
                                                     to="/console"
                                                     onClick={() => setIsOpen(false)}
-                                                    className="flex items-center gap-3 px-3 py-2 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors"
+                                                    className="flex items-center gap-3 px-3 py-2 text-slate-600 hover:text-slate-900 hover:bg-slate-50 rounded-lg transition-colors"
                                                 >
                                                     <LayoutDashboard className="w-5 h-5" />
                                                     My Console
                                                 </Link>
 
-                                                <button className="flex items-center gap-3 px-3 py-2 text-gray-300 hover:text-white hover:bg-white/5 rounded-lg transition-colors">
+                                                <button className="flex items-center gap-3 px-3 py-2 text-slate-600 hover:text-slate-900 hover:bg-slate-50 rounded-lg transition-colors">
                                                     <Settings className="w-5 h-5" />
                                                     Settings
                                                 </button>
 
                                                 <button
                                                     onClick={() => { setIsOpen(false); initiateLogout(); }}
-                                                    className="flex items-center gap-3 px-3 py-2 text-red-400 hover:text-red-300 hover:bg-red-500/10 rounded-lg transition-colors mt-2"
+                                                    className="flex items-center gap-3 px-3 py-2 text-red-600 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors mt-2"
                                                 >
                                                     <LogOut className="w-5 h-5" />
                                                     Sign Out
@@ -326,7 +313,7 @@ const Navbar = () => {
                                                     setIsOpen(false);
                                                     setIsLoginOpen(true);
                                                 }}
-                                                className="w-full py-3 bg-accent-cyan hover:bg-cyan-400 text-black font-bold rounded-xl transition-colors mt-auto"
+                                                className="w-full py-3 bg-orange-600 hover:bg-orange-700 text-white font-bold rounded-xl transition-colors mt-auto shadow-md cursor-pointer"
                                             >
                                                 Sign In
                                             </button>

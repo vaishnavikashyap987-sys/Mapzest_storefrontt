@@ -4,9 +4,18 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const Hero = () => {
     const headlines = [
-        "GEOINT for Monitoring, Planning, and Management",
-        "Integrating Satellite, Drone, and GIS Data on One Platform",
-        "Reliable Spatial Insights for Informed Decision-Making"
+        {
+            prefix: "GEOINT for ",
+            accent: "Monitoring, Planning, and Management"
+        },
+        {
+            prefix: "Integrating ",
+            accent: "Satellite, Drone, and GIS Data on One Platform"
+        },
+        {
+            prefix: "Reliable Spatial Insights for ",
+            accent: "Informed Decision-Making"
+        }
     ];
     const [index, setIndex] = useState(0);
 
@@ -18,16 +27,16 @@ const Hero = () => {
     }, []);
 
     return (
-        <section className="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden bg-space-900 text-white">
+        <section className="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden bg-space-900 text-slate-900">
             {/* Video Background */}
             <div className="absolute inset-0 z-0">
-                <div className="absolute inset-0 bg-black/60 z-10"></div> {/* Overlay */}
+                <div className="absolute inset-0 bg-white/70 z-10"></div> {/* Overlay */}
                 <video
                     autoPlay
                     loop
                     muted
                     playsInline
-                    className="w-full h-full object-cover opacity-60"
+                    className="w-full h-full object-cover opacity-50"
                 >
                     <source src="https://mapzest.com/media/herobg.mp4" type="video/mp4" />
                     Your browser does not support the video tag.
@@ -35,7 +44,7 @@ const Hero = () => {
             </div>
 
             {/* Content */}
-            <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
+            <div className="relative z-10 text-center px-6 md:px-8 max-w-5xl mx-auto">
 
                 <div className="h-48 md:h-72 mb-6 flex items-center justify-center overflow-hidden">
                     <AnimatePresence mode='wait'>
@@ -45,9 +54,12 @@ const Hero = () => {
                             animate={{ opacity: 1, y: 0 }}
                             exit={{ opacity: 0, y: -40 }}
                             transition={{ duration: 0.6 }}
-                            className="text-4xl md:text-7xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white via-accent-cyan to-accent-green"
+                            className="text-4xl md:text-7xl font-bold tracking-tight text-slate-900"
                         >
-                            {headlines[index]}
+                            {headlines[index].prefix}
+                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-accent-cyan">
+                                {headlines[index].accent}
+                            </span>
                         </motion.h1>
                     </AnimatePresence>
                 </div>
@@ -56,7 +68,7 @@ const Hero = () => {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.4 }}
-                    className="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto"
+                    className="text-lg md:text-xl text-slate-700 mb-10 max-w-2xl mx-auto"
                 >
                     Advanced Remote Sensing, GIS Analytics, and Geospatial Intelligence for a changing world.
                 </motion.p>
@@ -67,7 +79,7 @@ const Hero = () => {
                     transition={{ duration: 0.8, delay: 0.6 }}
                     className="flex flex-col sm:flex-row gap-4 justify-center"
                 >
-                    <Link to="/contact" className="px-8 py-4 bg-accent-cyan/10 border border-accent-cyan/50 text-accent-cyan rounded-full hover:bg-accent-cyan/20 transition-all duration-300 backdrop-blur-sm font-medium tracking-wide hover:shadow-[0_0_20px_rgba(0,240,255,0.3)] hover:scale-105">
+                    <Link to="/contact" className="px-8 py-4 bg-accent-cyan text-white rounded-full hover:bg-cyan-700 transition-all duration-300 font-medium tracking-wide hover:shadow-lg hover:shadow-cyan-600/20 hover:scale-105">
                         Contact Us
                     </Link>
                 </motion.div>

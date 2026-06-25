@@ -8,29 +8,29 @@ const ServicesPage = () => {
     const [isContactOpen, setIsContactOpen] = useState(false);
 
     return (
-        <div className="min-h-screen pt-24 pb-20 px-4">
+        <div className="min-h-screen pt-24 pb-20 px-6 md:px-8">
             {/* Header */}
-            <div className="max-w-7xl mx-auto mb-20 text-center">
+            <div className="max-w-7xl mx-auto mb-10 text-center">
                 <motion.h1
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="text-5xl md:text-7xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-500"
+                    className="text-5xl md:text-7xl font-bold mb-4 text-slate-900"
                 >
-                    Our Expertise
+                    Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-accent-cyan">Expertise</span>
                 </motion.h1>
-                <div className="w-24 h-1 bg-accent-cyan mx-auto rounded-full mb-8"></div>
+                <div className="w-24 h-1 bg-accent-cyan mx-auto rounded-full mb-6"></div>
                 <motion.p
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.1 }}
-                    className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed"
+                    className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed"
                 >
                     Delivering comprehensive geospatial solutions that transform complex data into clear, actionable intelligence for industries worldwide.
                 </motion.p>
             </div>
 
             {/* Grid Layout */}
-            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 gap-y-6 md:gap-y-12">
                 {services.map((service, index) => (
                     <motion.div
                         key={index}
@@ -38,11 +38,11 @@ const ServicesPage = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: index * 0.1 }}
-                        className="group relative overflow-hidden rounded-3xl glass-panel hover:border-accent-cyan/50 transition-colors duration-300"
+                        className="group relative flex flex-col h-full pb-12"
                     >
                         {/* Image Container */}
-                        <div className="h-64 overflow-hidden relative">
-                            <div className="absolute inset-0 bg-space-900/20 group-hover:bg-transparent transition-colors z-10"></div>
+                        <div className="relative aspect-[16/10] rounded-3xl overflow-hidden shadow-md border border-slate-200/50">
+                            <div className="absolute inset-0 bg-slate-950/10 group-hover:bg-transparent transition-colors z-10"></div>
                             <img
                                 src={service.image}
                                 alt={service.title}
@@ -50,16 +50,16 @@ const ServicesPage = () => {
                             />
                         </div>
 
-                        {/* Content */}
-                        <div className="p-8">
-                            <h3 className="text-2xl font-bold mb-4 text-white group-hover:text-accent-cyan transition-colors">
+                        {/* Floating Content Box */}
+                        <div className="premium-card-content relative z-10 mx-4 -mt-16 p-6 md:p-8 flex flex-col rounded-3xl flex-grow min-h-[220px]">
+                            <h3 className="text-2xl font-bold mb-3 text-slate-900 group-hover:text-accent-cyan transition-colors leading-tight">
                                 {service.title}
                             </h3>
-                            <p className="text-gray-300 leading-relaxed mb-6 font-light">
+                            <p className="text-slate-600 leading-relaxed mb-6 text-sm flex-grow">
                                 {service.description}
                             </p>
 
-                            <button className="flex items-center gap-2 text-sm font-bold text-white/70 group-hover:text-white transition-colors uppercase tracking-wider">
+                            <button className="flex items-center gap-2 text-sm font-bold text-slate-500 group-hover:text-accent-cyan transition-colors uppercase tracking-wider mt-auto">
                                 Explore Service <ArrowRight size={16} />
                             </button>
                         </div>
@@ -68,14 +68,14 @@ const ServicesPage = () => {
             </div>
 
             {/* CTA Section */}
-            <div className="max-w-4xl mx-auto mt-32 text-center p-12 rounded-3xl bg-gradient-to-b from-space-800 to-space-900 border border-white/10">
-                <h2 className="text-3xl font-bold mb-6">Need a custom solution?</h2>
-                <p className="text-gray-400 mb-8 max-w-2xl mx-auto">
+            <div className="max-w-4xl mx-auto mt-16 text-center p-12 rounded-3xl bg-white border border-slate-200 shadow-md">
+                <h2 className="text-3xl font-bold mb-6 text-slate-900">Need a custom solution?</h2>
+                <p className="text-slate-600 mb-8 max-w-2xl mx-auto">
                     Our team of GIS experts and developers can build tailored applications to solve your specific challenges.
                 </p>
                 <button
                     onClick={() => setIsContactOpen(true)}
-                    className="px-8 py-4 bg-accent-cyan text-space-900 font-bold rounded-full hover:bg-white transition-colors"
+                    className="px-8 py-4 bg-orange-600 text-white font-bold rounded-full hover:bg-orange-700 hover:shadow-lg hover:shadow-orange-500/25 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 shadow-md cursor-pointer"
                 >
                     Contact Sales
                 </button>

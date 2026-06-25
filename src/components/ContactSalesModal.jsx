@@ -71,7 +71,7 @@ const ContactSalesModal = ({ isOpen, onClose }) => {
                         initial={{ opacity: 0, scale: 0.95, y: 20 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                        className="relative w-full max-w-lg bg-[#0a0a0a] border border-white/10 rounded-2xl shadow-2xl overflow-hidden"
+                        className="relative w-full max-w-lg bg-white border border-slate-200 rounded-3xl shadow-2xl overflow-hidden"
                     >
                         {isSuccess ? (
                             <div className="p-10 flex flex-col items-center text-center">
@@ -83,8 +83,8 @@ const ContactSalesModal = ({ isOpen, onClose }) => {
                                 >
                                     <CheckCircle size={40} className="text-green-500" />
                                 </motion.div>
-                                <h3 className="text-2xl font-bold text-white mb-2">Request Sent!</h3>
-                                <p className="text-gray-400 mb-8">
+                                <h3 className="text-2xl font-bold text-slate-900 mb-2">Request Sent!</h3>
+                                <p className="text-slate-500 mb-8">
                                     Thank you for your interest.<br />
                                     Our sales team will be in touch with you shortly.
                                 </p>
@@ -93,7 +93,7 @@ const ContactSalesModal = ({ isOpen, onClose }) => {
                                         setIsSuccess(false);
                                         onClose();
                                     }}
-                                    className="px-8 py-3 bg-white text-black font-bold rounded-lg hover:bg-gray-200 transition-colors"
+                                    className="px-8 py-3 bg-slate-100 border border-slate-200 text-slate-800 font-bold rounded-xl hover:bg-slate-200 transition-colors"
                                 >
                                     Close
                                 </button>
@@ -101,11 +101,11 @@ const ContactSalesModal = ({ isOpen, onClose }) => {
                         ) : (
                             <>
                                 {/* Header */}
-                                <div className="p-6 border-b border-white/10 flex items-center justify-between">
-                                    <h3 className="text-xl font-bold text-white">Contact Sales</h3>
+                                <div className="p-6 border-b border-slate-200 flex items-center justify-between">
+                                    <h3 className="text-xl font-bold text-slate-900">Contact Sales</h3>
                                     <button
                                         onClick={onClose}
-                                        className="p-2 hover:bg-white/10 rounded-lg transition-colors text-gray-400 hover:text-white"
+                                        className="p-2 text-slate-400 hover:text-slate-700 transition-colors hover:bg-slate-100 rounded-lg"
                                     >
                                         <X size={20} />
                                     </button>
@@ -114,48 +114,48 @@ const ContactSalesModal = ({ isOpen, onClose }) => {
                                 {/* Form */}
                                 <form onSubmit={handleSubmit} className="p-6 space-y-4">
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-400 mb-1">Full Name</label>
+                                        <label className="block text-sm font-medium text-slate-600 mb-1 ml-1">Full Name</label>
                                         <input
                                             type="text"
                                             required
                                             value={formData.name}
                                             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                                            className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-accent-cyan focus:ring-1 focus:ring-accent-cyan transition-colors"
+                                            className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-accent-cyan focus:bg-white transition-all"
                                             placeholder="Full Name"
                                         />
                                     </div>
 
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-400 mb-1">Email Address</label>
+                                        <label className="block text-sm font-medium text-slate-600 mb-1 ml-1">Email Address</label>
                                         <input
                                             type="email"
                                             required
                                             value={formData.email}
                                             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                            className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-accent-cyan focus:ring-1 focus:ring-accent-cyan transition-colors"
+                                            className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-accent-cyan focus:bg-white transition-all"
                                             placeholder="Name@company.com"
                                         />
                                     </div>
 
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-400 mb-1">Organization</label>
+                                        <label className="block text-sm font-medium text-slate-600 mb-1 ml-1">Organization</label>
                                         <input
                                             type="text"
                                             value={formData.organization}
                                             onChange={(e) => setFormData({ ...formData, organization: e.target.value })}
-                                            className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-accent-cyan focus:ring-1 focus:ring-accent-cyan transition-colors"
+                                            className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-accent-cyan focus:bg-white transition-all"
                                             placeholder="Company Name"
                                         />
                                     </div>
 
                                     <div>
-                                        <label className="block text-sm font-medium text-gray-400 mb-1">Project Details</label>
+                                        <label className="block text-sm font-medium text-slate-600 mb-1 ml-1">Project Details</label>
                                         <textarea
                                             required
                                             rows={3}
                                             value={formData.message}
                                             onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                                            className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-accent-cyan focus:ring-1 focus:ring-accent-cyan transition-colors resize-none"
+                                            className="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-accent-cyan focus:bg-white transition-all resize-none"
                                             placeholder="Tell us about your custom solution needs..."
                                         />
                                     </div>
@@ -163,8 +163,8 @@ const ContactSalesModal = ({ isOpen, onClose }) => {
                                     <button
                                         type="submit"
                                         disabled={isSending}
-                                        className={`w-full py-4 rounded-lg font-bold text-black transition-colors flex items-center justify-center gap-2 mt-2 
-                                            ${isSending ? 'bg-gray-600 cursor-not-allowed' : 'bg-accent-cyan hover:bg-cyan-400'}`}
+                                        className={`w-full py-3.5 rounded-xl font-bold text-white transition-all flex items-center justify-center gap-2 mt-2 shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/40 hover:scale-[1.02] active:scale-[0.98]
+                                            ${isSending ? 'bg-slate-400 cursor-not-allowed shadow-none' : 'bg-gradient-to-r from-accent-cyan to-[#0099FF]'}`}
                                     >
                                         {isSending ? 'Sending...' : 'Send Request'}
                                         {!isSending && <Send size={18} />}

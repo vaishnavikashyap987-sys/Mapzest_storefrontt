@@ -1,31 +1,32 @@
-import React, { useRef, useState, useEffect } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import React from 'react';
+import { motion } from 'framer-motion';
+import { useNavigate } from 'react-router-dom';
 
 export const services = [
     {
         title: "Web GIS Platforms",
         description: "Enabling businesses with bespoke GIS platforms tailored to specific workflows.",
-        image: "https://mapzest.com/media/Webgisdevelop-ment.png"
+        image: "https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=800&auto=format&fit=crop"
     },
     {
         title: "Remote Sensing",
         description: "Utilizing cutting-edge satellite and aerial imagery to monitor environmental changes.",
-        image: "https://mapzest.com/media/GISsolutions.jpg"
+        image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=800&auto=format&fit=crop"
     },
     {
         title: "GIS Solutions",
         description: "Comprehensive Geographic Information System services including data management.",
-        image: "https://mapzest.com/media/remotesensing.png"
+        image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=800&auto=format&fit=crop"
     },
     {
         title: "UAV Data Acquisition",
         description: "High-precision drone mapping and surveying for construction and mining.",
-        image: "https://mapzest.com/media/drone_service.png"
+        image: "https://images.unsplash.com/photo-1527977966376-1c8408f9f108?q=80&w=800&auto=format&fit=crop"
     },
     {
         title: "3D Modeling",
         description: "Creating digital twins and 3D city models for urban planning.",
-        image: "https://mapzest.com/media/3Dmodeling.jpeg"
+        image: "https://images.unsplash.com/photo-1508962914676-134849a727f0?q=80&w=800&auto=format&fit=crop"
     },
     {
         title: "Data Analytics",
@@ -35,73 +36,78 @@ export const services = [
 ];
 
 const Services = () => {
-    const targetRef = useRef(null);
-    const contentRef = useRef(null);
-    const [xRange, setXRange] = useState(0);
-
-    useEffect(() => {
-        const updateScrollRange = () => {
-            if (contentRef.current) {
-                const scrollWidth = contentRef.current.scrollWidth;
-                const clientWidth = contentRef.current.clientWidth;
-                // Calculate how much we need to translate to see the end
-                // Multiply by a factor or add padding if needed, but exact difference should work
-                const range = scrollWidth - clientWidth + 50; // +50px buffer
-                setXRange(range > 0 ? range : 0);
-            }
-        };
-
-        // Initial calculation
-        updateScrollRange();
-
-        // Recalculate on resize
-        window.addEventListener('resize', updateScrollRange);
-        return () => window.removeEventListener('resize', updateScrollRange);
-    }, []);
-
-    const { scrollYProgress } = useScroll({
-        target: targetRef,
-    });
-
-    // Map vertical scroll to horizontal translation in pixels
-    const x = useTransform(scrollYProgress, [0, 1], ["0px", `-${xRange}px`]);
+    const navigate = useNavigate();
 
     return (
-        <section ref={targetRef} className="relative h-[300vh]">
-            <div className="sticky top-0 flex flex-col h-screen justify-center overflow-hidden z-10">
-                <div className="px-4 md:px-10 pt-20 pb-10 z-10">
-                    <h2 className="text-4xl md:text-6xl font-bold text-white mb-2">Our Capabilities</h2>
+        <section className="py-16 md:py-20 relative overflow-hidden">
+            <div className="max-w-7xl mx-auto px-6 md:px-8">
+                {/* Section Header */}
+                <div className="mb-16">
+                    <h2 className="text-4xl md:text-6xl font-bold text-slate-900 mb-4">
+                        Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-accent-cyan">Capabilities</span>
+                    </h2>
                     <div className="w-20 h-1 bg-accent-cyan rounded-full"></div>
                 </div>
 
-                <motion.div
-                    ref={contentRef}
-                    style={{ x }}
-                    className="flex gap-4 md:gap-8 px-4 md:px-10 items-center h-[50vh] md:h-[60vh]"
-                >
+                {/* Vertical Cards Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 gap-y-12">
                     {services.map((service, index) => (
-                        <div
+                        <motion.div
                             key={index}
-                            className="relative h-full w-[280px] md:w-[600px] shrink-0 rounded-3xl overflow-hidden group border border-white/10"
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true, margin: "-50px" }}
+                            transition={{ duration: 0.6, delay: (index % 3) * 0.1 }}
+                            className="group w-full"
                         >
-                            <img
-                                src={service.image}
-                                alt={service.title}
-                                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-80"></div>
+                            <div className="premium-card-content flex flex-col h-[460px] w-full rounded-[30px] p-6 gap-6 justify-between overflow-hidden relative">
+                                {/* Image Section with Glassmorphic Badge */}
+                                <div className="relative w-full h-[220px] rounded-[20px] overflow-hidden border border-slate-200/50 shadow-inner shrink-0 group-hover:border-accent-cyan/20 transition-all duration-500">
+                                    <img
+                                        src={service.image}
+                                        alt={service.title}
+                                        className="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-700 brightness-[0.98] group-hover:brightness-100"
+                                    />
+                                    {/* Soft border gradient or vignette overlay */}
+                                    <div className="absolute inset-0 bg-gradient-to-tr from-slate-950/10 to-transparent pointer-events-none"></div>
+                                    
+                                    {/* Capability Number Indicator in Mono font - glass badge */}
+                                    <div className="absolute top-4 right-4 bg-slate-950/40 backdrop-blur-md border border-white/10 text-white text-[10px] font-mono font-bold tracking-widest px-3 py-1 rounded-full z-10 select-none shadow-sm group-hover:bg-accent-cyan/60 group-hover:border-accent-cyan/20 transition-colors duration-500">
+                                        [{String(index + 1).padStart(2, '0')}]
+                                    </div>
+                                </div>
 
-                            <div className="absolute bottom-0 left-0 p-6 md:p-8 w-full">
-                                <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 group-hover:text-accent-cyan transition-colors">
-                                    {service.title}
-                                </h3>
-                                <p className="text-gray-300 text-sm md:text-lg leading-relaxed">
-                                    {service.description}
-                                </p>
+                                {/* Text Section */}
+                                <div className="w-full flex flex-col justify-between flex-grow relative z-10 text-left">
+                                    <div className="flex flex-col">
+                                        <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-accent-cyan mb-2">
+                                            Capability
+                                        </span>
+                                        <h3 className="text-xl md:text-2xl font-extrabold text-slate-900 mb-2 group-hover:text-accent-cyan transition-colors leading-tight">
+                                            {service.title}
+                                        </h3>
+                                        <p className="text-slate-600 text-sm leading-relaxed font-normal line-clamp-3">
+                                            {service.description}
+                                        </p>
+                                    </div>
+                                    
+                                    <div className="mt-4">
+                                        <button
+                                            onClick={() => navigate('/services')}
+                                            className="group/btn inline-flex items-center gap-2 text-xs font-bold text-slate-800 hover:text-accent-cyan transition-colors duration-300 uppercase tracking-wider relative cursor-pointer"
+                                        >
+                                            <span>Explore Service</span>
+                                            <span className="inline-block transform group-hover/btn:translate-x-1.5 transition-transform duration-300">
+                                                →
+                                            </span>
+                                            <span className="absolute bottom-[-4px] left-0 w-8 h-[2px] bg-accent-cyan group-hover/btn:w-full transition-all duration-300"></span>
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+                        </motion.div>
                     ))}
-                </motion.div>
+                </div>
             </div>
         </section>
     );

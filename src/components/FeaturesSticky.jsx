@@ -5,36 +5,36 @@ import { useNavigate } from 'react-router-dom';
 const features = [
     {
         id: "adss",
-        title: "Precision Agriculture",
+        prefix: "Precision ",
+        accent: "Agriculture",
         description: "Optimize crop yields with multispectral imagery and AI-driven insights. Detect stress early and manage resources efficiently.",
-        color: "from-green-400 to-emerald-600",
-        image: "https://mapzest.com/media/Agribg.jpeg"
+        image: "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?q=80&w=800&auto=format&fit=crop"
     },
     {
         id: "basic",
-        title: "Urban Planning",
+        prefix: "Urban ",
+        accent: "Planning",
         description: "Visualize city growth and infrastructure with high-resolution 3D models. Plan smarter cities for a sustainable future.",
-        color: "from-blue-400 to-indigo-600",
-        image: "https://mapzest.com/media/UBPbg.png",
+        image: "https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=800&auto=format&fit=crop",
         pricing: "Open Access"
     },
     {
         id: "fram",
-        title: "Disaster Management",
+        prefix: "Disaster ",
+        accent: "Management",
         description: "Rapid response mapping for floods, fires, and natural disasters. Real-time data when it matters most.",
-        color: "from-orange-400 to-red-600",
-        image: "https://mapzest.com/media/FRAMbg.png"
+        image: "https://images.unsplash.com/photo-1547683905-f686c993aae5?q=80&w=800&auto=format&fit=crop"
     },
     {
         id: "nrmm",
-        title: "Environmental Monitoring",
+        prefix: "Environmental ",
+        accent: "Monitoring",
         description: "Track deforestation, water quality, and climate change indicators with global satellite coverage.",
-        color: "from-teal-400 to-cyan-600",
-        image: "https://mapzest.com/media/Mapzestbg.png"
+        image: "https://images.unsplash.com/photo-1448375240586-882707db888b?q=80&w=800&auto=format&fit=crop"
     }
 ];
 
-const Card = ({ title, description, color, image, i, progress, range, targetScale, id, pricing }) => {
+const Card = ({ prefix, accent, description, image, i, progress, range, targetScale, id, pricing }) => {
     const container = useRef(null);
     const { scrollYProgress } = useScroll({
         target: container,
@@ -46,37 +46,52 @@ const Card = ({ title, description, color, image, i, progress, range, targetScal
     const scale = useTransform(progress, range, [1, targetScale]);
 
     return (
-        <div ref={container} className="h-screen flex items-center justify-center sticky top-0 px-4">
+        <div ref={container} className="h-[80vh] md:h-[85vh] flex items-center justify-center sticky top-0 px-6 md:px-8">
             <motion.div
-                style={{ scale, top: `calc(-5vh + ${i * 25}px)` }}
-                className="flex flex-col-reverse md:flex-row relative -top-[15%] md:-top-[25%] h-auto md:h-[400px] w-full max-w-[800px] rounded-[25px] p-6 md:p-8 origin-top bg-white/90 backdrop-blur-xl border border-white/20 shadow-xl overflow-hidden gap-6 md:gap-8"
+                style={{ scale, top: `calc(var(--card-top, -4vh) + ${i * 25}px)` }}
+                className="group flex flex-col-reverse md:flex-row relative [--card-top:-4vh] md:[--card-top:-10vh] h-auto md:h-[400px] w-full max-w-[800px] rounded-[30px] p-6 md:p-8 origin-top bg-white/80 backdrop-blur-xl border border-slate-200/50 shadow-[0_20px_50px_rgba(15,23,42,0.06)] hover:shadow-[0_25px_60px_rgba(2,132,199,0.12)] hover:border-slate-350/40 transition-all duration-500 overflow-hidden gap-6 md:gap-8"
             >
+                {/* Premium Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-br from-white/60 via-white/85 to-slate-50/70 pointer-events-none z-0"></div>
+
+                {/* Tech corner brackets */}
+                <div className="absolute top-5 left-5 w-3 h-3 border-t-2 border-l-2 border-slate-200 rounded-tl transition-colors duration-500 group-hover:border-accent-cyan/40 z-10"></div>
+                <div className="absolute top-5 right-5 w-3 h-3 border-t-2 border-r-2 border-slate-200 rounded-tr transition-colors duration-500 group-hover:border-accent-cyan/40 z-10"></div>
+                <div className="absolute bottom-5 left-5 w-3 h-3 border-b-2 border-l-2 border-slate-200 rounded-bl transition-colors duration-500 group-hover:border-accent-cyan/40 z-10"></div>
+                <div className="absolute bottom-5 right-5 w-3 h-3 border-b-2 border-r-2 border-slate-200 rounded-br transition-colors duration-500 group-hover:border-accent-cyan/40 z-10"></div>
+
                 {/* Text Content */}
-                <div className="w-full md:w-[40%] flex flex-col justify-center gap-4 md:gap-6 relative z-10 text-center md:text-left">
-                    <h2 className={`text-2xl md:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r ${color}`}>{title}</h2>
-                    <p className="text-sm md:text-base text-gray-600 leading-relaxed">{description}</p>
-                    <div className="flex justify-center md:justify-start">
+                <div className="w-full md:w-[42%] flex flex-col justify-center gap-4 md:gap-5 relative z-10 text-center md:text-left">
+                    <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-slate-900 leading-tight">
+                        {prefix}
+                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-accent-cyan block sm:inline">
+                            {accent}
+                        </span>
+                    </h2>
+                    <p className="text-sm md:text-[15px] text-slate-600 leading-relaxed font-normal">{description}</p>
+                    <div className="flex justify-center md:justify-start mt-2">
                         <button
                             onClick={() => navigate(`/platforms/${id}`)}
-                            className="w-fit px-6 py-3 rounded-full bg-cyan-600 hover:bg-cyan-700 text-white transition-all shadow-md text-sm font-medium cursor-pointer"
+                            className="w-fit px-7 py-3.5 rounded-full bg-gradient-to-r from-accent-cyan to-[#0099FF] text-white hover:shadow-lg hover:shadow-cyan-500/25 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 text-sm font-semibold tracking-wide cursor-pointer flex items-center gap-2"
                         >
                             Learn More
+                            <span className="group-hover:translate-x-1 transition-transform">→</span>
                         </button>
                     </div>
                 </div>
 
                 {/* Image Content */}
-                <div className="relative w-full md:w-[60%] h-[200px] md:h-full rounded-[20px] md:rounded-[25px] overflow-hidden border border-gray-900/10 shrink-0">
+                <div className="relative w-full md:w-[58%] h-[220px] md:h-full rounded-[20px] md:rounded-[22px] overflow-hidden border border-slate-200/60 shadow-inner shrink-0 group-hover:border-accent-cyan/20 transition-all duration-500">
                     <motion.div className="w-full h-full" style={{ scale: imageScale }}>
                         <img
                             src={image}
-                            alt={title}
-                            className="object-cover w-full h-full"
+                            alt={prefix + accent}
+                            className="object-cover w-full h-full transition-all duration-700 group-hover:brightness-105"
                         />
                     </motion.div>
                     {/* Pricing Badge */}
                     {pricing && (
-                        <div className="absolute top-4 right-4 bg-black/60 backdrop-blur-md border border-accent-cyan/30 text-accent-cyan text-[10px] font-bold px-3 py-1 rounded-full z-20 uppercase tracking-widest shadow-xl pointer-events-none">
+                        <div className="absolute top-4 right-4 bg-slate-950/80 backdrop-blur-md border border-accent-cyan/30 text-accent-cyan text-[10px] font-bold px-3.5 py-1.5 rounded-full z-20 uppercase tracking-widest shadow-xl pointer-events-none">
                             {pricing}
                         </div>
                     )}
@@ -94,10 +109,10 @@ const FeaturesSticky = () => {
     });
 
     return (
-        <section ref={container} className="relative mt-[10vh] mb-[10vh]">
-            <div className="h-[20vh] flex items-center justify-center mb-20 relative z-10">
-                <h2 className="text-5xl font-bold text-center">
-                    Impact Across <span className="text-accent-cyan">Industries</span>
+        <section ref={container} className="relative mt-[6vh] mb-[6vh]">
+            <div className="h-[14vh] flex items-center justify-center mb-10 md:mb-12 relative z-10">
+                <h2 className="text-4xl md:text-5xl font-bold text-center text-slate-900">
+                    Impact Across <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-accent-cyan">Industries</span>
                 </h2>
             </div>
             {features.map((project, i) => {

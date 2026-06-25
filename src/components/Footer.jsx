@@ -1,29 +1,22 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Mail, MapPin, Phone, Twitter, Linkedin, Github } from 'lucide-react';
+import { Mail, MapPin, Phone, Twitter, Linkedin, Github, Map } from 'lucide-react';
 
 const Footer = () => {
     return (
-        <footer className="bg-black py-12 border-t border-white/10 relative z-10">
+        <footer className="bg-[#f1f3eb]/70 py-12 border-t border-[#e2e6d6] relative z-10">
             <div className="max-w-7xl mx-auto px-4">
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
                     <div className="col-span-1 md:col-span-2">
-                        <div className="flex items-center gap-2 mb-4">
-                            <img
-                                src="https://mapzest.com/media/Powered+by+TerrAqua+UAV+(3).png"
-                                alt="Mapzest Logo"
-                                className="h-10"
-                            />
-                            <span className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400"></span>
-                        </div>
-                        <p className="text-gray-400 max-w-sm">
+                        <img src="/MAPZEST.png" alt="Mapzest" className="h-10 w-auto object-contain mb-4 transition-transform hover:scale-105 duration-300" />
+                        <p className="text-slate-600 max-w-sm mt-4">
                             Empowering the world with geospatial intelligence. We turn pixels into meaningful data for a sustainable future.
                         </p>
                     </div>
 
                     <div>
-                        <h4 className="text-lg font-semibold mb-4 text-white">Contact</h4>
-                        <ul className="space-y-3 text-gray-400">
+                        <h4 className="text-lg font-bold mb-4 text-slate-900">Contact</h4>
+                        <ul className="space-y-3 text-slate-600">
                             <li className="flex items-center gap-2">
                                 <Mail className="w-4 h-4 text-accent-cyan" />
                                 <span>contact@terraquauav.com</span>
@@ -44,26 +37,26 @@ const Footer = () => {
                     </div>
 
                     <div>
-                        <h4 className="text-lg font-semibold mb-4 text-white">Social</h4>
+                        <h4 className="text-lg font-bold mb-4 text-slate-900">Social</h4>
                         <div className="flex gap-4">
-                            <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-accent-cyan hover:text-black transition-all duration-300">
+                            <a href="#" className="w-10 h-10 rounded-full bg-cyan-50/70 flex items-center justify-center border border-cyan-100 text-accent-cyan hover:bg-accent-cyan hover:text-white hover:border-accent-cyan transition-all duration-300 shadow-sm hover:scale-110">
                                 <Twitter className="w-5 h-5" />
                             </a>
-                            <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-accent-cyan hover:text-black transition-all duration-300">
+                            <a href="#" className="w-10 h-10 rounded-full bg-cyan-50/70 flex items-center justify-center border border-cyan-100 text-accent-cyan hover:bg-accent-cyan hover:text-white hover:border-accent-cyan transition-all duration-300 shadow-sm hover:scale-110">
                                 <Linkedin className="w-5 h-5" />
                             </a>
-                            <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-accent-cyan hover:text-black transition-all duration-300">
+                            <a href="#" className="w-10 h-10 rounded-full bg-cyan-50/70 flex items-center justify-center border border-cyan-100 text-accent-cyan hover:bg-accent-cyan hover:text-white hover:border-accent-cyan transition-all duration-300 shadow-sm hover:scale-110">
                                 <Github className="w-5 h-5" />
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
+                <div className="border-t border-[#e2e6d6] pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-slate-500">
                     <p>&copy; 2026 Mapzest. All rights reserved.</p>
                     <div className="flex gap-6">
-                        <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-                        <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
+                        <a href="#" className="hover:text-slate-800 transition-colors">Privacy Policy</a>
+                        <a href="#" className="hover:text-slate-800 transition-colors">Terms of Service</a>
                     </div>
                 </div>
             </div>

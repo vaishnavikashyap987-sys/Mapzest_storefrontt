@@ -16,10 +16,10 @@ const ParallaxText = ({ children, baseVelocity = 100 }) => {
                     },
                 }}
             >
-                <span className="block mr-10 text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400 opacity-80">{children} </span>
-                <span className="block mr-10 text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400 opacity-80">{children} </span>
-                <span className="block mr-10 text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400 opacity-80">{children} </span>
-                <span className="block mr-10 text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400 opacity-80">{children} </span>
+                <span className="block mr-10 text-transparent bg-clip-text bg-gradient-to-r from-slate-800 to-slate-400 opacity-60">{children} </span>
+                <span className="block mr-10 text-transparent bg-clip-text bg-gradient-to-r from-slate-800 to-slate-400 opacity-60">{children} </span>
+                <span className="block mr-10 text-transparent bg-clip-text bg-gradient-to-r from-slate-800 to-slate-400 opacity-60">{children} </span>
+                <span className="block mr-10 text-transparent bg-clip-text bg-gradient-to-r from-slate-800 to-slate-400 opacity-60">{children} </span>
             </motion.div>
         </div>
     );
@@ -27,7 +27,7 @@ const ParallaxText = ({ children, baseVelocity = 100 }) => {
 
 const VelocityScroll = () => {
     return (
-        <section className="py-20 overflow-hidden relative z-20 border-y border-white/5">
+        <section className="py-10 md:py-20 overflow-hidden relative z-20 border-y border-slate-200">
             <ParallaxText>WebGIS Remote Sensing LiDAR Photogrammetry</ParallaxText>
             <ParallaxText>Queries Solutions Analytics </ParallaxText>
         </section>

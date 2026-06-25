@@ -30,28 +30,28 @@ const PlatformDetail = () => {
     // Mobile Restriction for non-UTM platforms
     if (isMobile && platform.id !== 'utm') {
         return (
-            <div className="min-h-screen flex flex-col items-center justify-center bg-space-950 px-6 text-center">
+            <div className="min-h-screen flex flex-col items-center justify-center bg-space-900 px-6 text-center">
                 <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    className="bg-white/5 border border-white/10 p-8 rounded-2xl backdrop-blur-xl max-w-sm"
+                    className="bg-white border border-slate-200 p-8 rounded-2xl backdrop-blur-xl max-w-sm shadow-xl"
                 >
                     <div className="w-16 h-16 bg-gradient-to-tr from-accent-cyan to-accent-purple rounded-full flex items-center justify-center mx-auto mb-6">
                         <MonitorSmartphone className="w-8 h-8 text-white" />
                     </div>
-                    <h2 className="text-2xl font-bold text-white mb-4">Desktop View Required</h2>
-                    <p className="text-gray-400 mb-8 leading-relaxed">
+                    <h2 className="text-2xl font-bold text-slate-900 mb-4">Desktop View Required</h2>
+                    <p className="text-slate-600 mb-8 leading-relaxed">
                         Oops! To get the best experience with <span className="text-accent-cyan font-semibold">{platform.title}</span>, please switch to a larger display or desktop device.
                     </p>
                     <button
                         onClick={() => navigate('/')}
-                        className="w-full py-3 bg-white text-black font-bold rounded-xl hover:bg-gray-200 transition-colors"
+                        className="w-full py-3 bg-accent-cyan text-white font-bold rounded-xl hover:bg-cyan-700 transition-colors shadow-md"
                     >
                         Back to Home
                     </button>
                     <button
                         onClick={() => navigate('/platforms')}
-                        className="w-full py-3 mt-3 text-gray-400 font-medium hover:text-white transition-colors"
+                        className="w-full py-3 mt-3 text-slate-500 font-medium hover:text-slate-950 transition-colors"
                     >
                         Browse Other Platforms
                     </button>
@@ -69,7 +69,7 @@ const PlatformDetail = () => {
 
             {/* Broad Header */}
             <div className="relative h-[60vh] w-full overflow-hidden">
-                <div className="absolute inset-0 bg-black/80 z-10 transition-colors duration-500"></div>
+                <div className="absolute inset-0 bg-slate-900/60 z-10 transition-colors duration-500"></div>
                 {/* Gradient Overlay for Text Readability */}
                 <div className="absolute inset-0 bg-gradient-to-t from-space-900 via-transparent to-transparent z-20"></div>
 
@@ -89,7 +89,7 @@ const PlatformDetail = () => {
                             initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: 0.2 }}
-                            className="flex items-center gap-2 text-gray-300 hover:text-white mb-6 transition-colors"
+                            className="flex items-center gap-2 text-slate-300 hover:text-white mb-6 transition-colors"
                         >
                             <ArrowLeft size={20} />
                             Back to Platforms
@@ -133,15 +133,15 @@ const PlatformDetail = () => {
                             viewport={{ once: true }}
                             className="prose prose-invert max-w-none"
                         >
-                            <h2 className="text-3xl font-bold text-white mb-6">Introduction</h2>
-                            <p className="text-xl text-gray-300 leading-relaxed border-l-4 border-white/20 pl-6">
+                            <h2 className="text-3xl font-bold text-slate-900 mb-6">Introduction</h2>
+                            <p className="text-xl text-slate-700 leading-relaxed border-l-4 border-slate-300 pl-6">
                                 {platform.description}
                             </p>
                         </motion.section>
 
                         {/* Use Cases */}
                         <section>
-                            <h2 className="text-3xl font-bold text-white mb-8">Use Cases & Case Studies</h2>
+                            <h2 className="text-3xl font-bold text-slate-900 mb-8">Use Cases & Case Studies</h2>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 {platform.useCases.map((useCase, index) => (
                                     <motion.div
@@ -150,10 +150,10 @@ const PlatformDetail = () => {
                                         whileInView={{ opacity: 1, y: 0 }}
                                         viewport={{ once: true }}
                                         transition={{ delay: index * 0.1 }}
-                                        className="glass-panel p-6 rounded-xl hover:bg-white/5 transition-colors"
+                                        className="glass-panel p-6 rounded-xl hover:bg-white transition-colors"
                                     >
-                                        <h3 className="text-xl font-bold text-white mb-3">{useCase.title}</h3>
-                                        <p className="text-gray-400">{useCase.description}</p>
+                                        <h3 className="text-xl font-bold text-slate-900 mb-3">{useCase.title}</h3>
+                                        <p className="text-slate-600">{useCase.description}</p>
                                     </motion.div>
                                 ))}
                             </div>
@@ -168,10 +168,10 @@ const PlatformDetail = () => {
                                 initial={{ opacity: 0, x: 20 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ delay: 0.8 }}
-                                className="glass-panel p-8 rounded-2xl border border-white/10"
+                                className="glass-panel p-8 rounded-2xl border border-slate-200 bg-white"
                             >
-                                <h3 className="text-2xl font-bold text-white mb-6">Get Started</h3>
-                                <p className="text-gray-400 mb-8">
+                                <h3 className="text-2xl font-bold text-slate-900 mb-6">Get Started</h3>
+                                <p className="text-slate-600 mb-8">
                                     {isLaunchUnlocked
                                         ? `Ready to deploy ${platform.title} for your organization? Launch the platform now or contact sales.`
                                         : `The ${platform.title} platform is currently available for enterprise partners. Request a demo to get started.`
@@ -185,14 +185,14 @@ const PlatformDetail = () => {
                                     className={`w-full py-4 rounded-lg font-bold text-white transition-all flex items-center justify-center gap-2 mb-4 group
                                         ${isLaunchUnlocked
                                             ? `bg-gradient-to-r ${platform.accent} hover:opacity-90 cursor-pointer`
-                                            : 'bg-white/5 text-gray-500 cursor-not-allowed border border-white/10'
+                                            : 'bg-slate-100 text-slate-400 cursor-not-allowed border border-slate-200'
                                         }`}
                                 >
                                     {isLaunchUnlocked ? 'Launch Platform' : 'Launch Platform'}
                                     {isLaunchUnlocked ? (
                                         <ExternalLink size={18} className="group-hover:translate-x-1 transition-transform" />
                                     ) : (
-                                        <Lock size={18} className="text-gray-500" />
+                                        <Lock size={18} className="text-slate-400" />
                                     )}
                                 </button>
 
@@ -200,7 +200,7 @@ const PlatformDetail = () => {
                                 {platform.id !== 'utm' && ( // Keep existing exclusion if intentional, but user requested functionality
                                     <button
                                         onClick={() => setShowDemoModal(true)}
-                                        className="w-full py-4 rounded-lg font-bold text-white border border-white/20 hover:bg-white/10 transition-colors"
+                                        className="w-full py-4 rounded-lg font-bold text-slate-700 border border-slate-300 hover:bg-slate-50 transition-colors"
                                     >
                                         Request Demo
                                     </button>
@@ -208,13 +208,13 @@ const PlatformDetail = () => {
                             </motion.div>
 
                             {/* Features List */}
-                            <div className="glass-panel p-8 rounded-2xl">
-                                <h3 className="text-xl font-bold text-white mb-6">Key Features</h3>
+                            <div className="glass-panel p-8 rounded-2xl bg-white border border-slate-200">
+                                <h3 className="text-xl font-bold text-slate-900 mb-6">Key Features</h3>
                                 <ul className="space-y-4">
                                     {platform.features.map((feature, index) => (
                                         <li key={index} className="flex items-start gap-3">
                                             <CheckCircle className={`w-5 h-5 flex-shrink-0 mt-0.5 text-${platform.color}-500`} />
-                                            <span className="text-gray-300">{feature}</span>
+                                            <span className="text-slate-700">{feature}</span>
                                         </li>
                                     ))}
                                 </ul>

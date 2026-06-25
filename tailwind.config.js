@@ -8,19 +8,19 @@ export default {
     extend: {
       colors: {
         space: {
-          900: '#0B0B15', // Deep space black
-          800: '#151525', // Dark blue-black
-          700: '#1E1E30', // Lighter space
-          600: '#2B2B40', // Even lighter space for cards
+          900: '#F8FAFC', // slate-50
+          800: '#F1F5F9', // slate-100
+          700: '#E2E8F0', // slate-200
+          600: '#FFFFFF', // white
         },
         accent: {
-          cyan: '#00F0FF', // Neon cyan
-          green: '#00FF94', // Neon green
-          purple: '#BC13FE', // Neon purple
+          cyan: '#0284c7', // sky-600
+          green: '#16a34a', // green-600
+          purple: '#7c3aed', // purple-600
         }
       },
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
+        sans: ['"DM Sans"', 'sans-serif'],
       },
       animation: {
         'float': 'float 6s ease-in-out infinite',
