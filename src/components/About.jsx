@@ -1,30 +1,30 @@
 import React from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Globe, Layers, Cpu, Satellite, ArrowRight, BarChart3 } from 'lucide-react';
+import { Globe, Cpu, Satellite, BarChart3 } from 'lucide-react';
 
 const features = [
     {
-        icon: <Satellite className="w-8 h-8 text-accent-cyan" />,
+        icon: <Satellite strokeWidth={1.6} fill="currentColor" fillOpacity={0.12} />,
         title: "High Resolution Data Acquisition",
         description: "Capturing precise optical, radar, and drone data from leading constellations and sensors.",
         provider: "Terraqua UAV",
         image: "https://images.unsplash.com/photo-1527977966376-1c8408f9f108?q=80&w=800&auto=format&fit=crop"
     },
     {
-        icon: <Cpu className="w-8 h-8 text-accent-cyan" />,
+        icon: <Cpu strokeWidth={1.6} fill="currentColor" fillOpacity={0.12} />,
         title: "Data Processing",
         description: "Processing raw inputs into clean, analysis-ready formats using automated pipelines.",
         provider: "Terraqua UAV",
         image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop"
     },
     {
-        icon: <Globe className="w-8 h-8 text-accent-cyan" />,
+        icon: <Globe strokeWidth={1.6} fill="currentColor" fillOpacity={0.12} />,
         title: "WebGIS",
         description: "A centralized, interactive platform for seamless spatial data management and exploration.",
         image: "https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=800&auto=format&fit=crop"
     },
     {
-        icon: <BarChart3 className="w-8 h-8 text-accent-cyan" />,
+        icon: <BarChart3 strokeWidth={1.6} fill="currentColor" fillOpacity={0.12} />,
         title: "Visualization & Analytics",
         description: "Empowering decision-making with advanced visualization, deep analytics, and actionable insights.",
         image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&auto=format&fit=crop"
@@ -89,22 +89,6 @@ const About = () => {
                         >
                             {/* Image Container */}
                             <div className="relative aspect-[16/10] rounded-3xl overflow-hidden shadow-md z-0 border border-slate-200/50">
-                                {feature.provider && (
-                                    <div
-                                        className="absolute top-4 left-4 flex items-center gap-2 px-3 py-1.5 rounded-full shadow-lg z-20 min-w-max border border-white/10 bg-slate-950/70 backdrop-blur-md"
-                                    >
-                                        <span className="relative flex h-2 w-2">
-                                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                                            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                                        </span>
-                                        <span className="font-mono font-extrabold text-[10px] tracking-widest whitespace-nowrap text-white">
-                                            <span className="text-white">TERR</span>
-                                            <span className="text-accent-cyan">A</span>
-                                            <span className="text-white">QUA</span>
-                                            <span className="text-accent-cyan ml-0.5">UAV</span>
-                                        </span>
-                                    </div>
-                                )}
                                 <img
                                     src={feature.image}
                                     alt={feature.title}
@@ -127,13 +111,13 @@ const About = () => {
                                     <div className="absolute inset-0 rounded-full border border-dashed border-accent-cyan/30 animate-spin-slow group-hover:border-accent-cyan/70 scale-125 transition-all duration-500"></div>
                                     <div className="absolute inset-0 rounded-full border border-accent-cyan/20 animate-ping opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                                     
-                                    <div className="relative p-4 bg-white border border-slate-200/60 rounded-full w-fit group-hover:bg-cyan-50 group-hover:scale-110 group-hover:border-accent-cyan/30 transition-all duration-500 flex items-center justify-center shadow-md z-10">
-                                        {React.cloneElement(feature.icon, { className: "w-8 h-8 text-accent-cyan transition-colors" })}
+                                    <div className="relative p-3 bg-white border border-slate-200/60 rounded-full w-fit group-hover:bg-cyan-50 group-hover:scale-110 group-hover:border-accent-cyan/30 transition-all duration-500 flex items-center justify-center shadow-md z-10">
+                                        {React.cloneElement(feature.icon, { className: "w-5 h-5 text-accent-cyan transition-colors" })}
                                     </div>
                                 </div>
 
 
-                                <h3 className="text-lg font-bold mb-2 text-slate-900 group-hover:text-accent-cyan transition-colors leading-tight min-h-[44px] flex items-center justify-center">
+                                <h3 className="text-lg font-bold mb-2 text-slate-900 group-hover:text-blue-900 active:text-blue-950 transition-colors leading-tight min-h-[44px] flex items-center justify-center">
                                     {feature.title}
                                 </h3>
                                 <p className="text-slate-600 text-sm leading-relaxed max-w-[280px] flex-grow">

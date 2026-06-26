@@ -56,8 +56,8 @@ const BlogDetail = () => {
 
                     <div className="flex flex-wrap items-center gap-6 text-slate-500 mb-12 border-b border-slate-200 pb-8">
                         <div className="flex items-center gap-3">
-                            <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-accent-cyan to-accent-purple flex items-center justify-center text-white font-bold shadow-lg">
-                                {blog.author.charAt(0)}
+                            <div className="h-10 w-20 flex items-center justify-center">
+                                <img src="/terraqua_logo.png" alt="Terraqua" className="w-full h-full object-contain" />
                             </div>
                             <div>
                                 <p className="text-slate-900 font-semibold">{blog.author}</p>

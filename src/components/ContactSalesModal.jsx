@@ -163,8 +163,8 @@ const ContactSalesModal = ({ isOpen, onClose }) => {
                                     <button
                                         type="submit"
                                         disabled={isSending}
-                                        className={`w-full py-3.5 rounded-xl font-bold text-white transition-all flex items-center justify-center gap-2 mt-2 shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/40 hover:scale-[1.02] active:scale-[0.98]
-                                            ${isSending ? 'bg-slate-400 cursor-not-allowed shadow-none' : 'bg-gradient-to-r from-accent-cyan to-[#0099FF]'}`}
+                                        className={`w-full py-3.5 rounded-xl font-bold text-white transition-all flex items-center justify-center gap-2 mt-2 shadow-lg shadow-orange-500/20 hover:shadow-orange-500/40 hover:scale-[1.02] active:scale-[0.98]
+                                            ${isSending ? 'bg-slate-400 cursor-not-allowed shadow-none' : 'bg-gradient-to-r from-orange-500 to-red-500'}`}
                                     >
                                         {isSending ? 'Sending...' : 'Send Request'}
                                         {!isSending && <Send size={18} />}

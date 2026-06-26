@@ -111,7 +111,7 @@ const DemoRequestModal = ({ isOpen, onClose, platformName }) => {
                             <>
                                 {/* Header */}
                                 <div className="p-6 border-b border-slate-200 flex items-center justify-between">
-                                    <h3 className="text-xl font-bold text-slate-900 font-bold">Request Demo - {platformName}</h3>
+                                    <h3 className="text-xl font-bold text-slate-900">Request Demo - {platformName}</h3>
                                     <button
                                         onClick={onClose}
                                         className="p-2 text-slate-400 hover:text-slate-700 transition-colors hover:bg-slate-100 rounded-lg"
@@ -119,7 +119,7 @@ const DemoRequestModal = ({ isOpen, onClose, platformName }) => {
                                         <X size={20} />
                                     </button>
                                 </div>
-
+                                
                                 {/* Form */}
                                 <form onSubmit={handleSubmit} className="p-6 space-y-4">
                                     <div>
@@ -172,8 +172,8 @@ const DemoRequestModal = ({ isOpen, onClose, platformName }) => {
                                     <button
                                         type="submit"
                                         disabled={isSending}
-                                        className={`w-full py-3.5 rounded-xl font-bold text-white transition-all flex items-center justify-center gap-2 mt-2 shadow-lg shadow-cyan-500/20 hover:shadow-cyan-500/40 hover:scale-[1.02] active:scale-[0.98]
-                                            ${isSending ? 'bg-slate-400 cursor-not-allowed shadow-none' : 'bg-gradient-to-r from-accent-cyan to-[#0099FF]'}`}
+                                        className={`w-full py-3.5 rounded-xl font-bold text-white transition-all flex items-center justify-center gap-2 mt-2 shadow-lg shadow-orange-500/20 hover:shadow-orange-500/40 hover:scale-[1.02] active:scale-[0.98]
+                                            ${isSending ? 'bg-slate-400 cursor-not-allowed shadow-none' : 'bg-gradient-to-r from-orange-500 to-red-500'}`}
                                     >
                                         {isSending ? 'Sending...' : 'Send Request'}
                                         {!isSending && <Send size={18} />}

@@ -10,8 +10,8 @@ export const platformsData = {
         color: "red",
         accent: "from-red-500 to-orange-500",
         description: "FRAM uses high-resolution drone imagery and elevation data to identify flood-prone areas. It generates flood risk zones along with detailed statistics to support planning, mitigation, and disaster preparedness.",
-        headerImage: "https://images.unsplash.com/photo-1547683905-f686c993aae5?q=80&w=1200&auto=format&fit=crop",
-        cardImage: "https://images.unsplash.com/photo-1547683905-f686c993aae5?q=80&w=800&auto=format&fit=crop", // Simulation/Red Map
+        headerImage: "/fram_dashboard.png",
+        cardImage: "/fram_dashboard.png", // Kanpur Flood Risk map dashboard
         features: [
             "Real-time flood inundation mapping",
             "Population at risk calculation",
@@ -41,8 +41,8 @@ export const platformsData = {
         color: "green",
         accent: "from-green-500 to-emerald-500",
         description: "NRMM integrates satellite imagery with ground-based IoT sensors to monitor and conserve natural resources such as water bodies, forests, and wetlands. It enables continuous tracking and informed decision-making for sustainable resource management.",
-        headerImage: "https://images.unsplash.com/photo-1448375240586-882707db888b?q=80&w=1200&auto=format&fit=crop",
-        cardImage: "https://images.unsplash.com/photo-1448375240586-882707db888b?q=80&w=800&auto=format&fit=crop", // Green Forest/Map
+        headerImage: "/nrmm_dashboard.png",
+        cardImage: "/nrmm_dashboard.png", // Lake Analysis dashboard screenshot
         features: [
             "Deforestation alerts",
             "Water body detection and monitoring",
@@ -66,14 +66,14 @@ export const platformsData = {
     },
     adss: {
         id: 'adss',
-        title: "ADSS",
-        subtitle: "Agricultural Decision Support System",
+        title: "KrishiZest",
+        subtitle: "",
         icon: <Sprout className="w-12 h-12 text-yellow-500" />,
         color: "yellow",
         accent: "from-yellow-400 to-orange-500",
-        description: "ADSS combines satellite and drone data to monitor crop health and field conditions. It helps farmers and stakeholders improve irrigation efficiency, detect crop stress early, and make better data-driven farming decisions.",
-        headerImage: "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?q=80&w=1200&auto=format&fit=crop",
-        cardImage: "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?q=80&w=800&auto=format&fit=crop", // Wheat/Field analysis
+        description: "KrishiZest combines satellite and drone data to monitor crop health and field conditions. It helps farmers and stakeholders improve irrigation efficiency, detect crop stress early, and make better data-driven farming decisions.",
+        headerImage: "/krishizest.jpg",
+        cardImage: "/krishizest.jpg", // Precision farming map dashboard
         features: [
             "Crop health monitoring (NDVI)",
             "Soil moisture estimation",
@@ -103,8 +103,8 @@ export const platformsData = {
         color: "blue",
         accent: "from-blue-500 to-cyan-500",
         description: "Mapzest Basic is the foundational Web GIS platform for hosting and visualizing spatial data. Users can perform basic satellite analysis, run spatial queries, print maps, and manage everyday geospatial workflows with ease.",
-        headerImage: "https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=1200&auto=format&fit=crop",
-        cardImage: "https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=800&auto=format&fit=crop", // Data/Satellite view
+        headerImage: "/mapzest_go.png",
+        cardImage: "/mapzest_go_dashboard.png", // Data/Satellite view
         features: [
             "DEM & DSM generation",
             "Green Index calculation",
@@ -136,8 +136,8 @@ export const platformsData = {
         color: "purple",
         accent: "from-purple-500 to-pink-500",
         description: "Geo Catalog is a centralized platform to explore and visualize spatial datasets. It presents geospatial data in a clean and interactive way, making discovery, preview, and understanding of spatial information effortless.",
-        headerImage: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1200&auto=format&fit=crop",
-        cardImage: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=800&auto=format&fit=crop", // Server/Network
+        headerImage: "/geo_catalog.jpg",
+        cardImage: "/geo_catalog_dashboard.jpg", // Server/Network
         features: [
             "Petabyte-scale data storage",
             "OGC compliant web services (WMS/WFS)",
@@ -161,14 +161,14 @@ export const platformsData = {
     },
     survey: {
         id: 'survey',
-        title: "TerraPoint",
+        title: "MapZest",
         subtitle: "Field Survey Application",
         icon: <ClipboardList className="w-12 h-12 text-orange-500" />,
         color: "orange",
         accent: "from-orange-500 to-red-500",
         description: "High-precision field utility. Geotagged evidence capture, offline synchronization, and instant cloud-based verification for synchronized team workflows.",
-        headerImage: "https://images.unsplash.com/photo-1508614589041-895b88991e3e?q=80&w=1200&auto=format&fit=crop",
-        cardImage: "https://images.unsplash.com/photo-1508614589041-895b88991e3e?q=80&w=800&auto=format&fit=crop", // Tablet/Survey
+        headerImage: "/mapzest_survey.png",
+        cardImage: "/mapzest_survey_dashboard.png", // Tablet/Survey
         features: [
             "Offline data collection",
             "GPS track recording",
@@ -198,8 +198,8 @@ export const platformsData = {
         color: "cyan",
         accent: "from-cyan-500 to-blue-500",
         description: "Advanced geodetic utility. Instantly determine precise Universal Transverse Mercator zones with global coverage and sub-meter coordinate engineering.",
-        headerImage: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1200&auto=format&fit=crop",
-        cardImage: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=800&auto=format&fit=crop", // Compass/Map
+        headerImage: "/mapzest_geo_tools.png",
+        cardImage: "/mapzest_geo_tools_dashboard.png", // Compass/Map
         features: [
             "Interactive global zone map",
             "Coordinate conversion (Lat/Long to UTM)",

@@ -70,11 +70,6 @@ const Services = () => {
                                     />
                                     {/* Soft border gradient or vignette overlay */}
                                     <div className="absolute inset-0 bg-gradient-to-tr from-slate-950/10 to-transparent pointer-events-none"></div>
-                                    
-                                    {/* Capability Number Indicator in Mono font - glass badge */}
-                                    <div className="absolute top-4 right-4 bg-slate-950/40 backdrop-blur-md border border-white/10 text-white text-[10px] font-mono font-bold tracking-widest px-3 py-1 rounded-full z-10 select-none shadow-sm group-hover:bg-accent-cyan/60 group-hover:border-accent-cyan/20 transition-colors duration-500">
-                                        [{String(index + 1).padStart(2, '0')}]
-                                    </div>
                                 </div>
 
                                 {/* Text Section */}
@@ -83,7 +78,7 @@ const Services = () => {
                                         <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-accent-cyan mb-2">
                                             Capability
                                         </span>
-                                        <h3 className="text-xl md:text-2xl font-extrabold text-slate-900 mb-2 group-hover:text-accent-cyan transition-colors leading-tight">
+                                        <h3 className="text-xl md:text-2xl font-extrabold text-slate-900 mb-2 group-hover:text-blue-900 active:text-blue-950 transition-colors leading-tight">
                                             {service.title}
                                         </h3>
                                         <p className="text-slate-600 text-sm leading-relaxed font-normal line-clamp-3">

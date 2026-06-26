@@ -45,18 +45,18 @@ const Blogs = () => {
                     </motion.p>
                 </div>
 
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto gap-y-6 md:gap-y-12">
+                <div className="flex flex-col gap-12 max-w-5xl mx-auto">
                     {blogs.map((blog, index) => (
                         <motion.div
                             key={blog.id}
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: index * 0.1 + 0.3 }}
-                            className="group relative flex flex-col h-full pb-12"
+                            className="group relative w-full"
                         >
-                            <Link to={`/blogs/${blog.id}`} className="block h-full relative">
+                            <Link to={`/blogs/${blog.id}`} className="flex flex-col md:flex-row items-center h-full relative">
                                 {/* Image Container */}
-                                <div className="relative aspect-[16/10] rounded-3xl overflow-hidden shadow-md border border-slate-200/50">
+                                <div className="relative w-full md:w-[48%] aspect-[16/10] md:aspect-[16/11] rounded-3xl overflow-hidden shadow-md border border-slate-200/50 shrink-0 z-0">
                                     <div className="absolute top-4 left-4 z-10">
                                         <span className="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-xs font-bold text-white border border-white/10">
                                             {blog.category}
@@ -65,13 +65,13 @@ const Blogs = () => {
                                     <img
                                         src={blog.image}
                                         alt={blog.title}
-                                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950/20 to-transparent"></div>
                                 </div>
 
                                 {/* Floating Content Box */}
-                                <div className="premium-card-content relative z-10 mx-4 -mt-16 p-6 flex flex-col rounded-3xl flex-grow min-h-[280px]">
+                                <div className="premium-card-content relative z-10 w-[92%] md:w-[58%] mx-auto -mt-12 md:-mt-0 md:-ml-12 p-6 md:p-8 flex flex-col rounded-3xl min-h-[260px] md:min-h-[280px]">
                                     <div className="flex items-center gap-4 text-sm text-slate-500 mb-4">
                                         <div className="flex items-center gap-1.5">
                                             <Calendar className="w-4 h-4 text-accent-cyan" />
@@ -81,7 +81,7 @@ const Blogs = () => {
                                         <span>{blog.readTime}</span>
                                     </div>
 
-                                    <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-accent-cyan transition-colors line-clamp-2 leading-tight">
+                                    <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-blue-900 active:text-blue-950 transition-colors line-clamp-2 leading-tight">
                                         {blog.title}
                                     </h3>
 
@@ -91,8 +91,8 @@ const Blogs = () => {
 
                                     <div className="flex items-center justify-between border-t border-slate-100 pt-6 mt-auto">
                                         <div className="flex items-center gap-2">
-                                            <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-accent-cyan to-accent-purple flex items-center justify-center text-xs font-bold text-white">
-                                                {blog.author.charAt(0)}
+                                            <div className="h-8 w-16 flex items-center justify-center">
+                                                <img src="/terraqua_logo.png" alt="Terraqua" className="w-full h-full object-contain" />
                                             </div>
                                             <span className="text-sm font-medium text-slate-600">{blog.author}</span>
                                         </div>

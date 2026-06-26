@@ -58,9 +58,16 @@ const Navbar = () => {
         { name: 'Contact', path: '/contact' },
     ];
 
+    const hasDarkHeader = (location.pathname.startsWith('/platforms/') && location.pathname !== '/platforms') || location.pathname === '/';
+    const useWhiteText = hasDarkHeader && !scrolled;
+
     // Active link color logic
-    const activeColorClass = 'text-accent-cyan font-bold';
-    const inactiveColorClass = 'text-slate-600 hover:text-slate-900';
+    const activeColorClass = useWhiteText 
+        ? 'text-sky-400 font-bold' 
+        : 'text-accent-cyan font-bold';
+    const inactiveColorClass = useWhiteText 
+        ? 'text-white/80 hover:text-white' 
+        : 'text-slate-600 hover:text-slate-900';
 
     const initiateLogout = () => {
         setProfileOpen(false);
@@ -90,8 +97,12 @@ const Navbar = () => {
                     }`}
             >
                 <div className="max-w-7xl mx-auto px-6 md:px-8 flex justify-between items-center relative">
-                    <Link to="/" className="flex items-center gap-2 group flex-shrink-0 z-20">
-                        <img src="/MAPZEST.png" alt="Mapzest" className="h-10 w-auto object-contain transition-transform group-hover:scale-105 duration-300" />
+                    <Link to="/" className="relative flex items-center group flex-shrink-0 z-20 h-10 w-48">
+                        <img 
+                            src="/MAPZEST.png" 
+                            alt="Mapzest" 
+                            className="absolute h-56 max-w-none w-auto left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-transform group-hover:scale-[1.05] duration-300" 
+                        />
                     </Link>
 
                     {/* Center: Nav Links - Absolute Centered */}
@@ -100,17 +111,18 @@ const Navbar = () => {
                             <Link
                                 key={link.name}
                                 to={link.path}
-                                className={`relative text-sm font-medium tracking-wide transition-colors duration-300 ${location.pathname === link.path
+                                className={`relative text-[17px] font-semibold tracking-wide transition-colors duration-300 ${location.pathname === link.path
                                     || (link.path !== '/' && location.pathname.startsWith(link.path))
                                     ? activeColorClass
                                     : inactiveColorClass
                                     }`}
+                                
                             >
                                 {link.name}
                                 {(location.pathname === link.path || (link.path !== '/' && location.pathname.startsWith(link.path))) && (
                                     <motion.div
                                         layoutId="underline"
-                                        className="absolute -bottom-1 left-0 w-full h-[2px] bg-accent-cyan"
+                                        className={`absolute -bottom-1 left-0 w-full h-[2px] ${useWhiteText ? 'bg-sky-400' : 'bg-accent-cyan'}`}
                                     />
                                 )}
                             </Link>
@@ -144,10 +156,10 @@ const Navbar = () => {
                                         )}
                                     </div>
 
-                                    <span className="text-sm font-medium transition-colors text-slate-700 group-hover:text-slate-900">
-                                        {user.displayName?.split(' ')[0]}
-                                    </span>
-                                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${profileOpen ? 'rotate-180' : ''} text-slate-500`} />
+                                     <span className={`text-sm font-medium transition-colors ${useWhiteText ? 'text-white/85 group-hover:text-white' : 'text-slate-700 group-hover:text-slate-900'}`}>
+                                         {user.displayName?.split(' ')[0]}
+                                     </span>
+                                     <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${profileOpen ? 'rotate-180' : ''} ${useWhiteText ? 'text-white/60' : 'text-slate-500'}`} />
                                 </button>
 
                                 <AnimatePresence>
@@ -215,7 +227,7 @@ const Navbar = () => {
 
                     {/* Mobile Menu Button */}
                     <button
-                        className="md:hidden focus:outline-none transition-colors duration-300 z-20 text-slate-800"
+                        className={`md:hidden focus:outline-none transition-colors duration-300 z-20 ${useWhiteText ? 'text-white' : 'text-slate-800'}`}
                         onClick={() => setIsOpen(true)}
                     >
                         <Menu className="w-8 h-8" />

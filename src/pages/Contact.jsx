@@ -151,7 +151,7 @@ const Contact = () => {
                                 marginHeight="0"
                                 marginWidth="0"
                                 src="https://www.openstreetmap.org/export/embed.html?bbox=80.2229%2C26.5032%2C80.2429%2C26.5232&amp;layer=mapnik&amp;marker=26.5132%2C80.2329"
-                                className="w-full h-full grayscale-[20%] opacity-90 hover:grayscale-0 hover:opacity-100 transition-all duration-700"
+                                className="w-full h-[calc(100%+30px)] grayscale-[20%] opacity-90 hover:grayscale-0 hover:opacity-100 transition-all duration-700"
                             ></iframe>
                             <div className="absolute bottom-4 right-4 z-20">
                                 <a
@@ -243,7 +243,7 @@ const Contact = () => {
                                 type="submit"
                                 disabled={status === 'sending'}
                                 className={`w-full py-5 mt-4 text-white font-bold text-lg rounded-xl transition-all duration-300 flex items-center justify-center gap-2 group
-                                    ${status === 'sending' ? 'bg-gray-400 cursor-not-allowed' : 'bg-gradient-to-r from-accent-cyan to-blue-500 hover:shadow-lg hover:shadow-accent-cyan/25 hover:scale-[1.02]'}`}
+                                    ${status === 'sending' ? 'bg-gray-400 cursor-not-allowed' : 'bg-gradient-to-r from-orange-500 to-red-500 hover:shadow-lg hover:shadow-orange-500/25 hover:scale-[1.02]'}`}
                             >
                                 <span>{status === 'sending' ? 'Sending...' : 'Send Message'}</span>
                                 {status !== 'sending' && <Send className="w-5 h-5 group-hover:translate-x-1 transition-transform" />}

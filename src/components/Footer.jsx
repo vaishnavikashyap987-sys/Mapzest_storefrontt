@@ -8,7 +8,13 @@ const Footer = () => {
             <div className="max-w-7xl mx-auto px-4">
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
                     <div className="col-span-1 md:col-span-2">
-                        <img src="/MAPZEST.png" alt="Mapzest" className="h-10 w-auto object-contain mb-4 transition-transform hover:scale-105 duration-300" />
+                        <div className="relative h-10 w-48 mb-4">
+                            <img 
+                                src="/MAPZEST.png" 
+                                alt="Mapzest" 
+                                className="absolute h-56 max-w-none w-auto left-0 top-1/2 transform -translate-y-1/2 transition-transform hover:scale-105 duration-300" 
+                            />
+                        </div>
                         <p className="text-slate-600 max-w-sm mt-4">
                             Empowering the world with geospatial intelligence. We turn pixels into meaningful data for a sustainable future.
                         </p>

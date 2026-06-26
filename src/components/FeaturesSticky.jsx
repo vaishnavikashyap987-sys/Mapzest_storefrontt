@@ -8,14 +8,14 @@ const features = [
         prefix: "Precision ",
         accent: "Agriculture",
         description: "Optimize crop yields with multispectral imagery and AI-driven insights. Detect stress early and manage resources efficiently.",
-        image: "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?q=80&w=800&auto=format&fit=crop"
+        image: "/krishizest.jpg"
     },
     {
         id: "basic",
         prefix: "Urban ",
         accent: "Planning",
         description: "Visualize city growth and infrastructure with high-resolution 3D models. Plan smarter cities for a sustainable future.",
-        image: "https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=800&auto=format&fit=crop",
+        image: "/mapzest_go.png",
         pricing: "Open Access"
     },
     {
@@ -23,14 +23,14 @@ const features = [
         prefix: "Disaster ",
         accent: "Management",
         description: "Rapid response mapping for floods, fires, and natural disasters. Real-time data when it matters most.",
-        image: "https://images.unsplash.com/photo-1547683905-f686c993aae5?q=80&w=800&auto=format&fit=crop"
+        image: "/fram_dashboard.png"
     },
     {
         id: "nrmm",
         prefix: "Environmental ",
         accent: "Monitoring",
         description: "Track deforestation, water quality, and climate change indicators with global satellite coverage.",
-        image: "https://images.unsplash.com/photo-1448375240586-882707db888b?q=80&w=800&auto=format&fit=crop"
+        image: "/nrmm_dashboard.png"
     }
 ];
 

@@ -52,14 +52,14 @@ const ServicesPage = () => {
 
                         {/* Floating Content Box */}
                         <div className="premium-card-content relative z-10 mx-4 -mt-16 p-6 md:p-8 flex flex-col rounded-3xl flex-grow min-h-[220px]">
-                            <h3 className="text-2xl font-bold mb-3 text-slate-900 group-hover:text-accent-cyan transition-colors leading-tight">
+                            <h3 className="text-2xl font-bold mb-3 text-slate-900 group-hover:text-blue-900 active:text-blue-950 transition-colors leading-tight">
                                 {service.title}
                             </h3>
                             <p className="text-slate-600 leading-relaxed mb-6 text-sm flex-grow">
                                 {service.description}
                             </p>
 
-                            <button className="flex items-center gap-2 text-sm font-bold text-slate-500 group-hover:text-accent-cyan transition-colors uppercase tracking-wider mt-auto">
+                            <button className="flex items-center gap-2 text-sm font-bold text-slate-500 hover:text-blue-900 transition-colors uppercase tracking-wider mt-auto">
                                 Explore Service <ArrowRight size={16} />
                             </button>
                         </div>

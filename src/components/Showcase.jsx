@@ -13,18 +13,18 @@ const Showcase = () => {
     const opacity = useTransform(scrollYProgress, [0, 0.3, 0.8, 1], [0, 1, 1, 0]);
 
     return (
-        <section ref={containerRef} className="py-12 md:py-16 relative overflow-hidden">
-            <div className="max-w-7xl mx-auto px-6 md:px-8 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
+        <section ref={containerRef} className="py-8 md:py-10 relative overflow-hidden">
+            <div className="max-w-7xl mx-auto px-6 md:px-8 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 items-center">
                 {/* Text Content */}
                 <motion.div
                     style={{ y, opacity }}
                     className="relative z-10"
                 >
-                    <h2 className="text-5xl md:text-7xl font-bold mb-8 leading-tight text-slate-900">
+                    <h2 className="text-5xl md:text-7xl font-bold mb-4 leading-tight text-slate-900">
                         See the World <br />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-accent-cyan">Differently</span>
                     </h2>
-                    <p className="text-xl text-slate-600 mb-8 leading-relaxed">
+                    <p className="text-xl text-slate-600 mb-5 leading-relaxed">
                         It’s not just about maps; it’s about understanding. Mapzest empowers you with deep insights into environmental changes and urban dynamics, making complex satellite data accessible and useful for everyone.
                     </p>
                     <Link to="/blogs">

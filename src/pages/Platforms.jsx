@@ -49,7 +49,6 @@ const Platforms = () => {
                                 >
                                     {/* Banner Image */}
                                     <div className="relative aspect-[16/10] rounded-3xl overflow-hidden shadow-md border border-slate-200/50">
-                                        <div className={`absolute inset-0 bg-${platform.color}-500/10 mixed-blend-overlay z-10 group-hover:bg-transparent transition-colors`}></div>
                                         <img
                                             src={platform.cardImage}
                                             alt={platform.title}
@@ -68,11 +67,11 @@ const Platforms = () => {
                                     <div className="premium-card-content relative z-10 mx-4 -mt-16 p-6 md:p-8 bg-white/90 backdrop-blur-md rounded-3xl border border-slate-100 flex flex-col flex-grow min-h-[260px]">
                                         <div className="flex items-start justify-between mb-4 gap-2">
                                             <div className="flex flex-col">
-                                                <h3 className="text-2xl font-bold text-slate-900 group-hover:text-accent-cyan transition-colors leading-tight">{platform.title}</h3>
+                                                <h3 className="text-2xl font-bold text-slate-900 group-hover:text-blue-900 active:text-blue-950 transition-colors leading-tight">{platform.title}</h3>
                                                 <p className="text-xs text-accent-cyan font-bold mt-1 uppercase tracking-wider">{platform.subtitle}</p>
                                             </div>
                                             <div className={`p-2.5 rounded-2xl ${style.bg} border ${style.border} flex items-center justify-center shrink-0`}>
-                                                {React.cloneElement(platform.icon, { className: `w-6 h-6 ${style.text}` })}
+                                                {React.cloneElement(platform.icon, { className: `w-5 h-5 ${style.text}` })}
                                             </div>
                                         </div>
 

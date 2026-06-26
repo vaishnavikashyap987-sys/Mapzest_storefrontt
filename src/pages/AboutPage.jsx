@@ -102,27 +102,29 @@ const AboutPage = () => {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     {values.map((item, i) => (
-                        <div key={i} className="group premium-card-content p-8 rounded-[30px] overflow-hidden flex flex-col justify-start relative">
-                            {/* Sleek Corner Brackets for a high-tech instrument feel */}
-                            <div className={`absolute top-4 left-4 w-2 h-2 border-t border-l border-slate-300/40 rounded-tl ${item.cornerColor} transition-colors duration-500`}></div>
-                            <div className={`absolute top-4 right-4 w-2 h-2 border-t border-r border-slate-300/40 rounded-tr ${item.cornerColor} transition-colors duration-500`}></div>
-                            <div className={`absolute bottom-4 left-4 w-2 h-2 border-b border-l border-slate-300/40 rounded-bl ${item.cornerColor} transition-colors duration-500`}></div>
-                            <div className={`absolute bottom-4 right-4 w-2 h-2 border-b border-r border-slate-300/40 rounded-br ${item.cornerColor} transition-colors duration-500`}></div>
+                        <div key={i} className="group h-full">
+                            <div className="bg-white/95 border border-slate-200 h-full p-8 rounded-[30px] overflow-hidden flex flex-col justify-start relative shadow-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-md hover:border-slate-300">
+                                {/* Sleek Corner Brackets for a high-tech instrument feel */}
+                                <div className={`absolute top-4 left-4 w-2 h-2 border-t border-l border-slate-300/40 rounded-tl ${item.cornerColor} transition-colors duration-500`}></div>
+                                <div className={`absolute top-4 right-4 w-2 h-2 border-t border-r border-slate-300/40 rounded-tr ${item.cornerColor} transition-colors duration-500`}></div>
+                                <div className={`absolute bottom-4 left-4 w-2 h-2 border-b border-l border-slate-300/40 rounded-bl ${item.cornerColor} transition-colors duration-500`}></div>
+                                <div className={`absolute bottom-4 right-4 w-2 h-2 border-b border-r border-slate-300/40 rounded-br ${item.cornerColor} transition-colors duration-500`}></div>
 
-                            {/* High-tech pulsing/spinning radar ring container */}
-                            <div className="relative mb-6 flex items-center justify-start w-fit">
-                                <div className={`absolute inset-0 rounded-full border border-dashed ${item.borderColor} animate-spin-slow scale-125 transition-all duration-500`}></div>
-                                <div className={`absolute inset-0 rounded-full border ${item.ringColor} animate-ping opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
-                                
-                                <div className={`relative p-4 bg-white border border-slate-200/60 rounded-full w-fit ${item.hoverBg} group-hover:scale-110 ${item.hoverBorder} transition-all duration-500 flex items-center justify-center shadow-md z-10`}>
-                                    <item.Icon className={`w-8 h-8 ${item.color} transition-colors duration-300`} />
+                                {/* High-tech pulsing/spinning radar ring container */}
+                                <div className="relative mb-6 flex items-center justify-start w-fit">
+                                    <div className={`absolute inset-0 rounded-full border border-dashed ${item.borderColor} animate-spin-slow scale-125 transition-all duration-500`}></div>
+                                    <div className={`absolute inset-0 rounded-full border ${item.ringColor} animate-ping opacity-0 group-hover:opacity-100 transition-opacity duration-500`}></div>
+                                    
+                                    <div className={`relative p-3 bg-white border border-slate-200/60 rounded-full w-fit ${item.hoverBg} group-hover:scale-110 ${item.hoverBorder} transition-all duration-500 flex items-center justify-center shadow-md z-10`}>
+                                        <item.Icon strokeWidth={1.6} fill="currentColor" fillOpacity={0.12} className={`w-7 h-7 ${item.color} transition-colors duration-300`} />
+                                    </div>
                                 </div>
-                            </div>
 
-                            <h3 className="text-xl font-bold mb-3 text-slate-900 group-hover:text-slate-950 transition-colors">{item.title}</h3>
-                            <p className="text-slate-600 leading-relaxed text-sm">
-                                {item.desc}
-                            </p>
+                                <h3 className="text-xl font-bold mb-3 text-slate-900 transition-colors">{item.title}</h3>
+                                <p className="text-slate-650 leading-relaxed text-sm">
+                                    {item.desc}
+                                </p>
+                            </div>
                         </div>
                     ))}
                 </div>

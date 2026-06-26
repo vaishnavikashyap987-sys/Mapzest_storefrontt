@@ -150,10 +150,15 @@ const PlatformDetail = () => {
                                         whileInView={{ opacity: 1, y: 0 }}
                                         viewport={{ once: true }}
                                         transition={{ delay: index * 0.1 }}
-                                        className="glass-panel p-6 rounded-xl hover:bg-white transition-colors"
+                                        className="group glass-panel p-8 rounded-2xl bg-white border border-slate-200 hover:border-accent-cyan hover:shadow-xl hover:shadow-slate-200/50 hover:-translate-y-1 transition-all duration-300 relative overflow-hidden"
                                     >
-                                        <h3 className="text-xl font-bold text-slate-900 mb-3">{useCase.title}</h3>
-                                        <p className="text-slate-600">{useCase.description}</p>
+                                        <div className="absolute -top-10 -right-10 w-24 h-24 bg-gradient-to-tr from-cyan-400 to-blue-500 rounded-full blur-2xl opacity-0 group-hover:opacity-10 transition-opacity duration-300 pointer-events-none"></div>
+                                        <h3 className="text-xl font-bold text-slate-900 group-hover:text-blue-900 transition-colors duration-300 mb-3">
+                                            {useCase.title}
+                                        </h3>
+                                        <p className="text-slate-600 group-hover:text-slate-800 transition-colors duration-300 leading-relaxed text-sm">
+                                            {useCase.description}
+                                        </p>
                                     </motion.div>
                                 ))}
                             </div>
@@ -182,17 +187,17 @@ const PlatformDetail = () => {
                                 <button
                                     onClick={() => isLaunchUnlocked && platform.url ? window.open(platform.url, '_blank') : null}
                                     disabled={!isLaunchUnlocked}
-                                    className={`w-full py-4 rounded-lg font-bold text-white transition-all flex items-center justify-center gap-2 mb-4 group
+                                    className={`w-full py-4 rounded-lg font-bold transition-all flex items-center justify-center gap-2 mb-4 group
                                         ${isLaunchUnlocked
-                                            ? `bg-gradient-to-r ${platform.accent} hover:opacity-90 cursor-pointer`
-                                            : 'bg-slate-100 text-slate-400 cursor-not-allowed border border-slate-200'
+                                            ? 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white hover:shadow-lg hover:shadow-blue-500/25 hover:scale-[1.02] cursor-pointer'
+                                            : 'bg-blue-50/50 text-blue-500 border border-blue-200/60 cursor-not-allowed'
                                         }`}
                                 >
                                     {isLaunchUnlocked ? 'Launch Platform' : 'Launch Platform'}
                                     {isLaunchUnlocked ? (
                                         <ExternalLink size={18} className="group-hover:translate-x-1 transition-transform" />
                                     ) : (
-                                        <Lock size={18} className="text-slate-400" />
+                                        <Lock size={18} className="text-blue-500" />
                                     )}
                                 </button>
 
@@ -207,18 +212,19 @@ const PlatformDetail = () => {
                                 )}
                             </motion.div>
 
-                            {/* Features List */}
-                            <div className="glass-panel p-8 rounded-2xl bg-white border border-slate-200">
-                                <h3 className="text-xl font-bold text-slate-900 mb-6">Key Features</h3>
-                                <ul className="space-y-4">
-                                    {platform.features.map((feature, index) => (
-                                        <li key={index} className="flex items-start gap-3">
-                                            <CheckCircle className={`w-5 h-5 flex-shrink-0 mt-0.5 text-${platform.color}-500`} />
-                                            <span className="text-slate-700">{feature}</span>
-                                        </li>
-                                    ))}
-                                </ul>
-                            </div>
+                             {/* Features List */}
+                             <div className="group glass-panel p-8 rounded-2xl bg-white border border-slate-200 hover:border-accent-cyan hover:shadow-xl hover:shadow-slate-200/50 hover:-translate-y-1 transition-all duration-300 relative overflow-hidden">
+                                 <div className="absolute -top-10 -right-10 w-24 h-24 bg-gradient-to-tr from-cyan-400 to-blue-500 rounded-full blur-2xl opacity-0 group-hover:opacity-10 transition-opacity duration-300 pointer-events-none"></div>
+                                 <h3 className="text-xl font-bold text-slate-900 group-hover:text-blue-900 transition-colors duration-300 mb-6">Key Features</h3>
+                                 <ul className="space-y-4">
+                                     {platform.features.map((feature, index) => (
+                                         <li key={index} className="flex items-start gap-3 group/item">
+                                             <CheckCircle className={`w-5 h-5 flex-shrink-0 mt-0.5 text-${platform.color}-500 transition-transform duration-300 group-hover/item:scale-110`} />
+                                             <span className="text-slate-700 transition-colors duration-300 group-hover/item:text-slate-950">{feature}</span>
+                                         </li>
+                                     ))}
+                                 </ul>
+                             </div>
                         </div>
                     </div>
                 </div>
