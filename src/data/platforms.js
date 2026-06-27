@@ -12,7 +12,7 @@ const GENERIC_APPS = [
     { id: 'adss', name: 'KrishiZest', desc: 'Agriculture Decision Support System for precision farming.', url: import.meta.env.VITE_ADSS_URL || 'http://localhost:3005/sso-callback', image: "/krishizest.jpg" },
     { id: 'catalog', name: 'Geo Catalog', desc: 'Enterprise Data Hosting & Discovery repository.', url: '#', image: "/geo_catalog_dashboard.jpg" },
     { id: 'survey', name: 'MapZest', desc: 'Mobile Field Data Collection & Validation.', url: '#', image: "/mapzest_survey_dashboard.png" },
-    { id: 'p_disaster_mgmt', name: 'Disaster Management', desc: 'Real-time crisis mapping and resource allocation.', url: 'https://example-disaster-platform.cloudfront.net', image: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=800&auto=format&fit=crop" }
+    { id: 'p_disaster_mgmt', name: 'Disaster Management', desc: 'Real-time crisis mapping and resource allocation.', url: 'https://example-disaster-platform.cloudfront.net', image: "/flood_newspaper.jpg" }
 ].map(app => ({
     ...app,
     plans: STORAGE_TIERS.map(tier => ({

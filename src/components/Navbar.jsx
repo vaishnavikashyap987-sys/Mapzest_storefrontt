@@ -58,7 +58,7 @@ const Navbar = () => {
         { name: 'Contact', path: '/contact' },
     ];
 
-    const hasDarkHeader = (location.pathname.startsWith('/platforms/') && location.pathname !== '/platforms') || location.pathname === '/';
+    const hasDarkHeader = location.pathname.startsWith('/platforms') || location.pathname === '/';
     const useWhiteText = hasDarkHeader && !scrolled;
 
     // Active link color logic
@@ -218,7 +218,7 @@ const Navbar = () => {
                         ) : (
                             <button
                                 onClick={() => setIsLoginOpen(true)}
-                                className="px-6 py-2 rounded-full transition-all duration-300 text-sm font-medium border bg-orange-600 text-white border-orange-600 hover:bg-orange-700 hover:border-orange-700 shadow-md hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
+                                className="px-6 py-2 rounded-full transition-all duration-300 text-sm font-medium border border-transparent bg-gradient-to-r from-sky-400 to-blue-500 hover:from-sky-500 hover:to-blue-600 text-white shadow-md hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
                             >
                                 Sign In
                             </button>
@@ -325,7 +325,7 @@ const Navbar = () => {
                                                     setIsOpen(false);
                                                     setIsLoginOpen(true);
                                                 }}
-                                                className="w-full py-3 bg-orange-600 hover:bg-orange-700 text-white font-bold rounded-xl transition-colors mt-auto shadow-md cursor-pointer"
+                                                className="w-full py-3 bg-gradient-to-r from-sky-400 to-blue-500 hover:from-sky-500 hover:to-blue-600 text-white font-bold rounded-xl transition-all mt-auto shadow-md cursor-pointer"
                                             >
                                                 Sign In
                                             </button>

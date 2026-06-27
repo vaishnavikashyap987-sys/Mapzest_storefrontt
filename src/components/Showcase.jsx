@@ -9,7 +9,7 @@ const Showcase = () => {
         offset: ["start end", "end start"]
     });
 
-    const y = useTransform(scrollYProgress, [0, 1], [30, -30]);
+    const y = useTransform(scrollYProgress, [0, 1], [0, -60]);
     const opacity = useTransform(scrollYProgress, [0, 0.3, 0.8, 1], [0, 1, 1, 0]);
 
     return (
@@ -20,17 +20,17 @@ const Showcase = () => {
                     style={{ y, opacity }}
                     className="relative z-10"
                 >
-                    <h2 className="text-5xl md:text-7xl font-bold mb-4 leading-tight text-slate-900">
+                    <h2 className="text-2xl md:text-4xl font-bold mb-4 md:mb-6 leading-tight text-slate-900">
                         See the World <br />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-accent-cyan">Differently</span>
                     </h2>
-                    <p className="text-xl text-slate-600 mb-5 leading-relaxed">
+                    <p className="text-sm md:text-lg text-slate-600 mb-5 leading-relaxed">
                         It’s not just about maps; it’s about understanding. Mapzest empowers you with deep insights into environmental changes and urban dynamics, making complex satellite data accessible and useful for everyone.
                     </p>
                     <Link to="/blogs">
-                        <button className="text-accent-cyan font-bold text-lg hover:text-cyan-700 transition-colors flex items-center gap-2 group">
+                        <button className="text-accent-cyan font-bold text-sm sm:text-base hover:text-cyan-700 transition-colors flex items-center gap-1.5 sm:gap-2 group">
                             Blogs
-                            <span className="group-hover:translate-x-2 transition-transform">→</span>
+                            <span className="group-hover:translate-x-1.5 transition-transform">→</span>
                         </button>
                     </Link>
                 </motion.div>
@@ -38,13 +38,13 @@ const Showcase = () => {
                 {/* Image Parallax */}
                 <div className="relative aspect-[16/10] md:h-[450px] lg:h-[500px] w-full rounded-3xl overflow-hidden border border-slate-200/50 shadow-md">
                     <motion.div
-                        style={{ y: useTransform(scrollYProgress, [0, 1], [40, -40]) }}
+                        style={{ y: useTransform(scrollYProgress, [0, 1], [20, -20]) }}
                         className="w-full h-full z-10"
                     >
                         <img
                             src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?q=80&w=1000&auto=format&fit=crop"
                             alt="Data Analysis"
-                            className="w-full h-full object-cover scale-110 transition-all duration-700 brightness-[0.98] hover:brightness-100"
+                            className="w-full h-full object-cover scale-120 transition-all duration-700 brightness-[0.98] hover:brightness-100"
                         />
                     </motion.div>
                 </div>

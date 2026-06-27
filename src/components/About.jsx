@@ -8,7 +8,7 @@ const features = [
         title: "High Resolution Data Acquisition",
         description: "Capturing precise optical, radar, and drone data from leading constellations and sensors.",
         provider: "Terraqua UAV",
-        image: "https://images.unsplash.com/photo-1527977966376-1c8408f9f108?q=80&w=800&auto=format&fit=crop"
+        image: "/high_res_data_acquisition.png"
     },
     {
         icon: <Cpu strokeWidth={1.6} fill="currentColor" fillOpacity={0.12} />,
@@ -45,18 +45,20 @@ const About = () => {
     return (
         <section ref={containerRef} className="pt-10 pb-12 md:pt-20 md:pb-16 relative">
             <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
-                <div className="flex flex-col items-center mb-20">
+                <div className="flex flex-col items-center mb-10 sm:mb-14">
                     <motion.div
                         style={{ y: imageY, scale: imageScale }}
                         className="relative perspective-1000 w-full max-w-5xl flex justify-center mb-16"
                     >
-                        <img
-                            src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?q=80&w=1000&auto=format&fit=crop"
-                            alt="Geospatial Graphic"
-                            className="w-full object-contain mix-blend-screen opacity-90 drop-shadow-2xl"
-                        />
+                        <div className="w-full overflow-hidden rounded-3xl border border-slate-200/50 shadow-2xl">
+                            <img
+                                src="/mapzest_collage.png"
+                                alt="MapZest Platform Collage"
+                                className="w-[102%] max-w-none -ml-[1%] object-contain"
+                            />
+                        </div>
                     </motion.div>
-
+ 
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -64,20 +66,19 @@ const About = () => {
                         transition={{ duration: 0.8 }}
                         className="text-center max-w-4xl"
                     >
-                        <h2 className="text-4xl md:text-6xl font-bold mb-10 text-slate-900">
+                        <h2 className="text-2xl md:text-4xl font-bold mb-4 md:mb-6 text-slate-900">
                             What is <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-accent-cyan">MapZest?</span>
                         </h2>
-                        <p className="text-slate-600 text-lg md:text-xl leading-relaxed text-center">
+                        <p className="text-slate-600 text-sm md:text-lg leading-relaxed text-center">
                             MapZest is a web-based geospatial platform designed to simplify how users explore, analyze, and manage spatial data across different domains. It provides a unified environment where multiple specialized modules are integrated under one system, each tailored for specific sectors such as agriculture, disaster management, environmental monitoring, and urban planning.
-                            <br /><br />
-                            <span className="text-base text-slate-500">
-                                Powered by <a href="https://www.terraquauav.com" target="_blank" rel="noopener noreferrer" className="text-accent-cyan hover:text-accent-purple transition-colors hover:underline">Terraqua UAV</a>
-                            </span>
+                        </p>
+                        <p className="text-xs md:text-sm text-slate-550 mt-4 md:mt-6 text-center">
+                            Powered by <a href="https://www.terraquauav.com" target="_blank" rel="noopener noreferrer" className="text-blue-900 font-semibold hover:text-accent-cyan transition-colors hover:underline">TerrAqua UAV</a>
                         </p>
                     </motion.div>
                 </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10 w-full mt-10">
+ 
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8 relative z-10 w-full mt-6 sm:mt-8">
                     {features.map((feature, index) => (
                         <motion.div
                             key={index}
@@ -85,10 +86,10 @@ const About = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.5, delay: index * 0.1 }}
-                            className="group flex flex-col relative pb-12"
+                            className="group flex flex-col relative pb-6 sm:pb-12"
                         >
                             {/* Image Container */}
-                            <div className="relative aspect-[16/10] rounded-3xl overflow-hidden shadow-md z-0 border border-slate-200/50">
+                            <div className="relative aspect-[2.4/1] sm:aspect-[16/10] rounded-2xl sm:rounded-3xl overflow-hidden shadow-md z-0 border border-slate-200/50">
                                 <img
                                     src={feature.image}
                                     alt={feature.title}
@@ -98,7 +99,7 @@ const About = () => {
                             </div>
 
                             {/* Overlapping Floating Content Box */}
-                            <div className="premium-card-content relative z-10 mx-3 -mt-10 py-5 px-4 flex flex-col items-center text-center rounded-3xl flex-grow overflow-hidden">
+                            <div className="premium-card-content relative z-10 mx-5 sm:mx-3 -mt-6 sm:-mt-10 py-3 px-3 sm:py-5 sm:px-4 flex flex-col items-center text-center rounded-2xl sm:rounded-3xl flex-grow overflow-hidden">
 
                                 {/* Sleek Corner Brackets for a high-tech instrument feel */}
                                 <div className="absolute top-4 left-4 w-2 h-2 border-t border-l border-slate-300/40 rounded-tl group-hover:border-accent-cyan/60 transition-colors"></div>
@@ -107,20 +108,20 @@ const About = () => {
                                 <div className="absolute bottom-4 right-4 w-2 h-2 border-b border-r border-slate-300/40 rounded-br group-hover:border-accent-cyan/60 transition-colors"></div>
 
                                 {/* High-tech pulsing/spinning radar ring container */}
-                                <div className="relative mb-4 mt-3 flex items-center justify-center">
-                                    <div className="absolute inset-0 rounded-full border border-dashed border-accent-cyan/30 animate-spin-slow group-hover:border-accent-cyan/70 scale-125 transition-all duration-500"></div>
+                                <div className="relative mb-3 mt-1.5 sm:mt-3 flex items-center justify-center">
+                                    <div className="absolute inset-0 rounded-full border border-dashed border-accent-cyan/30 animate-spin-slow group-hover:border-accent-cyan/70 scale-110 sm:scale-125 transition-all duration-500"></div>
                                     <div className="absolute inset-0 rounded-full border border-accent-cyan/20 animate-ping opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                                     
-                                    <div className="relative p-3 bg-white border border-slate-200/60 rounded-full w-fit group-hover:bg-cyan-50 group-hover:scale-110 group-hover:border-accent-cyan/30 transition-all duration-500 flex items-center justify-center shadow-md z-10">
-                                        {React.cloneElement(feature.icon, { className: "w-5 h-5 text-accent-cyan transition-colors" })}
+                                    <div className="relative p-2 sm:p-3 bg-white border border-slate-200/60 rounded-full w-fit group-hover:bg-cyan-50 group-hover:scale-110 group-hover:border-accent-cyan/30 transition-all duration-500 flex items-center justify-center shadow-md z-10">
+                                        {React.cloneElement(feature.icon, { className: "w-4 h-4 sm:w-5 sm:h-5 text-accent-cyan transition-colors" })}
                                     </div>
                                 </div>
 
 
-                                <h3 className="text-lg font-bold mb-2 text-slate-900 group-hover:text-blue-900 active:text-blue-950 transition-colors leading-tight min-h-[44px] flex items-center justify-center">
+                                <h3 className="text-sm sm:text-lg font-bold mb-1 sm:mb-2 text-slate-900 group-hover:text-blue-900 active:text-blue-950 transition-colors leading-tight min-h-0 sm:min-h-[44px] flex items-center justify-center">
                                     {feature.title}
                                 </h3>
-                                <p className="text-slate-600 text-sm leading-relaxed max-w-[280px] flex-grow">
+                                <p className="text-slate-650 text-[11px] sm:text-sm leading-relaxed max-w-[280px] flex-grow">
                                     {feature.description}
                                 </p>
                             </div>

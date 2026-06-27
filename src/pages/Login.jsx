@@ -43,19 +43,19 @@ const Login = () => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, ease: "easeOut" }}
-                className="w-full max-w-md backdrop-blur-xl bg-white border border-slate-200 rounded-3xl p-8 shadow-2xl relative overflow-hidden"
+                className="w-full max-w-md backdrop-blur-xl bg-white border border-slate-200 rounded-2xl sm:rounded-3xl p-5 sm:p-8 shadow-2xl relative overflow-hidden"
             >
                 {/* Logo */}
-                <div className="text-center mb-8">
-                    <h2 className="text-3xl font-bold text-slate-900 mb-2">Welcome Back</h2>
-                    <p className="text-slate-500">Sign in to access your dashboard</p>
+                <div className="text-center mb-5 sm:mb-8">
+                    <h2 className="text-xl sm:text-3xl font-bold text-slate-900 mb-1 sm:mb-2">Welcome Back</h2>
+                    <p className="text-slate-500 text-xs sm:text-base">Sign in to access your dashboard</p>
                 </div>
 
                 {error && (
                     <motion.div
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: 'auto' }}
-                        className="bg-red-500/10 border border-red-500/20 rounded-xl p-3 mb-6 text-red-600 text-sm text-center"
+                        className="bg-red-500/10 border border-red-500/20 rounded-lg sm:rounded-xl p-2.5 sm:p-3 mb-4 sm:mb-6 text-red-600 text-xs sm:text-sm text-center"
                     >
                         {error}
                     </motion.div>
@@ -64,50 +64,50 @@ const Login = () => {
                 {/* Google Sign In */}
                 <button
                     onClick={handleGoogleLogin}
-                    className="w-full bg-white text-slate-800 border border-slate-200 font-bold py-3.5 rounded-xl hover:bg-slate-50 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-3 shadow-md mb-6"
+                    className="w-full bg-white text-slate-800 border border-slate-200 font-bold py-2.5 sm:py-3.5 rounded-lg sm:rounded-xl hover:bg-slate-50 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2 sm:gap-3 shadow-md mb-4 sm:mb-6 text-xs sm:text-base"
                 >
-                    <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" className="w-5 h-5" alt="Google" />
+                    <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" className="w-4 h-4 sm:w-5 sm:h-5" alt="Google" />
                     Sign in with Google
                 </button>
 
-                <div className="flex items-center gap-4 mb-6">
+                <div className="flex items-center gap-4 mb-4 sm:mb-6">
                     <div className="h-[1px] bg-slate-200 flex-1" />
-                    <span className="text-sm text-slate-400 font-medium">OR</span>
+                    <span className="text-xs sm:text-sm text-slate-400 font-medium">OR</span>
                     <div className="h-[1px] bg-slate-200 flex-1" />
                 </div>
 
                 <form onSubmit={handleEmailLogin} className="space-y-4">
-                    <div className="space-y-2">
-                        <label className="text-sm text-slate-600 font-medium ml-1">Email Address</label>
+                    <div className="space-y-1 sm:space-y-2">
+                        <label className="text-xs sm:text-sm text-slate-600 font-medium ml-1">Email Address</label>
                         <div className="relative group/input">
-                            <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 group-focus-within/input:text-accent-cyan transition-colors" />
+                            <Mail className="absolute left-3.5 sm:left-4 top-1/2 -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 text-slate-400 group-focus-within/input:text-accent-cyan transition-colors" />
                             <input
                                 type="email"
                                 required
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                                 placeholder="name@example.com"
-                                className="w-full bg-slate-50 border border-slate-200 rounded-xl py-3 pl-12 pr-4 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-accent-cyan focus:bg-white transition-all"
+                                className="w-full bg-slate-50 border border-slate-200 rounded-lg sm:rounded-xl py-2.5 sm:py-3 pl-10 sm:pl-12 pr-4 text-xs sm:text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:border-accent-cyan focus:bg-white transition-all"
                             />
                         </div>
                     </div>
 
-                    <div className="space-y-2">
+                    <div className="space-y-1 sm:space-y-2">
                         <div className="flex justify-between items-center ml-1">
-                            <label className="text-sm text-slate-600 font-medium">Password</label>
-                            <Link to="/forgot-password" className="text-xs text-accent-cyan hover:text-cyan-700 transition-colors">
+                            <label className="text-xs sm:text-sm text-slate-600 font-medium">Password</label>
+                            <Link to="/forgot-password" className="text-[10px] sm:text-xs text-accent-cyan hover:text-cyan-700 transition-colors">
                                 Forgot password?
                             </Link>
                         </div>
                         <div className="relative group/input">
-                            <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 group-focus-within/input:text-accent-cyan transition-colors" />
+                            <Lock className="absolute left-3.5 sm:left-4 top-1/2 -translate-y-1/2 w-4 h-4 sm:w-5 sm:h-5 text-slate-400 group-focus-within/input:text-accent-cyan transition-colors" />
                             <input
                                 type="password"
                                 required
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                                 placeholder="••••••••"
-                                className="w-full bg-slate-50 border border-slate-200 rounded-xl py-3 pl-12 pr-4 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-accent-cyan focus:bg-white transition-all"
+                                className="w-full bg-slate-50 border border-slate-200 rounded-lg sm:rounded-xl py-2.5 sm:py-3 pl-10 sm:pl-12 pr-4 text-xs sm:text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:border-accent-cyan focus:bg-white transition-all"
                             />
                         </div>
                     </div>
@@ -115,10 +115,10 @@ const Login = () => {
                     <button
                         type="submit"
                         disabled={loading}
-                        className="w-full bg-gradient-to-r from-orange-600 to-amber-500 text-white font-bold py-3.5 rounded-xl shadow-lg shadow-orange-500/20 hover:shadow-orange-500/40 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2 group/btn cursor-pointer"
+                        className="w-fit mx-auto px-6 py-2.5 sm:w-full sm:px-0 sm:py-3.5 bg-gradient-to-r from-sky-400 to-blue-500 hover:from-sky-500 hover:to-blue-600 text-white font-bold text-xs sm:text-base rounded-lg sm:rounded-xl shadow-lg shadow-sky-400/20 hover:shadow-sky-400/40 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2 group/btn cursor-pointer"
                     >
-                        {loading ? <Loader className="w-5 h-5 animate-spin" /> : 'Sign In'}
-                        {!loading && <ArrowRight className="w-5 h-5 group-hover/btn:translate-x-1 transition-transform" />}
+                        {loading ? <Loader className="w-4 h-4 sm:w-5 sm:h-5 animate-spin" /> : 'Sign In'}
+                        {!loading && <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover/btn:translate-x-1 transition-transform" />}
                     </button>
                 </form>
 

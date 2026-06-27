@@ -10,7 +10,7 @@ export const blogs = [
         excerpt: "Our contribution to the development of a web-based Flood Disaster Response System marks a significant milestone in leveraging geospatial intelligence for real-world impact.",
         author: "Terraqua UAV Solutions",
         date: "May 8, 2025",
-        image: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1200&auto=format&fit=crop",
+        image: "/flood_newspaper.jpg",
         category: "Disaster Management",
         readTime: "1 min read"
     }
@@ -18,7 +18,7 @@ export const blogs = [
 
 const Blogs = () => {
     return (
-        <div className="pt-24 pb-20 min-h-screen relative overflow-hidden">
+        <div className="pt-24 md:pt-28 pb-12 min-h-screen relative overflow-hidden">
             {/* Universal Background Image */}
             <div className="fixed inset-0 z-0">
                 {/* Global BackgroundLayer handles the image */}
@@ -26,12 +26,12 @@ const Blogs = () => {
             </div>
 
             <div className="container mx-auto px-4 relative z-10">
-                <div className="max-w-4xl mx-auto text-center mb-16">
+                <div className="max-w-4xl mx-auto text-center mb-8 md:mb-12">
                     <motion.h1
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.1 }}
-                        className="text-5xl md:text-7xl font-bold mb-6 text-slate-900"
+                        className="text-2xl md:text-4xl font-bold mb-3 md:mb-4 text-slate-900"
                     >
                         Explore Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-accent-cyan">Latest Stories</span>
                     </motion.h1>
@@ -39,7 +39,7 @@ const Blogs = () => {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2 }}
-                        className="text-xl text-slate-600 max-w-2xl mx-auto"
+                        className="text-sm md:text-lg text-slate-600 max-w-2xl mx-auto"
                     >
                         Insights, updates, and deep dives into the world of geospatial technology, satellite intelligence, and mapping solutions.
                     </motion.p>
@@ -56,7 +56,7 @@ const Blogs = () => {
                         >
                             <Link to={`/blogs/${blog.id}`} className="flex flex-col md:flex-row items-center h-full relative">
                                 {/* Image Container */}
-                                <div className="relative w-full md:w-[48%] aspect-[16/10] md:aspect-[16/11] rounded-3xl overflow-hidden shadow-md border border-slate-200/50 shrink-0 z-0">
+                                <div className="relative w-full md:w-[48%] aspect-[2.2/1] sm:aspect-[16/10] md:aspect-[16/11] rounded-2xl sm:rounded-3xl overflow-hidden shadow-md border border-slate-200/50 shrink-0 z-0">
                                     <div className="absolute top-4 left-4 z-10">
                                         <span className="px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-xs font-bold text-white border border-white/10">
                                             {blog.category}
@@ -71,33 +71,33 @@ const Blogs = () => {
                                 </div>
 
                                 {/* Floating Content Box */}
-                                <div className="premium-card-content relative z-10 w-[92%] md:w-[58%] mx-auto -mt-12 md:-mt-0 md:-ml-12 p-6 md:p-8 flex flex-col rounded-3xl min-h-[260px] md:min-h-[280px]">
-                                    <div className="flex items-center gap-4 text-sm text-slate-500 mb-4">
+                                <div className="premium-card-content relative z-10 w-[92%] md:w-[58%] mx-auto -mt-8 md:-mt-0 md:-ml-12 p-4 sm:p-6 md:p-8 flex flex-col rounded-2xl sm:rounded-3xl min-h-0 sm:min-h-[260px] md:min-h-[280px]">
+                                    <div className="flex items-center gap-4 text-xs sm:text-sm text-slate-500 mb-2 sm:mb-4">
                                         <div className="flex items-center gap-1.5">
-                                            <Calendar className="w-4 h-4 text-accent-cyan" />
+                                            <Calendar className="w-3.5 h-3.5 text-accent-cyan" />
                                             <span>{blog.date}</span>
                                         </div>
                                         <div className="w-1 h-1 rounded-full bg-slate-400"></div>
                                         <span>{blog.readTime}</span>
                                     </div>
 
-                                    <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-blue-900 active:text-blue-950 transition-colors line-clamp-2 leading-tight">
+                                    <h3 className="text-lg sm:text-2xl font-bold text-slate-900 mb-1.5 sm:mb-3 group-hover:text-blue-900 active:text-blue-950 transition-colors line-clamp-2 leading-tight">
                                         {blog.title}
                                     </h3>
 
-                                    <p className="text-slate-600 mb-6 line-clamp-3 leading-relaxed text-sm">
+                                    <p className="text-slate-655 mb-4 sm:mb-6 line-clamp-2 sm:line-clamp-3 leading-relaxed text-xs sm:text-sm">
                                         {blog.excerpt}
                                     </p>
 
-                                    <div className="flex items-center justify-between border-t border-slate-100 pt-6 mt-auto">
+                                    <div className="flex items-center justify-between border-t border-slate-100 pt-3 sm:pt-6 mt-auto">
                                         <div className="flex items-center gap-2">
-                                            <div className="h-8 w-16 flex items-center justify-center">
+                                            <div className="h-6 w-12 sm:h-8 sm:w-16 flex items-center justify-center">
                                                 <img src="/terraqua_logo.png" alt="Terraqua" className="w-full h-full object-contain" />
                                             </div>
-                                            <span className="text-sm font-medium text-slate-600">{blog.author}</span>
+                                            <span className="text-xs sm:text-sm font-medium text-slate-600">{blog.author}</span>
                                         </div>
-                                        <span className="flex items-center gap-1 text-accent-cyan text-sm font-bold group-hover:gap-2 transition-all">
-                                            Read More <ArrowRight className="w-4 h-4" />
+                                        <span className="flex items-center gap-1 text-accent-cyan text-xs sm:text-sm font-bold group-hover:gap-2 transition-all">
+                                            Read More <ArrowRight className="w-3.5 h-3.5" />
                                         </span>
                                     </div>
                                 </div>

@@ -79,7 +79,7 @@ const Hero = () => {
                     transition={{ duration: 0.8, delay: 0.6 }}
                     className="flex flex-col sm:flex-row gap-4 justify-center"
                 >
-                    <Link to="/contact" className="px-8 py-4 bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white rounded-full transition-all duration-300 font-medium tracking-wide hover:shadow-lg hover:shadow-orange-500/25 hover:scale-105">
+                    <Link to="/contact" className="w-fit mx-auto px-6 py-3 md:px-8 md:py-4 bg-gradient-to-r from-sky-400 to-blue-500 hover:from-sky-500 hover:to-blue-600 text-white rounded-full transition-all duration-300 font-medium tracking-wide hover:shadow-lg hover:shadow-sky-400/25 hover:scale-105 text-sm md:text-base">
                         Contact Us
                     </Link>
                 </motion.div>
