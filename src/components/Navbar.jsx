@@ -53,7 +53,7 @@ const Navbar = () => {
         { name: 'Platforms', path: '/platforms' },
         ...(user ? [{ name: 'My Console', path: '/console' }] : []),
         { name: 'About', path: '/about' },
-        { name: 'Services', path: '/services' },
+        // { name: 'Services', path: '/services' },
         { name: 'Blogs', path: '/blogs' },
         { name: 'Contact', path: '/contact' },
     ];
@@ -215,14 +215,14 @@ const Navbar = () => {
                                     )}
                                 </AnimatePresence>
                             </div>
-                        ) : (
+                        ) : null /* (
                             <button
                                 onClick={() => setIsLoginOpen(true)}
                                 className="px-6 py-2 rounded-full transition-all duration-300 text-sm font-medium border border-transparent bg-gradient-to-r from-sky-400 to-blue-500 hover:from-sky-500 hover:to-blue-600 text-white shadow-md hover:scale-[1.02] active:scale-[0.98] cursor-pointer"
                             >
                                 Sign In
                             </button>
-                        )}
+                        ) */}
                     </div>
 
                     {/* Mobile Menu Button */}
@@ -319,7 +319,7 @@ const Navbar = () => {
                                                     Sign Out
                                                 </button>
                                             </div>
-                                        ) : (
+                                        ) : null /* (
                                             <button
                                                 onClick={() => {
                                                     setIsOpen(false);
@@ -329,7 +329,7 @@ const Navbar = () => {
                                             >
                                                 Sign In
                                             </button>
-                                        )}
+                                        ) */}
                                     </div>
                                 </motion.div>
                             </>

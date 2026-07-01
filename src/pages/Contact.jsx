@@ -86,7 +86,7 @@ const Contact = () => {
                             <h3 className="text-lg sm:text-2xl font-bold text-slate-900 mb-2 sm:mb-6">
                                 Contact Details
                             </h3>
- 
+
                             <div className="space-y-4 sm:space-y-6">
                                 {/* Corporate Address */}
                                 <div className="flex gap-3 sm:gap-4">
@@ -100,7 +100,7 @@ const Contact = () => {
                                         </p>
                                     </div>
                                 </div>
- 
+
                                 {/* Registered Address */}
                                 <div className="flex gap-3 sm:gap-4">
                                     <Building2 className="w-4 h-4 sm:w-5 sm:h-5 text-accent-cyan mt-1 shrink-0" />
@@ -113,7 +113,7 @@ const Contact = () => {
                                         </p>
                                     </div>
                                 </div>
- 
+
                                 {/* Phone & Email */}
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 pt-3 sm:pt-4 border-t border-slate-100">
                                     <div className="flex items-center gap-3 sm:gap-4">
@@ -150,12 +150,12 @@ const Contact = () => {
                                 scrolling="no"
                                 marginHeight="0"
                                 marginWidth="0"
-                                src="https://www.openstreetmap.org/export/embed.html?bbox=80.2229%2C26.5032%2C80.2429%2C26.5232&amp;layer=mapnik&amp;marker=26.5132%2C80.2329"
+                                src="https://maps.google.com/maps?q=26.516583503165993, 80.23163275362195&t=h&z=15&ie=UTF8&iwloc=&output=embed"
                                 className="w-full h-[calc(100%+30px)] grayscale-[20%] opacity-90 hover:grayscale-0 hover:opacity-100 transition-all duration-700"
                             ></iframe>
                             <div className="absolute bottom-4 right-4 z-20">
                                 <a
-                                    href="https://www.openstreetmap.org/?mlat=26.5132&amp;mlon=80.2329#map=15/26.5132/80.2329"
+                                    href="https://maps.google.com/maps?q=26.516583503165993, 80.23163275362195&t=h&z=15"
                                     target="_blank"
                                     rel="noreferrer"
                                     className="px-4 py-2 bg-white/95 text-slate-800 text-xs font-bold rounded-lg hover:bg-slate-50 transition-colors border border-slate-200 shadow-sm"
@@ -174,7 +174,7 @@ const Contact = () => {
                         className="glass-panel p-5 sm:p-8 md:p-12 rounded-2xl sm:rounded-3xl relative overflow-hidden bg-white border border-slate-200 shadow-md"
                     >
                         <h3 className="text-lg sm:text-2xl font-bold text-slate-900 mb-4 sm:mb-8">Send us a Message</h3>
- 
+
                         <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6 relative z-10">
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                                 <div className="space-y-1 sm:space-y-2">
@@ -200,7 +200,7 @@ const Contact = () => {
                                     />
                                 </div>
                             </div>
- 
+
                             <div className="space-y-1 sm:space-y-2">
                                 <label className="text-xs sm:text-sm font-medium text-slate-600 ml-1">Email Address</label>
                                 <input
@@ -212,7 +212,7 @@ const Contact = () => {
                                     placeholder="name@company.com"
                                 />
                             </div>
- 
+
                             <div className="space-y-1 sm:space-y-2">
                                 <label className="text-xs sm:text-sm font-medium text-slate-600 ml-1">Subject</label>
                                 <select
@@ -226,7 +226,7 @@ const Contact = () => {
                                     <option>Partnership</option>
                                 </select>
                             </div>
- 
+
                             <div className="space-y-1 sm:space-y-2">
                                 <label className="text-xs sm:text-sm font-medium text-slate-600 ml-1">Message</label>
                                 <textarea

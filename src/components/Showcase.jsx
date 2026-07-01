@@ -13,8 +13,8 @@ const Showcase = () => {
     const opacity = useTransform(scrollYProgress, [0, 0.3, 0.8, 1], [0, 1, 1, 0]);
 
     return (
-        <section ref={containerRef} className="py-8 md:py-10 relative overflow-hidden">
-            <div className="max-w-7xl mx-auto px-6 md:px-8 grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10 items-center">
+        <section ref={containerRef} className="py-4 md:py-10 relative overflow-hidden">
+            <div className="max-w-7xl mx-auto px-6 md:px-8 grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-10 items-center">
                 {/* Text Content */}
                 <motion.div
                     style={{ y, opacity }}
@@ -36,15 +36,15 @@ const Showcase = () => {
                 </motion.div>
 
                 {/* Image Parallax */}
-                <div className="relative aspect-[16/10] md:h-[450px] lg:h-[500px] w-full rounded-3xl overflow-hidden border border-slate-200/50 shadow-md">
+                <div className="relative w-full h-[260px] sm:h-[320px] md:h-[450px] lg:h-[500px] flex items-center justify-center -mt-2 md:mt-0">
                     <motion.div
                         style={{ y: useTransform(scrollYProgress, [0, 1], [20, -20]) }}
-                        className="w-full h-full z-10"
+                        className="w-full h-full z-10 flex items-center justify-center"
                     >
                         <img
-                            src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?q=80&w=1000&auto=format&fit=crop"
-                            alt="Data Analysis"
-                            className="w-full h-full object-cover scale-120 transition-all duration-700 brightness-[0.98] hover:brightness-100"
+                            src="/mapzest_about_page_graphic.png"
+                            alt="MapZest Graphic"
+                            className="w-full h-full object-contain scale-[1.5] sm:scale-150 md:scale-[1.35] lg:scale-[1.6] transition-all duration-700 hover:scale-[1.6] lg:hover:scale-[1.7]"
                         />
                     </motion.div>
                 </div>

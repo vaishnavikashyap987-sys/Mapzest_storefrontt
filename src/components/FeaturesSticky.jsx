@@ -8,29 +8,28 @@ const features = [
         prefix: "Precision ",
         accent: "Agriculture",
         description: "Optimize crop yields with multispectral imagery and AI-driven insights. Detect stress early and manage resources efficiently.",
-        image: "/krishizest.jpg"
+        image: "/precision agri.jpg"
     },
     {
         id: "basic",
         prefix: "Urban ",
         accent: "Planning",
         description: "Visualize city growth and infrastructure with high-resolution 3D models. Plan smarter cities for a sustainable future.",
-        image: "/mapzest_go.png",
-        pricing: "Open Access"
+        image: "/urban.png"
     },
     {
         id: "fram",
         prefix: "Disaster ",
         accent: "Management",
         description: "Rapid response mapping for floods, fires, and natural disasters. Real-time data when it matters most.",
-        image: "/fram_dashboard.png"
+        image: "/image.png"
     },
     {
         id: "nrmm",
         prefix: "Environmental ",
         accent: "Monitoring",
         description: "Track deforestation, water quality, and climate change indicators with global satellite coverage.",
-        image: "/nrmm_dashboard.png"
+        image: "/image copy.png"
     }
 ];
 
@@ -109,10 +108,10 @@ const FeaturesSticky = () => {
     });
 
     return (
-        <section ref={container} className="relative mt-[6vh] mb-[6vh]">
+        <section ref={container} className="relative mt-[6vh] mb-[2vh]">
             <div className="h-[14vh] flex items-center justify-center mb-10 md:mb-12 relative z-10">
                 <h2 className="text-4xl md:text-5xl font-bold text-center text-slate-900">
-                    Impact Across <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-accent-cyan">Industries</span>
+                    Impact Across <span className="text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-accent-cyan">Domains</span>
                 </h2>
             </div>
             {features.map((project, i) => {

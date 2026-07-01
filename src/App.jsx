@@ -20,6 +20,7 @@ import Register from './pages/Register';
 import ForgotPassword from './pages/ForgotPassword';
 import MyConsole from './pages/MyConsole';
 import ProtectedRoute from './components/ProtectedRoute';
+import HighlightsModal from './components/HighlightsModal';
 
 // ... other imports ...
 
@@ -33,6 +34,7 @@ function App() {
         <div className="min-h-screen text-slate-900 selection:bg-accent-cyan/30 selection:text-slate-900 flex flex-col relative">
           <BackgroundLayer />
           <Navbar />
+          <HighlightsModal />
           <main className="flex-grow relative z-10">
             <Routes>
               <Route path="/" element={<Home />} />

@@ -205,7 +205,7 @@ const PlatformDetail = () => {
                                 {platform.id !== 'utm' && ( // Keep existing exclusion if intentional, but user requested functionality
                                     <button
                                         onClick={() => setShowDemoModal(true)}
-                                        className="w-full py-4 rounded-lg font-bold text-slate-700 border border-slate-300 hover:bg-slate-50 transition-colors"
+                                        className="w-full py-4 rounded-lg font-bold text-white bg-gradient-to-r from-sky-400 to-blue-500 hover:from-sky-500 hover:to-blue-600 hover:shadow-lg hover:shadow-sky-500/20 active:scale-[0.98] transition-all duration-300 shadow-md"
                                     >
                                         Request Demo
                                     </button>

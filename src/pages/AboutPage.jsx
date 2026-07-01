@@ -54,24 +54,25 @@ const AboutPage = () => {
     return (        <div className="min-h-screen pt-24 md:pt-28 pb-12 px-6 sm:px-10 md:px-16">
             {/* Header / Mission */}
             <section className="max-w-7xl mx-auto mb-10 sm:mb-12">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center lg:items-start">
  
                     <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ delay: 0.2 }}
-                        className="relative rounded-3xl overflow-hidden order-last lg:order-first flex justify-center items-center"
+                        className="relative order-last lg:order-first flex justify-center items-center lg:col-span-6 w-full -mt-28 -mb-40 sm:-mt-36 sm:-mb-52 lg:my-0"
                     >
                         <img
-                            src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?q=80&w=1000&auto=format&fit=crop"
+                            src="/mapzest_about_page_graphic.png"
                             alt="Mapzest Desktop View"
-                            className="w-full h-auto object-contain max-h-[500px]"
+                            className="w-full h-auto object-contain max-h-[600px] lg:max-h-[580px]"
                         />
                     </motion.div>
  
                     <motion.div
                         initial={{ opacity: 0, x: 20 }}
                         animate={{ opacity: 1, x: 0 }}
+                        className="lg:col-span-6 lg:pt-16"
                     >
                         <h1 className="text-2xl md:text-4xl font-bold mb-4 md:mb-6 leading-tight text-transparent bg-clip-text bg-gradient-to-r from-slate-900 to-accent-cyan">
                             About

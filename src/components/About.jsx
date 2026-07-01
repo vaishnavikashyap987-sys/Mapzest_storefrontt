@@ -8,20 +8,20 @@ const features = [
         title: "High Resolution Data Acquisition",
         description: "Capturing precise optical, radar, and drone data from leading constellations and sensors.",
         provider: "Terraqua UAV",
-        image: "/high_res_data_acquisition.png"
+        image: "/11.png"
     },
     {
         icon: <Cpu strokeWidth={1.6} fill="currentColor" fillOpacity={0.12} />,
         title: "Data Processing",
         description: "Processing raw inputs into clean, analysis-ready formats using automated pipelines.",
         provider: "Terraqua UAV",
-        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop"
+        image: "/10.png"
     },
     {
         icon: <Globe strokeWidth={1.6} fill="currentColor" fillOpacity={0.12} />,
         title: "WebGIS",
         description: "A centralized, interactive platform for seamless spatial data management and exploration.",
-        image: "https://images.unsplash.com/photo-1547658719-da2b51169166?q=80&w=800&auto=format&fit=crop"
+        image: "/media__1782880273608.png"
     },
     {
         icon: <BarChart3 strokeWidth={1.6} fill="currentColor" fillOpacity={0.12} />,
@@ -50,13 +50,11 @@ const About = () => {
                         style={{ y: imageY, scale: imageScale }}
                         className="relative perspective-1000 w-full max-w-5xl flex justify-center mb-16"
                     >
-                        <div className="w-full overflow-hidden rounded-3xl border border-slate-200/50 shadow-2xl">
-                            <img
-                                src="/mapzest_collage.png"
-                                alt="MapZest Platform Collage"
-                                className="w-[102%] max-w-none -ml-[1%] object-contain"
-                            />
-                        </div>
+                        <img
+                            src="/media__1782891482370.png"
+                            alt="MapZest Platform Collage"
+                            className="w-full h-auto object-contain max-h-[500px] md:max-h-[600px] drop-shadow-[0_15px_30px_rgba(0,0,0,0.06)]"
+                        />
                     </motion.div>
  
                     <motion.div

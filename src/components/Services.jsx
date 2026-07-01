@@ -16,7 +16,7 @@ export const services = [
     {
         title: "GIS Solutions",
         description: "Comprehensive Geographic Information System services including data management.",
-        image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=800&auto=format&fit=crop"
+        image: "/10.png"
     },
     {
         title: "UAV Data Acquisition",

@@ -111,7 +111,6 @@ export const platformsData = {
             "Automated tree counting",
             "Volumetric analysis"
         ],
-        pricing: "Open Access",
         url: import.meta.env.VITE_MAPZEST_GO_URL || 'http://localhost:5174/',
         useCases: [
             {
@@ -206,7 +205,6 @@ export const platformsData = {
             "Batch processing",
             "Export to KML/Shapefile"
         ],
-        pricing: "Open Access",
         url: import.meta.env.VITE_MAPZEST_GeoTools_URL || 'http://localhost:5174/',
         useCases: [
             {
