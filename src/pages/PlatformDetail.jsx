@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, ExternalLink, CheckCircle, Lock, MonitorSmartphone } from 'lucide-react';
+import { ArrowLeft, ExternalLink, CheckCircle, Lock, Download } from 'lucide-react';
 import { platformsData } from '../data/platforms.jsx';
 import DemoRequestModal from '../components/DemoRequestModal';
 
@@ -10,13 +10,6 @@ const PlatformDetail = () => {
     const navigate = useNavigate();
     const platform = platformsData[id];
     const [showDemoModal, setShowDemoModal] = React.useState(false);
-    const [isMobile, setIsMobile] = React.useState(window.innerWidth < 768);
-
-    useEffect(() => {
-        const handleResize = () => setIsMobile(window.innerWidth < 768);
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
 
     // Redirect if platform not found
     useEffect(() => {
@@ -26,39 +19,6 @@ const PlatformDetail = () => {
     }, [id, platform, navigate]);
 
     if (!platform) return null;
-
-    // Mobile Restriction for non-UTM platforms
-    if (isMobile && platform.id !== 'utm') {
-        return (
-            <div className="min-h-screen flex flex-col items-center justify-center bg-space-900 px-6 text-center">
-                <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    className="bg-white border border-slate-200 p-8 rounded-2xl backdrop-blur-xl max-w-sm shadow-xl"
-                >
-                    <div className="w-16 h-16 bg-gradient-to-tr from-accent-cyan to-accent-purple rounded-full flex items-center justify-center mx-auto mb-6">
-                        <MonitorSmartphone className="w-8 h-8 text-white" />
-                    </div>
-                    <h2 className="text-2xl font-bold text-slate-900 mb-4">Desktop View Required</h2>
-                    <p className="text-slate-600 mb-8 leading-relaxed">
-                        Oops! To get the best experience with <span className="text-accent-cyan font-semibold">{platform.title}</span>, please switch to a larger display or desktop device.
-                    </p>
-                    <button
-                        onClick={() => navigate('/')}
-                        className="w-full py-3 bg-accent-cyan text-white font-bold rounded-xl hover:bg-cyan-700 transition-colors shadow-md"
-                    >
-                        Back to Home
-                    </button>
-                    <button
-                        onClick={() => navigate('/platforms')}
-                        className="w-full py-3 mt-3 text-slate-500 font-medium hover:text-slate-950 transition-colors"
-                    >
-                        Browse Other Platforms
-                    </button>
-                </motion.div>
-            </div>
-        );
-    }
 
     // Logic to lock the launch button for platforms other than Mapzest GO (basic) and Geo Tools (utm)
     const isLaunchUnlocked = platform.id === 'basic' || platform.id === 'utm';
@@ -82,16 +42,16 @@ const PlatformDetail = () => {
                     className="w-full h-full object-cover"
                 />
 
-                <div className="absolute bottom-0 left-0 w-full z-30 p-8 md:p-16">
+                <div className="absolute bottom-0 left-0 w-full z-30 px-6 py-8 md:px-8 md:py-16">
                     <div className="max-w-7xl mx-auto">
                         <motion.button
                             onClick={() => navigate('/platforms')}
                             initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: 0.2 }}
-                            className="flex items-center gap-2 text-slate-300 hover:text-white mb-6 transition-colors"
+                            className="flex items-center gap-2 text-slate-300 hover:text-white mb-4 sm:mb-6 transition-colors text-sm"
                         >
-                            <ArrowLeft size={20} />
+                            <ArrowLeft size={16} className="sm:w-5 sm:h-5" />
                             Back to Platforms
                         </motion.button>
 
@@ -99,12 +59,12 @@ const PlatformDetail = () => {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.4 }}
-                            className="flex items-center gap-4 mb-4"
+                            className="flex items-center gap-3 sm:gap-4 mb-3 sm:mb-4"
                         >
-                            <div className={`p-3 rounded-xl bg-white/10 backdrop-blur-md border border-white/20`}>
-                                {platform.icon}
+                            <div className={`p-2 sm:p-3 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center shrink-0`}>
+                                {React.cloneElement(platform.icon, { className: platform.icon.props.className.replace('w-12 h-12', 'w-8 h-8 sm:w-12 sm:h-12') })}
                             </div>
-                            <span className={`text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r ${platform.accent} uppercase tracking-wider`}>
+                            <span className={`text-xs sm:text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r ${platform.accent} uppercase tracking-wider`}>
                                 {platform.subtitle}
                             </span>
                         </motion.div>
@@ -113,7 +73,7 @@ const PlatformDetail = () => {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.6 }}
-                            className="text-5xl md:text-7xl font-bold text-white mb-6"
+                            className="text-3xl sm:text-5xl md:text-7xl font-bold text-white mb-4 sm:mb-6"
                         >
                             {platform.title}
                         </motion.h1>
@@ -122,7 +82,7 @@ const PlatformDetail = () => {
             </div>
 
             {/* Content Section */}
-            <div className="max-w-7xl mx-auto px-4 py-20 relative z-10">
+            <div className="max-w-7xl mx-auto px-6 md:px-8 py-10 md:py-20 relative z-10">
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
                     {/* Main Content */}
                     <div className="lg:col-span-2 space-y-16">
@@ -133,15 +93,15 @@ const PlatformDetail = () => {
                             viewport={{ once: true }}
                             className="prose prose-invert max-w-none"
                         >
-                            <h2 className="text-3xl font-bold text-slate-900 mb-6">Introduction</h2>
-                            <p className="text-xl text-slate-700 leading-relaxed border-l-4 border-slate-300 pl-6">
+                            <h2 className="text-2xl md:text-4xl font-bold text-slate-900 mb-6">Introduction</h2>
+                            <p className="text-sm md:text-lg text-slate-600 leading-relaxed border-l-4 border-slate-300 pl-6">
                                 {platform.description}
                             </p>
                         </motion.section>
 
                         {/* Use Cases */}
                         <section>
-                            <h2 className="text-3xl font-bold text-slate-900 mb-8">Use Cases & Case Studies</h2>
+                            <h2 className="text-2xl md:text-4xl font-bold text-slate-900 mb-8">Use Cases & Case Studies</h2>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 {platform.useCases.map((useCase, index) => (
                                     <motion.div
@@ -150,13 +110,13 @@ const PlatformDetail = () => {
                                         whileInView={{ opacity: 1, y: 0 }}
                                         viewport={{ once: true }}
                                         transition={{ delay: index * 0.1 }}
-                                        className="group glass-panel p-8 rounded-2xl bg-white border border-slate-200 hover:border-accent-cyan hover:shadow-xl hover:shadow-slate-200/50 hover:-translate-y-1 transition-all duration-300 relative overflow-hidden"
+                                        className="group glass-panel p-5 sm:p-8 rounded-2xl bg-white border border-slate-200 hover:border-accent-cyan hover:shadow-xl hover:shadow-slate-200/50 hover:-translate-y-1 transition-all duration-300 relative overflow-hidden"
                                     >
                                         <div className="absolute -top-10 -right-10 w-24 h-24 bg-gradient-to-tr from-cyan-400 to-blue-500 rounded-full blur-2xl opacity-0 group-hover:opacity-10 transition-opacity duration-300 pointer-events-none"></div>
-                                        <h3 className="text-xl font-bold text-slate-900 group-hover:text-blue-900 transition-colors duration-300 mb-3">
+                                        <h3 className="text-base sm:text-xl font-bold text-slate-900 group-hover:text-blue-900 transition-colors duration-300 mb-3">
                                             {useCase.title}
                                         </h3>
-                                        <p className="text-slate-600 group-hover:text-slate-800 transition-colors duration-300 leading-relaxed text-sm">
+                                        <p className="text-slate-600 group-hover:text-slate-800 transition-colors duration-300 leading-relaxed text-xs sm:text-sm">
                                             {useCase.description}
                                         </p>
                                     </motion.div>
@@ -168,63 +128,80 @@ const PlatformDetail = () => {
                     {/* Sidebar */}
                     <div className="relative">
                         <div className="sticky top-32 space-y-8">
+                             {/* Features List */}
+                             <div className="group glass-panel p-5 sm:p-8 rounded-2xl bg-white border border-slate-200 hover:border-accent-cyan hover:shadow-xl hover:shadow-slate-200/50 hover:-translate-y-1 transition-all duration-300 relative overflow-hidden">
+                                 <div className="absolute -top-10 -right-10 w-24 h-24 bg-gradient-to-tr from-cyan-400 to-blue-500 rounded-full blur-2xl opacity-0 group-hover:opacity-10 transition-opacity duration-300 pointer-events-none"></div>
+                                 <h3 className="text-base sm:text-xl font-bold text-slate-900 group-hover:text-blue-900 transition-colors duration-300 mb-4 sm:mb-6">Key Features</h3>
+                                 <ul className="space-y-3 sm:space-y-4">
+                                     {platform.features.map((feature, index) => (
+                                         <li key={index} className="flex items-start gap-3 group/item">
+                                             <CheckCircle className={`w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 mt-0.5 text-${platform.color}-500 transition-transform duration-300 group-hover/item:scale-110`} />
+                                             <span className="text-slate-600 text-xs sm:text-sm transition-colors duration-300 group-hover/item:text-slate-950">{feature}</span>
+                                         </li>
+                                     ))}
+                                 </ul>
+                             </div>
+
                             {/* Actions Card */}
                             <motion.div
                                 initial={{ opacity: 0, x: 20 }}
                                 animate={{ opacity: 1, x: 0 }}
                                 transition={{ delay: 0.8 }}
-                                className="glass-panel p-8 rounded-2xl border border-slate-200 bg-white"
+                                className="glass-panel p-5 sm:p-8 rounded-2xl border border-slate-200 bg-white"
                             >
-                                <h3 className="text-2xl font-bold text-slate-900 mb-6">Get Started</h3>
-                                <p className="text-slate-600 mb-8">
-                                    {isLaunchUnlocked
-                                        ? `Ready to deploy ${platform.title} for your organization? Launch the platform now or contact sales.`
-                                        : `The ${platform.title} platform is currently available for enterprise partners. Request a demo to get started.`
-                                    }
-                                </p>
+                                {platform.id === 'survey' ? (
+                                    <>
+                                        <h3 className="text-lg sm:text-2xl font-bold text-slate-900 mb-4 sm:mb-6">Download App</h3>
+                                        <p className="text-slate-600 text-xs sm:text-sm mb-6 sm:mb-8 leading-relaxed">
+                                            Download the MapZest mobile application directly from the Google Play Store to start field data collection, offline mapping, and GPS tracking.
+                                        </p>
+                                        <button
+                                            onClick={() => window.open('https://play.google.com/store/apps/details?id=com.terraqua.gis', '_blank')}
+                                            className="w-fit px-6 mx-auto py-3.5 rounded-lg font-bold text-white bg-gradient-to-r from-sky-400 to-blue-500 hover:from-sky-500 hover:to-blue-600 hover:shadow-lg hover:shadow-sky-500/20 active:scale-[0.98] transition-all duration-300 shadow-md text-xs sm:text-sm flex items-center justify-center gap-2 cursor-pointer"
+                                        >
+                                            Download App <Download size={16} />
+                                        </button>
+                                    </>
+                                ) : (
+                                    <>
+                                        <h3 className="text-lg sm:text-2xl font-bold text-slate-900 mb-4 sm:mb-6">Get Started</h3>
+                                        <p className="text-slate-600 text-xs sm:text-sm mb-6 sm:mb-8 leading-relaxed">
+                                            {isLaunchUnlocked
+                                                ? `Ready to deploy ${platform.title} for your organization? Launch the platform now or contact sales.`
+                                                : `The ${platform.title} platform is currently available for enterprise partners. Request a demo to get started.`
+                                            }
+                                        </p>
 
-                                {/* Launch Button - Locked/Unlocked */}
-                                <button
-                                    onClick={() => isLaunchUnlocked && platform.url ? window.open(platform.url, '_blank') : null}
-                                    disabled={!isLaunchUnlocked}
-                                    className={`w-full py-4 rounded-lg font-bold transition-all flex items-center justify-center gap-2 mb-4 group
-                                        ${isLaunchUnlocked
-                                            ? 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white hover:shadow-lg hover:shadow-blue-500/25 hover:scale-[1.02] cursor-pointer'
-                                            : 'bg-blue-50/50 text-blue-500 border border-blue-200/60 cursor-not-allowed'
-                                        }`}
-                                >
-                                    {isLaunchUnlocked ? 'Launch Platform' : 'Launch Platform'}
-                                    {isLaunchUnlocked ? (
-                                        <ExternalLink size={18} className="group-hover:translate-x-1 transition-transform" />
-                                    ) : (
-                                        <Lock size={18} className="text-blue-500" />
-                                    )}
-                                </button>
+                                        {/* Launch Button - Locked/Unlocked */}
+                                        <button
+                                            onClick={() => isLaunchUnlocked && platform.url ? window.open(platform.url, '_blank') : null}
+                                            disabled={!isLaunchUnlocked}
+                                            className={`w-fit px-6 mx-auto py-3.5 rounded-lg font-bold transition-all flex items-center justify-center gap-2 mb-4 group text-xs sm:text-sm
+                                                ${isLaunchUnlocked
+                                                    ? 'bg-gradient-to-r from-blue-600 to-cyan-600 text-white hover:shadow-lg hover:shadow-blue-500/25 hover:scale-[1.02] cursor-pointer'
+                                                    : 'bg-blue-50/50 text-blue-500 border border-blue-200/60 cursor-not-allowed'
+                                                }`}
+                                        >
+                                            {isLaunchUnlocked ? 'Launch Platform' : 'Launch Platform'}
+                                            {isLaunchUnlocked ? (
+                                                <ExternalLink size={16} className="group-hover:translate-x-1 transition-transform" />
+                                            ) : (
+                                                <Lock size={16} className="text-blue-500" />
+                                            )}
+                                        </button>
 
-                                {/* Request Demo Button */}
-                                {platform.id !== 'utm' && ( // Keep existing exclusion if intentional, but user requested functionality
-                                    <button
-                                        onClick={() => setShowDemoModal(true)}
-                                        className="w-full py-4 rounded-lg font-bold text-white bg-gradient-to-r from-sky-400 to-blue-500 hover:from-sky-500 hover:to-blue-600 hover:shadow-lg hover:shadow-sky-500/20 active:scale-[0.98] transition-all duration-300 shadow-md"
-                                    >
-                                        Request Demo
-                                    </button>
+                                        {/* Request Demo Button */}
+                                        {platform.id !== 'utm' && ( // Keep existing exclusion if intentional, but user requested functionality
+                                            <button
+                                                onClick={() => setShowDemoModal(true)}
+                                                className="w-fit px-6 mx-auto py-3.5 rounded-lg font-bold text-white bg-gradient-to-r from-sky-400 to-blue-500 hover:from-sky-500 hover:to-blue-600 hover:shadow-lg hover:shadow-sky-500/20 active:scale-[0.98] transition-all duration-300 shadow-md text-xs sm:text-sm flex items-center justify-center"
+                                            >
+                                                Request Demo
+                                            </button>
+                                        )}
+                                    </>
                                 )}
                             </motion.div>
-
-                             {/* Features List */}
-                             <div className="group glass-panel p-8 rounded-2xl bg-white border border-slate-200 hover:border-accent-cyan hover:shadow-xl hover:shadow-slate-200/50 hover:-translate-y-1 transition-all duration-300 relative overflow-hidden">
-                                 <div className="absolute -top-10 -right-10 w-24 h-24 bg-gradient-to-tr from-cyan-400 to-blue-500 rounded-full blur-2xl opacity-0 group-hover:opacity-10 transition-opacity duration-300 pointer-events-none"></div>
-                                 <h3 className="text-xl font-bold text-slate-900 group-hover:text-blue-900 transition-colors duration-300 mb-6">Key Features</h3>
-                                 <ul className="space-y-4">
-                                     {platform.features.map((feature, index) => (
-                                         <li key={index} className="flex items-start gap-3 group/item">
-                                             <CheckCircle className={`w-5 h-5 flex-shrink-0 mt-0.5 text-${platform.color}-500 transition-transform duration-300 group-hover/item:scale-110`} />
-                                             <span className="text-slate-700 transition-colors duration-300 group-hover/item:text-slate-950">{feature}</span>
-                                         </li>
-                                     ))}
-                                 </ul>
-                             </div>
                         </div>
                     </div>
                 </div>

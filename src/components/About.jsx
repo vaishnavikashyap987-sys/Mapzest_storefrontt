@@ -8,14 +8,14 @@ const features = [
         title: "High Resolution Data Acquisition",
         description: "Capturing precise optical, radar, and drone data from leading constellations and sensors.",
         provider: "Terraqua UAV",
-        image: "/11.png"
+        image: "/3d.png"
     },
     {
         icon: <Cpu strokeWidth={1.6} fill="currentColor" fillOpacity={0.12} />,
         title: "Data Processing",
         description: "Processing raw inputs into clean, analysis-ready formats using automated pipelines.",
         provider: "Terraqua UAV",
-        image: "/10.png"
+        image: "/ortho copy1.png"
     },
     {
         icon: <Globe strokeWidth={1.6} fill="currentColor" fillOpacity={0.12} />,

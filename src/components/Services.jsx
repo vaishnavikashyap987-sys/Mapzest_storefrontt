@@ -9,7 +9,7 @@ export const services = [
         image: "/web_gis_platform.png"
     },
     {
-        title: "Remote Sensing",
+        title: "Satellite Analysis",
         description: "Utilizing cutting-edge satellite and aerial imagery to monitor environmental changes.",
         image: "/remote_sensing.jpg"
     },
@@ -23,11 +23,7 @@ export const services = [
         description: "High-precision drone mapping and surveying for construction and mining.",
         image: "/uav_drone.png"
     },
-    {
-        title: "3D Modeling",
-        description: "Creating digital twins and 3D city models for urban planning.",
-        image: "/three_d_modeling.png"
-    },
+
     {
         title: "Data Analytics",
         description: "Turning raw spatial data into actionable business intelligence.",

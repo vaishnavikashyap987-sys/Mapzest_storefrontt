@@ -51,7 +51,7 @@ const HighlightsModal = () => {
                                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#df573a] to-[#db9d38]">
                                     MapZest
                                 </span>
-                                Web App.
+                                App.
                             </h2>
                             <p className="text-xs md:text-base text-gray-500 leading-relaxed mb-4 md:mb-8 font-medium max-w-sm">
                                 With MapZest, you can capture waypoints, record GPS paths, and navigate endless field adventures and much more.

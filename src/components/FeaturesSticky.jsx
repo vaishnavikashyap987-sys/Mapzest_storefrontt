@@ -15,21 +15,21 @@ const features = [
         prefix: "Urban ",
         accent: "Planning",
         description: "Visualize city growth and infrastructure with high-resolution 3D models. Plan smarter cities for a sustainable future.",
-        image: "/urban.png"
+        image: "/urbanplanning.png"
     },
     {
         id: "fram",
         prefix: "Disaster ",
         accent: "Management",
         description: "Rapid response mapping for floods, fires, and natural disasters. Real-time data when it matters most.",
-        image: "/image.png"
+        image: "/disastermang.png"
     },
     {
         id: "nrmm",
         prefix: "Environmental ",
         accent: "Monitoring",
         description: "Track deforestation, water quality, and climate change indicators with global satellite coverage.",
-        image: "/image copy.png"
+        image: "/environmentalmonitoring.png"
     }
 ];
 

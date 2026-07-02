@@ -28,7 +28,7 @@ const ParallaxText = ({ children, baseVelocity = 100 }) => {
 const VelocityScroll = () => {
     return (
         <section className="py-10 md:py-20 overflow-hidden relative z-20 border-y border-slate-200">
-            <ParallaxText>WebGIS Remote Sensing LiDAR Photogrammetry</ParallaxText>
+            <ParallaxText>WebGIS Satellite Analysis LiDAR Photogrammetry</ParallaxText>
             <ParallaxText>Queries Solutions Analytics </ParallaxText>
         </section>
     );

@@ -84,7 +84,7 @@ const Platforms = () => {
                                     </div>
 
                                     {/* Floating Content Box with Glassmorphism matching screenshot */}
-                                    <div className="premium-card-content relative z-10 mx-5 sm:mx-4 -mt-10 sm:-mt-16 p-4 sm:p-6 md:p-8 bg-white/40 backdrop-blur-lg rounded-2xl sm:rounded-3xl border border-white/50 shadow-xl flex flex-col flex-grow min-h-0 sm:min-h-[260px]">
+                                    <div className="premium-card-content relative z-10 mx-5 sm:mx-4 -mt-10 sm:-mt-16 p-4 sm:p-6 md:p-8 bg-white/40 backdrop-blur-lg rounded-2xl sm:rounded-3xl border border-white/50 shadow-xl flex flex-col flex-grow min-h-0 sm:min-h-[160px]">
                                         <div className="flex items-start justify-between mb-1 sm:mb-2 gap-2">
                                             <div className="flex flex-col">
                                                 <h3 className="text-lg sm:text-2xl font-bold text-slate-900 group-hover:text-blue-900 active:text-blue-950 transition-colors leading-tight">{platform.title}</h3>
@@ -95,11 +95,7 @@ const Platforms = () => {
                                             </div>
                                         </div>
 
-                                        <p className="text-slate-600 text-xs sm:text-sm leading-relaxed flex-grow mt-0">
-                                            {platform.description}
-                                        </p>
-
-                                        <div className="flex items-center justify-between border-t border-slate-100 pt-2.5 sm:pt-4 mt-2.5 sm:mt-4">
+                                        <div className="flex items-center justify-between border-t border-slate-100 pt-2.5 sm:pt-4 mt-auto">
                                             <span className="flex items-center gap-1.5 text-[10px] sm:text-xs font-extrabold text-slate-500 group-hover:text-accent-cyan transition-colors tracking-wider uppercase">
                                                 Launch Platform <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform duration-300 sm:w-3.5 sm:h-3.5" />
                                             </span>
